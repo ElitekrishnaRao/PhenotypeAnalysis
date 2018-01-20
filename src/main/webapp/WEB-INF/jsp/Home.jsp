@@ -5,9 +5,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Welcome Guest</title>
-<link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.css" >
+<link rel="stylesheet" type="text/css" href="../css/bootstrap.css" >
 <link rel="stylesheet" type="text/css" href="../css/style.css" >
-<script type="text/javascript" src="../bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../js/bootstrap.min.js"></script>
 </head>
 <body>
 <div class="header">
@@ -29,8 +29,8 @@
   
 <div id="navbarCollapse" class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
-         <li class="active"><a href="Home.jsp">Home</a></li>
-		 <li><a href="DatabaseQuerying.jsp">Database Querying</a></li>
+         <li class="active"><a href="home">Home</a></li>
+		 <li><a href="query">Database Querying</a></li>
 		 <li><a href="DespStatsVisuals.jsp">Descriptive Statistics & Visualizations</a></li>
 		 <li><a href="Datamining.jsp">Data Mining Tasks</a></li>
 	 </ul>

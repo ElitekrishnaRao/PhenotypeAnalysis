@@ -38,7 +38,7 @@ public class ReadPlant {
 				String plantName = sheet1.getRow(i).getCell(0).getStringCellValue();
 				Plant p = new Plant();
 				p.setPlant_Name(plantName);
-				p.setFamily_Id(1);
+				//p.setFamily_Id(1);
 				p.setSpecies_Id(1);
 				p.setTreatment_Id(1);
 				p.setGenotype_Id(1);

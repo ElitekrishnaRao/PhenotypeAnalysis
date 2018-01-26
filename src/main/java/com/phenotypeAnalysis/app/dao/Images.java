@@ -1,7 +1,10 @@
 package com.phenotypeAnalysis.app.dao;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import java.util.*;
@@ -10,6 +13,7 @@ import java.util.*;
 @Entity
 public class Images {
 	@Id
+	@Column(name = "Image_Id")
 	private int Image_Id;
 	@Temporal(TemporalType.DATE)
 	private Date Date;
@@ -18,6 +22,9 @@ public class Images {
 	private String Image_Morality;
 	private int Day_Sequence;
 	private int View;
+	@ManyToOne
+    @JoinColumn(name="Plant_Ids")
+    private Plant plant;
 	public int getImage_Id() {
 		return Image_Id;
 	}

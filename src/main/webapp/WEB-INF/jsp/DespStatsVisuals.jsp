@@ -39,9 +39,9 @@
 		</div>
 		<nav class="nav nav-pills">
 			<a class="nav-link nav-item" href="home">Home</a> <a
-				class="nav-link nav-item active" href="query">Database Querying</a>
-			<a class="nav-link nav-item" href="stats">Descriptive Statistics
-				& Visualizations</a> <a class="nav-link nav-item" href="mine">Datamining
+				class="nav-link nav-item" href="query">Database Querying</a> <a
+				class="nav-link nav-item active" href="stats">Descriptive
+				Statistics & Visualizations</a> <a class="nav-link nav-item" href="mine">Datamining
 				Tasks</a>
 			<!-- <div class="nav-item dropdown">
 		          <a class="nav-link dropdown-toggle" href="#" id="dropdown5" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
@@ -67,90 +67,77 @@
 					<div class="col-4">
 						<div class="list-group" id="list-tab" role="tablist">
 							<a class="list-group-item list-group-item-action active"
-								id="list-plant-list" data-toggle="list" href="#list-plant"
-								role="tab" aria-controls="plant">Plant Based</a> <a
+								id="list-statistics-list" data-toggle="list"
+								href="#list-statistics" role="tab" aria-controls="statistics">Descriptive
+								Statistics</a> <a class="list-group-item list-group-item-action"
+								id="list-visualization-list" data-toggle="list"
+								href="#list-visualization" role="tab"
+								aria-controls="visualization">Visualizations</a> <a
 								class="list-group-item list-group-item-action"
-								id="list-image-list" data-toggle="list" href="#list-image"
-								role="tab" aria-controls="image">Image Based</a> <a
-								class="list-group-item list-group-item-action"
-								id="list-adhoc-list" data-toggle="list" href="#list-adhoc"
-								role="tab" aria-controls="adhoc">Adhoc</a>
+								id="list-reports-list" data-toggle="list" href="#list-reports"
+								role="tab" aria-controls="reports">Saved Data/Visual Reports</a>
+
 
 						</div>
 					</div>
 					<div class="col-8">
 						<div class="tab-content" id="nav-tabContent">
-							<div class="tab-pane fade show active" id="list-plant"
-								role="tabpanel" aria-labelledby="list-plant-list">
+							<div class="tab-pane fade show active" id="list-statistics"
+								role="tabpanel" aria-labelledby="list-statistics-list">
 								<p>
 									Here you can perform dababase querying based on plants and
 									obtain associated phenotypic, genotypic, treatments data. <br>
-									<br> <b>Select a species </b><br>
+									<br> <b>Select species, plants and phenotypes </b><br>
 									<button type="button" class="btn btn-primary btn-sm">View
-										list of plants</button>
+										mean values</button>
 									<br>
 									<button type="button" class="btn btn-primary btn-sm">View
-										different treatments given for plants</button>
-									<br> <br> <b></>Select species and plants </b><br>
-									<button type="button" class="btn btn-primary btn-sm">View
-										phenotypic data</button>
+										median values</button>
 									<br>
 									<button type="button" class="btn btn-primary btn-sm">View
-										genotypic data</button>
-									<br>
-									<button type="button" class="btn btn-primary btn-sm">View
-										list of plants</button>
-									<br> <br> <b></>Select species and treatment </b><br>
-									<button type="button" class="btn btn-primary btn-sm">View
-										all plants with this treatment</button>
+										standard deviation values</button>
 									<br> <br>
-
 								</p>
 							</div>
-							<div class="tab-pane fade" id="list-image" role="tabpanel"
-								aria-labelledby="list-image-list">
+
+							<div class="tab-pane fade" id="list-visualization"
+								role="tabpanel" aria-labelledby="list-visualization-list">
 								<p>
-									Here you can perform dababase querying based on images like
-									viewing sequence of images of particular plant life cycle,
-									viewing image of a plant for a particular day to view the
-									growth of plant, etc.<br> <br> <b>Select a
-										species and plant </b><br>
-									<button type="button" class="btn btn-primary btn-sm">View
-										image sequence</button>
+									Here you can perform visualization based on the dababase query
+									results obtained earlier. Visualizations help to view the
+									trends in plant growth with respect to varied treatments
+									provided to plants. Visualizations can also be viewed based on
+									genotypic information of plants. <br> <br> <b>Select
+										species, plants and phenotypes </b><br>
+									<button type="button" class="btn btn-primary btn-sm"></button>
 									<br>
-
+									<button type="button" class="btn btn-primary btn-sm"></button>
+									<br>
+									<button type="button" class="btn btn-primary btn-sm"></button>
+									<br> <br>
 								</p>
 							</div>
 
-							<div class="tab-pane fade" id="list-adhoc" role="tabpanel"
-								aria-labelledby="list-adhoc-list">
+							<div class="tab-pane fade" id="list-reports" role="tabpanel"
+								aria-labelledby="list-reports-list">
 								<p>
-									Here you can perform adhoc dababase queries based on analysis
-									being performed. For instance <br> <br>
-									<button type="button" class="btn btn-primary btn-sm">View
-										list of all phenotypes</button>
+									<br> <br>
+									<button type="button" class="btn btn-primary btn-sm"></button>
 									<br>
 								</p>
 							</div>
-							<div class="tab-pane fade" id="list-settings" role="tabpanel"
-								aria-labelledby="list-settings-list">...</div>
+
 						</div>
 					</div>
 				</div>
 			</div>
-			
-			
-			<div class="col-3" >
-
+			<div class="col-3">
 				<h4>Search Here</h4>
 				<br>
 				<form method="GET" class="lgnForm" action="DBQueryResults.jsp">
 					<div class="form-group">
 						<label>Species</label> <select name="species" class="form-control">
-							
-							<c:forEach var="plant" items="${plantspeciesData}">
-								<option value="${plant.species_Name}">${plant.species_Name}</option>
-							</c:forEach>
+							<option value="none">none</option>
 						</select>
 					</div>
 					<div class="form-group">
@@ -183,7 +170,6 @@
 							<option value="none">none</option>
 						</select>
 					</div>
-
 					<input type="submit" class="btn btn-primary" value="Clear Search" />
 				</form>
 			</div>

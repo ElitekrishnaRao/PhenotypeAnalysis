@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.Gson;
+import com.phenotypeAnalysis.app.dao.Phenotype;
 import com.phenotypeAnalysis.app.dao.Plant;
 import com.phenotypeAnalysis.app.dao.Plant_Species;
 import com.phenotypeAnalysis.app.dao.Treatment;
@@ -45,9 +46,11 @@ public class MinningWebController {
 		
 		List<Treatment> treatmentData = databaseQueryingService.getTreatmentData();
 		map.put("treatmentData",treatmentData);
+		//return new ModelAndView("DatabaseQuerying");
+		
+		List<Phenotype> phenotypeData = databaseQueryingService.getPhenotypeData();
+		map.put("phenotypeData",phenotypeData);
 		return new ModelAndView("DatabaseQuerying");
-		
-		
 	}
 	
 	@RequestMapping("/stats")

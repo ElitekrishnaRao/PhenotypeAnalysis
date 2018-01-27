@@ -6,10 +6,12 @@ import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.phenotypeAnalysis.app.dao.Phenotype;
 import com.phenotypeAnalysis.app.dao.Plant;
 import com.phenotypeAnalysis.app.dao.Plant_Species;
 import com.phenotypeAnalysis.app.dao.Treatment;
 import com.phenotypeAnalysis.app.repository.PopulateDaoService;
+import com.phenotypeAnalysis.app.util.ReadPhenotype;
 import com.phenotypeAnalysis.app.util.ReadPlant;
 import com.phenotypeAnalysis.app.util.ReadPlantSpecies;
 import com.phenotypeAnalysis.app.util.ReadTreatment;
@@ -48,6 +50,17 @@ public class PopulateServiceImpl implements PopulateService{
 		try {
 			Set<Treatment> treatmentSet = ReadTreatment.readTreatmentData();
 			populateDaoService.populateTreatmentData(treatmentSet);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@Override
+	public void populatePhenotypeData() {
+		// TODO Auto-generated method stub
+		try {
+			Set<Phenotype> phenotypeSet = ReadPhenotype.readPhenotypeData();
+			populateDaoService.populatePhenotypeData(phenotypeSet);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

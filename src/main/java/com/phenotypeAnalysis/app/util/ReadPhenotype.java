@@ -27,8 +27,8 @@ import com.phenotypeAnalysis.app.dao.Phenotype;
 import com.phenotypeAnalysis.app.dao.Plant;
 
 public class ReadPhenotype {
-
-public static void main(String[] args) throws IOException{
+	
+	public static Set<Phenotype> readPhenotypeData() throws IOException {
 		
 		File src= new File("C:\\Users\\SIDDU\\Desktop\\LEMNATEC_RAE_WHEAT Phenotyping Results.xlsx");
 		HSSFWorkbook workbook = new HSSFWorkbook();
@@ -46,7 +46,7 @@ public static void main(String[] args) throws IOException{
             XSSFRow row = (XSSFRow) rows.next();
             noRows++;                
         }
-		
+		Set<Phenotype> phenotypeSet = new HashSet<Phenotype>();
 		//columns names stored in Arraylist 
 		ArrayList<String> columnsHeader=new ArrayList<String>();
 		for( int i = 0 ; i < length ; i++ )
@@ -66,7 +66,7 @@ public static void main(String[] args) throws IOException{
 		{
 			count++;
 			Phenotype ph=new Phenotype();
-			ArrayList<Phenotype> s = new ArrayList<Phenotype>();
+			//ArrayList<Phenotype> s = new ArrayList<Phenotype>();
 			
 			for(int j=0; j<noColumns;j++)
 			{
@@ -90,7 +90,7 @@ public static void main(String[] args) throws IOException{
 							ph.setPlant_Id((Integer)plantMap.get(plantName));
 							ph.setDate(plantDate);
 							ph.setEnclosing_Circle_Diameter("null");
-							s.add(ph);
+							phenotypeSet.add(ph);
 							ph = new Phenotype();
 					    }
 					    
@@ -111,7 +111,7 @@ public static void main(String[] args) throws IOException{
 							ph.setEnclosing_Circle_Diameter("null");
 							ph.setAspect_Ratio("null");
 							ph.setPlant_Id((Integer)plantMap.get(plantName));
-					    s.add(ph);
+							phenotypeSet.add(ph);
 						ph = new Phenotype();
 					    }
 					    
@@ -131,7 +131,7 @@ public static void main(String[] args) throws IOException{
 							ph.setBounding_Box_Ht("null");
 							ph.setEnclosing_Circle_Diameter("null");
 							ph.setAspect_Ratio("null");
-					    s.add(ph);
+							phenotypeSet.add(ph);
 						ph = new Phenotype();
 					    }    
 						
@@ -151,7 +151,7 @@ public static void main(String[] args) throws IOException{
 							ph.setBounding_Box_Ht("null");
 							ph.setEnclosing_Circle_Diameter("null");
 							ph.setAspect_Ratio("null");
-					    	s.add(ph);
+							phenotypeSet.add(ph);
 							ph = new Phenotype();
 					    }
 						
@@ -172,12 +172,12 @@ public static void main(String[] args) throws IOException{
 							ph.setBounding_Box_Ht("null");
 							ph.setEnclosing_Circle_Diameter("null");
 							ph.setAspect_Ratio("null");
-							s.add(ph);
+							phenotypeSet.add(ph);
 						    ph = new Phenotype();
 					    }
 			}
 		}
-			phen.put(count, s);	
+			phen.put(count, (List) phenotypeSet);	
 	}  
 		
 		
@@ -205,6 +205,8 @@ public static void main(String[] args) throws IOException{
 			}
 		}
 		tx.commit(); 
+
+return phenotypeSet;
 }
 
 private static Map getPlantMap() {

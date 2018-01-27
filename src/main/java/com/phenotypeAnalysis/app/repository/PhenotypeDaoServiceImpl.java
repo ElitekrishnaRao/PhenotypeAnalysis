@@ -4,17 +4,17 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import com.phenotypeAnalysis.app.dao.Plant;
+import com.phenotypeAnalysis.app.dao.Phenotype;
 
 @Repository
-public class PlantDaoServiceImpl implements PlantDaoService {
+public class PhenotypeDaoServiceImpl implements PhenotypeDaoService{
+	
 	@Autowired
-	PlantRepository populateDataPlantRepository;
+	PhenotypeRepository populateDataPhenotypeRepository;
 
 	@Override
-	public List<Plant> getPlantData() {
+	public List<Phenotype> getPhenotypeData() {
 		// TODO Auto-generated method stub
-		return populateDataPlantRepository.findAll();
+		return populateDataPhenotypeRepository.findAll();
 	}
-
 }

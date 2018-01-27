@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.phenotypeAnalysis.app.dao.Plant;
+import com.phenotypeAnalysis.app.dao.Phenotype;
 import com.phenotypeAnalysis.app.dao.Plant_Species;
 import com.phenotypeAnalysis.app.dao.Treatment;
 
@@ -18,6 +19,8 @@ public class PopulateDaoServiceImpl implements PopulateDaoService {
 	PlantSpeciesRepository populateDataPlantSpeciesRepository;
 	@Autowired
 	TreatmentRepository populateDataTreatmentRepository;
+	@Autowired
+	PhenotypeRepository populateDataPhenotypeRepository;
 
 	@Override
 	public void populatePlantData(Set<Plant> plantSet) {
@@ -35,6 +38,12 @@ public class PopulateDaoServiceImpl implements PopulateDaoService {
 	public void populateTreatmentData(Set<Treatment> treatmentSet) {
 		for (Treatment treatment : treatmentSet) {
 			populateDataTreatmentRepository.save(treatment);
+		}
+	}
+	@Override
+	public void populatePhenotypeData(Set<Phenotype> phenotypeSet) {
+		for (Phenotype phenotype : phenotypeSet) {
+			populateDataPhenotypeRepository.save(phenotype);
 		}
 	}
 

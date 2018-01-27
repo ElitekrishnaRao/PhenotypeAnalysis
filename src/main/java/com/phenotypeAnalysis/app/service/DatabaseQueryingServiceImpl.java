@@ -5,9 +5,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.phenotypeAnalysis.app.dao.Phenotype;
 import com.phenotypeAnalysis.app.dao.Plant;
 import com.phenotypeAnalysis.app.dao.Plant_Species;
 import com.phenotypeAnalysis.app.dao.Treatment;
+import com.phenotypeAnalysis.app.repository.PhenotypeDaoService;
 import com.phenotypeAnalysis.app.repository.PlantDaoService;
 import com.phenotypeAnalysis.app.repository.PlantSpeciesDaoService;
 import com.phenotypeAnalysis.app.repository.TreatmentDaoService;
@@ -19,6 +21,8 @@ public class DatabaseQueryingServiceImpl implements DatabaseQueryingService {
 	PlantSpeciesDaoService  plantspeciesDaoService;
 	@Autowired
 	TreatmentDaoService  treatmentDaoService;
+	@Autowired
+	PhenotypeDaoService  phenotypeDaoService;
 	
 	@Override
 	public List<Plant> getPlantData() {
@@ -31,6 +35,10 @@ public class DatabaseQueryingServiceImpl implements DatabaseQueryingService {
 	@Override
 	public List<Treatment> getTreatmentData() {
 		return treatmentDaoService.getTreatmentData();
+	}
+	@Override
+	public List<Phenotype> getPhenotypeData() {
+		return phenotypeDaoService.getPhenotypeData();
 	}
 
 }

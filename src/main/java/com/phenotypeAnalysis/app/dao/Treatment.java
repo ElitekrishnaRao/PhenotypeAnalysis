@@ -3,55 +3,46 @@ package com.phenotypeAnalysis.app.dao;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
-//assuming that watering and phosphorus are string type for now
+//assuming that watering and phosphorus are string types for now
 
 @Entity
 public class Treatment {
 
 	@Id
-	private int Treatment_Id;
-	private String Treatment_Type;
+	private int treatment_Id;
+	private String treatment_Type;
 	//private float Watering;
 	//private float Phosphorus;
-	private String Watering;
-	private String Phosphorus;
+	private String watering;
+	private String phosphorus;
+	
 	
 	public int getTreatment_Id() {
-		return Treatment_Id;
+		return treatment_Id;
 	}
 	public void setTreatment_Id(int treatment_Id) {
-		Treatment_Id = treatment_Id;
+		this.treatment_Id = treatment_Id;
 	}
 	public String getTreatment_Type() {
-		return Treatment_Type;
+		return treatment_Type;
 	}
 	public void setTreatment_Type(String treatment_Type) {
-		Treatment_Type = treatment_Type;
+		this.treatment_Type = treatment_Type;
 	}
-	/** public float getWatering() {
-		return Watering;
-	}
-	public void setWatering(float watering) {
-		Watering = watering;
-	}
-	public float getPhosphorus() {
-		return Phosphorus;
-	}
-	public void setPhosphorus(float phosphorus) {
-		Phosphorus = phosphorus;
-	} **/
 	public String getWatering() {
-		return Watering;
+		return watering;
 	}
 	public void setWatering(String watering) {
-		Watering = watering;
+		this.watering = watering;
 	}
 	public String getPhosphorus() {
-		return Phosphorus;
+		return phosphorus;
 	}
 	public void setPhosphorus(String phosphorus) {
-		Phosphorus = phosphorus;
+		this.phosphorus = phosphorus;
 	}
+	
+	
 	
 	
 }

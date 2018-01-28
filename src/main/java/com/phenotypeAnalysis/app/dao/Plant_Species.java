@@ -30,6 +30,4 @@ public class Plant_Species {
 	public void setSpecies_Name(String species_Name) {
 		this.species_Name = species_Name;
 	}
-	
-	
 }

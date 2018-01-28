@@ -161,9 +161,10 @@
 						</select>
 					</div>
 					<div class="form-group ">
-						<label>Treatments</label> <select name="treatments"
-							class="form-control">
-							<option value="none">none</option>
+						<label>Treatments</label> <select name="treatments" class="form-control">
+							<c:forEach var="treatment" items="${treatmentData}">
+								<option value="${treatment.treatment_Id}">${treatment.treatment_Id} - ${treatment.watering} , ${treatment.phosphorus}</option>
+							</c:forEach>
 						</select>
 					</div>
 					<div class="form-group">
@@ -189,7 +190,6 @@
 			</div>
 		</div>
 	</div>
-
 
 	<script src="https://code.jquery.com/jquery-2.2.4.min.js"
 		integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="

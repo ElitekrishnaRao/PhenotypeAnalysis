@@ -67,17 +67,6 @@ public class MinningWebController {
 		return new ModelAndView("DataMining");
 	}
 	
-	/* @RequestMapping("/query1")
-	public String  databaseQuerying1(ModelMap map) { 
-		//List<Plant> plantData = databaseQueryingService.getPlantData();
-		List<Integer> plantdata = new ArrayList<Integer>();
-		plantdata.add(1);
-		plantdata.add(2);
-		plantdata.add(3);
-		String json = new Gson().toJson(plantdata);
-		return json;
-	}*/
-	
 	@RequestMapping("/results")
 	public ModelAndView  dBQueryResults(ModelMap map) { 
 		return new ModelAndView("DBQueryResults");
@@ -87,6 +76,5 @@ public class MinningWebController {
 	public String populateDb(ModelMap map) { 
 		populateService.populatePlantData();
 		return "Home";
-		
 	}
 }

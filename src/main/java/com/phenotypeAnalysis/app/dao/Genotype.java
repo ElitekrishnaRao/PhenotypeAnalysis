@@ -5,24 +5,20 @@ import javax.persistence.Id;
 @Entity
 public class Genotype {
 	@Id
-	private int Genotype_Id;
-	private String Genotype;
-	
+	private int genotype_Id;
+	private String genotype;
 	public int getGenotype_Id() {
-		return Genotype_Id;
+		return genotype_Id;
 	}
 	public void setGenotype_Id(int genotype_Id) {
-		Genotype_Id = genotype_Id;
+		this.genotype_Id = genotype_Id;
 	}
 	public String getGenotype() {
-		return Genotype;
+		return genotype;
 	}
 	public void setGenotype(String genotype) {
-		Genotype = genotype;
+		this.genotype = genotype;
 	}
-	
-
-	
 	}
 	
 

@@ -36,12 +36,14 @@ public class ReadPlant {
 			count++;
 			if (sheet1.getRow(i) != null) {
 				String plantName = sheet1.getRow(i).getCell(0).getStringCellValue();
+				int genotypeId = (int) sheet1.getRow(i).getCell(2).getNumericCellValue();
+				int treatmentId = (int) sheet1.getRow(i).getCell(4).getNumericCellValue();
 				Plant p = new Plant();
 				p.setPlant_Name(plantName);
 				//p.setFamily_Id(1);
 				p.setSpecies_Id(1);
-				p.setTreatment_Id(1);
-				p.setGenotype_Id(1);
+				p.setTreatment_Id(treatmentId);
+				p.setGenotype_Id(genotypeId);
 				plantsSet.add(p);
 				System.out.println("plantName " + plantName);
 			}

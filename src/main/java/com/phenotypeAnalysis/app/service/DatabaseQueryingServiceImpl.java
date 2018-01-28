@@ -5,10 +5,14 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.phenotypeAnalysis.app.dao.Genotype;
+import com.phenotypeAnalysis.app.dao.Images;
 import com.phenotypeAnalysis.app.dao.Phenotype;
 import com.phenotypeAnalysis.app.dao.Plant;
 import com.phenotypeAnalysis.app.dao.Plant_Species;
 import com.phenotypeAnalysis.app.dao.Treatment;
+import com.phenotypeAnalysis.app.repository.GenotypeDaoService;
+import com.phenotypeAnalysis.app.repository.ImageDaoService;
 import com.phenotypeAnalysis.app.repository.PhenotypeDaoService;
 import com.phenotypeAnalysis.app.repository.PlantDaoService;
 import com.phenotypeAnalysis.app.repository.PlantSpeciesDaoService;
@@ -23,6 +27,10 @@ public class DatabaseQueryingServiceImpl implements DatabaseQueryingService {
 	TreatmentDaoService  treatmentDaoService;
 	@Autowired
 	PhenotypeDaoService  phenotypeDaoService;
+	@Autowired
+	ImageDaoService  imageDaoService;
+	@Autowired
+	GenotypeDaoService  genotypeDaoService;
 	
 	@Override
 	public List<Plant> getPlantData() {
@@ -39,6 +47,14 @@ public class DatabaseQueryingServiceImpl implements DatabaseQueryingService {
 	@Override
 	public List<Phenotype> getPhenotypeData() {
 		return phenotypeDaoService.getPhenotypeData();
+	}
+	@Override
+	public List<Images> getImageData() {
+		return imageDaoService.getImageData();
+	}
+	@Override
+	public List<Genotype> getGenotypeData() {
+		return genotypeDaoService.getGenotypeData();
 	}
 
 }

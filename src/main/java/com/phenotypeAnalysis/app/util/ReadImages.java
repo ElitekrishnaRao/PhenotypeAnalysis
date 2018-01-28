@@ -16,7 +16,7 @@ import java.text.DateFormat;
 
 public class ReadImages {
 	
-	public static void main(String[] args) throws IOException{
+	public static Set<Images> readImageData() throws IOException {
 
 		File imageDir=new File("C:\\Users\\SIDDU\\Desktop\\Project\\Dataset\\SinglePlant");
 		String[] subDir = imageDir.list();
@@ -25,6 +25,7 @@ public class ReadImages {
 		Images I=new Images();
 		DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 		Map  plantMap = getPlantMap();
+		Set<Images> imageSet = new HashSet<Images>();
 
 
 			for(File f : subFiles) {
@@ -52,7 +53,7 @@ public class ReadImages {
 									}
 									I.setPlant_Name(plantNameVal);
 									I.setPlant_Id((Integer)plantMap.get(plantNameVal));
-									s.add(I);
+									imageSet.add(I);
 									I=new Images();
 								}
 
@@ -116,6 +117,8 @@ public class ReadImages {
 		Configuration con= new Configuration().configure().addAnnotatedClass(Images.class);
 		SessionFactory sf= con.buildSessionFactory();
 		Session s1= sf.openSession();
+		
+		return imageSet;
 	}
 
 	private static Map getPlantMap() {

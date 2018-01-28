@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.phenotypeAnalysis.app.dao.Plant;
+import com.phenotypeAnalysis.app.dao.Genotype;
+import com.phenotypeAnalysis.app.dao.Images;
 import com.phenotypeAnalysis.app.dao.Phenotype;
 import com.phenotypeAnalysis.app.dao.Plant_Species;
 import com.phenotypeAnalysis.app.dao.Treatment;
@@ -21,6 +23,10 @@ public class PopulateDaoServiceImpl implements PopulateDaoService {
 	TreatmentRepository populateDataTreatmentRepository;
 	@Autowired
 	PhenotypeRepository populateDataPhenotypeRepository;
+	@Autowired
+	ImageRepository populateDataImageRepository;
+	@Autowired
+	GenotypeRepository populateDataGenotypeRepository;
 
 	@Override
 	public void populatePlantData(Set<Plant> plantSet) {
@@ -44,6 +50,18 @@ public class PopulateDaoServiceImpl implements PopulateDaoService {
 	public void populatePhenotypeData(Set<Phenotype> phenotypeSet) {
 		for (Phenotype phenotype : phenotypeSet) {
 			populateDataPhenotypeRepository.save(phenotype);
+		}
+	}
+	@Override
+	public void populateImageData(Set<Images> imageSet) {
+		for (Images image : imageSet) {
+			populateDataImageRepository.save(image);
+		}
+	}
+	@Override
+	public void populateGenotypeData(Set<Genotype> genotypeSet) {
+		for (Genotype genotype : genotypeSet) {
+			populateDataGenotypeRepository.save(genotype);
 		}
 	}
 

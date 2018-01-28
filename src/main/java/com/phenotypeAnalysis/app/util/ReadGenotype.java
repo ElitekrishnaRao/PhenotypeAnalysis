@@ -22,7 +22,7 @@ import com.phenotypeAnalysis.app.dao.Plant;
 // for future use - for testing purpose hardcoding Genotype with "A" and "B" using App.java
 
 public class ReadGenotype {
-public static void main(String[] args) throws IOException{
+	public static Set<Genotype> readGenotypeData() throws IOException {
 		
 		File src= new File("C:\\Users\\SIDDU\\Desktop\\LEMNATEC_RAE_WHEAT Phenotyping Results.xlsx");
 		HSSFWorkbook workbook = new HSSFWorkbook();
@@ -32,7 +32,7 @@ public static void main(String[] args) throws IOException{
 		Iterator rows=sheet1.rowIterator();
 		int noRows = 0;
 		int noColumns = sheet1.getRow(0).getPhysicalNumberOfCells();
-		
+		Set<Genotype> genotypeSet = new HashSet<Genotype>();
 		while( rows.hasNext() ) {
             XSSFRow row = (XSSFRow) rows.next();
             noRows++;                
@@ -50,7 +50,7 @@ public static void main(String[] args) throws IOException{
 				String plantName=sheet1.getRow(i).getCell(0).getStringCellValue();
 				Genotype g = new Genotype();
 				g.setGenotype("A");
-				s.add(g);
+				genotypeSet.add(g);
 				}
 			//}
 		}
@@ -68,5 +68,7 @@ public static void main(String[] args) throws IOException{
 	        s1.saveOrUpdate(p);
 		}
 		tx.commit();
+		
+		return genotypeSet;
 	}
 }

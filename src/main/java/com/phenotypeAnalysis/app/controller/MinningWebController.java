@@ -58,8 +58,12 @@ public class MinningWebController {
 	
 	@RequestMapping("/stats")
 	public ModelAndView despStatsVisuals(ModelMap map) { 
-		
 		return new ModelAndView("DespStatsVisuals");
+	}
+	
+	@RequestMapping("/plantQuery")
+	public ModelAndView plantQuery(ModelMap map) { 
+		return new ModelAndView("PlantBased");
 	}
 	
 	@RequestMapping("/mine")

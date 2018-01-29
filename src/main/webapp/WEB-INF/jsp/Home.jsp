@@ -80,7 +80,7 @@
 				<ol>
 					<li>Database Querying</li>
 					<li>Descriptive Statistics and Visualizations</li>
-					<li>Datamining Tasks</li>
+					<li>Data Mining Tasks</li>
 				</ol>
 				</p>
 			</div>

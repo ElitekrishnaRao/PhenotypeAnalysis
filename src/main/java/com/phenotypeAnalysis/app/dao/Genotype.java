@@ -1,8 +1,10 @@
 package com.phenotypeAnalysis.app.dao;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="Genotype")
 public class Genotype {
 	@Id
 	private int genotype_Id;

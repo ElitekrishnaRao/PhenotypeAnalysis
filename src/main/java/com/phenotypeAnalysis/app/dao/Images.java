@@ -5,12 +5,14 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import java.util.*;
 
 
 @Entity
+@Table(name="Images")
 public class Images {
 	@Id
 	@Column(name = "Image_Id")
@@ -23,8 +25,9 @@ public class Images {
 	private int Day_Sequence;
 	private int View;
 	@ManyToOne
-    @JoinColumn(name="Plant_Ids")
     private Plant plant;
+	
+
 	public int getImage_Id() {
 		return Image_Id;
 	}

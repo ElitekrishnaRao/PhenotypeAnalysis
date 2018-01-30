@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,8 +13,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="Plant")
 public class Plant {
 
 	@Id
@@ -30,9 +33,8 @@ public class Plant {
 	private int Species_Id;
 	@Column(name = "Genotype_Id")
 	private int Genotype_Id;
-	@OneToMany(mappedBy = "plant")
+	@OneToMany(cascade = CascadeType.ALL)
 	Set<Images> ImagesList;
-
 	public Set<Images> getImagesList() {
 		return ImagesList;
 	}

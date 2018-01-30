@@ -5,10 +5,12 @@ import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
+@Table(name="Phenotype")
 public class Phenotype implements Serializable {
 	@Id
 	private int phenotypeId;

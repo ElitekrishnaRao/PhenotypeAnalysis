@@ -1,9 +1,11 @@
 package com.phenotypeAnalysis.app.dao;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 
 @Entity
+@Table(name="Plant_Family")
 public class Plant_Family {
 	@Id
 	private int Family_Id;

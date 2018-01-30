@@ -2,10 +2,12 @@ package com.phenotypeAnalysis.app.dao;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 //assuming that watering and phosphorus are string types for now
 
 @Entity
+@Table(name="Treatment")
 public class Treatment {
 
 	@Id

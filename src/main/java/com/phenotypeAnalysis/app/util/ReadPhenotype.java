@@ -86,7 +86,7 @@ public class ReadPhenotype {
 							ph.setBounding_Box_Ht(sheet1.getRow(i).getCell(j).getRawValue());
 						    String plantName=sheet1.getRow(i).getCell(0).getStringCellValue();
 							Date plantDate=sheet1.getRow(i).getCell(1).getDateCellValue();
-							ph.setPlant_name(plantName);
+							ph.setPlant_Name(plantName);
 							ph.setPlant_Id((Integer)plantMap.get(plantName));
 							ph.setDate(plantDate);
 							ph.setEnclosing_Circle_Diameter("null");
@@ -105,7 +105,7 @@ public class ReadPhenotype {
 							ph.setAreal_Density(sheet1.getRow(i).getCell(j).getRawValue());
 							String plantName=sheet1.getRow(i).getCell(0).getStringCellValue();
 							Date plantDate=sheet1.getRow(i).getCell(1).getDateCellValue();
-							ph.setPlant_name(plantName);
+							ph.setPlant_Name(plantName);
 							ph.setDate(plantDate);
 							ph.setBounding_Box_Ht("null");
 							ph.setEnclosing_Circle_Diameter("null");
@@ -125,7 +125,7 @@ public class ReadPhenotype {
 							ph.setAreal_Density(sheet1.getRow(i).getCell(j).getRawValue());
 							String plantName=sheet1.getRow(i).getCell(0).getStringCellValue();
 							Date plantDate=sheet1.getRow(i).getCell(1).getDateCellValue();
-							ph.setPlant_name(plantName);
+							ph.setPlant_Name(plantName);
 							ph.setDate(plantDate);   
 							ph.setPlant_Id((Integer)plantMap.get(plantName));
 							ph.setBounding_Box_Ht("null");
@@ -145,7 +145,7 @@ public class ReadPhenotype {
 							ph.setAreal_Density(sheet1.getRow(i).getCell(j).getRawValue());
 							String plantName=sheet1.getRow(i).getCell(0).getStringCellValue();
 							Date plantDate=sheet1.getRow(i).getCell(1).getDateCellValue();
-							ph.setPlant_name(plantName);
+							ph.setPlant_Name(plantName);
 							ph.setPlant_Id((Integer)plantMap.get(plantName));
 							ph.setDate(plantDate);
 							ph.setBounding_Box_Ht("null");
@@ -166,7 +166,7 @@ public class ReadPhenotype {
 							ph.setEnclosing_Circle_Diameter(sheet1.getRow(i).getCell(j).getRawValue());    
 							String plantName=sheet1.getRow(i).getCell(0).getStringCellValue();
 							Date plantDate=sheet1.getRow(i).getCell(1).getDateCellValue();
-							ph.setPlant_name(plantName);
+							ph.setPlant_Name(plantName);
 							ph.setDate(plantDate);
 							ph.setPlant_Id((Integer)plantMap.get(plantName));
 							ph.setBounding_Box_Ht("null");

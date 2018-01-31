@@ -1,4 +1,4 @@
-package com.phenotypeAnalysis.app.dao;
+/* package com.phenotypeAnalysis.app.dao;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -27,6 +27,6 @@ public class Plant_Family {
 	
 }
 
-
+*/
 
 

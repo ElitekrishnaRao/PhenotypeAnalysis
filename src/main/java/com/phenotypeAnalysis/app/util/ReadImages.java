@@ -43,7 +43,7 @@ public class ReadImages {
 								if (s2.contains("SV_0")) {
 
 									I.setView(0);
-									I.setImage_Morality("RGB");
+									I.setImage_Modality("RGB");
 									try {
 										Date dateValue=(Date)df.parse(dateVal);
 										I.setDate(dateValue);

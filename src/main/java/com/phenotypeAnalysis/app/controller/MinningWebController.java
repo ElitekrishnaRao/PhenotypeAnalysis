@@ -54,6 +54,9 @@ public class MinningWebController {
 		List<Genotype> genotypeData = databaseQueryingService.getGenotypeData();
 		map.put("genotypeData",genotypeData);
 		return new ModelAndView("DatabaseQuerying");
+		
+		
+		
 	}
 	
 	@RequestMapping("/stats")

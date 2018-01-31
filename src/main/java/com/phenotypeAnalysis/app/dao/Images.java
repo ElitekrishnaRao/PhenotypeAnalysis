@@ -15,65 +15,71 @@ import java.util.*;
 @Table(name="Images")
 public class Images {
 	@Id
-	@Column(name = "Image_Id")
-	private int Image_Id;
+	@Column(name = "image_Id")
+	private int image_Id;
 	@Temporal(TemporalType.DATE)
-	private Date Date;
-	private int Plant_Id;
-	private String Plant_Name;
-	private String Image_Morality;
-	private int Day_Sequence;
-	private int View;
+	private Date date;
+	private int plant_Id;
+	private String plant_Name;
+	private String image_Modality;
+	private int day_Sequence;
+	private int view;
+	private String file_Path;
 	@ManyToOne
     private Plant plant;
 	
-
 	public int getImage_Id() {
-		return Image_Id;
+		return image_Id;
 	}
 	public void setImage_Id(int image_Id) {
-		Image_Id = image_Id;
+		this.image_Id = image_Id;
 	}
 	public Date getDate() {
-		return Date;
+		return date;
 	}
 	public void setDate(Date date) {
-		Date = date;
+		this.date = date;
 	}
 	public int getPlant_Id() {
-		return Plant_Id;
+		return plant_Id;
 	}
 	public void setPlant_Id(int plant_Id) {
-		Plant_Id = plant_Id;
+		this.plant_Id = plant_Id;
 	}
-	public String getImage_Morality() {
-		return Image_Morality;
+	public String getPlant_Name() {
+		return plant_Name;
 	}
-	public void setImage_Morality(String image_Morality) {
-		Image_Morality = image_Morality;
+	public void setPlant_Name(String plant_Name) {
+		this.plant_Name = plant_Name;
 	}
-
-
+	public String getImage_Modality() {
+		return image_Modality;
+	}
+	public void setImage_Modality(String image_Modality) {
+		this.image_Modality = image_Modality;
+	}
+	public int getDay_Sequence() {
+		return day_Sequence;
+	}
+	public void setDay_Sequence(int day_Sequence) {
+		this.day_Sequence = day_Sequence;
+	}
 	public int getView() {
-		return View;
+		return view;
 	}
 	public void setView(int view) {
-		View = view;
+		this.view = view;
 	}
-
-	public String getPlant_Name() {
-		return Plant_Name;
+	public String getFile_Path() {
+		return file_Path;
 	}
-
-	public void setPlant_Name(String plant_Name) {
-		Plant_Name = plant_Name;
+	public void setFile_Path(String file_Path) {
+		this.file_Path = file_Path;
 	}
-
-	public int getDay_Sequence() {
-		return Day_Sequence;
+	public Plant getPlant() {
+		return plant;
 	}
-
-	public void setDay_Sequence(int day_Sequence) {
-		Day_Sequence = day_Sequence;
+	public void setPlant(Plant plant) {
+		this.plant = plant;
 	}
 }

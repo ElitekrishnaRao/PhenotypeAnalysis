@@ -16,7 +16,7 @@ public class Plant_Species {
 	@Enumerated(EnumType.STRING)
     private Family family;
 	
-	public enum Family { Grasses, Unknown }
+	public enum Family { grasses, Unknown }
 	
 	public int getSpecies_Id() {
 		return Species_Id;

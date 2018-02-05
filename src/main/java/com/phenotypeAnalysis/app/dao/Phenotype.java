@@ -3,8 +3,13 @@ package com.phenotypeAnalysis.app.dao;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -13,17 +18,12 @@ import javax.persistence.TemporalType;
 @Table(name="Phenotype")
 public class Phenotype implements Serializable {
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "phenotype_Id")
 	private int phenotype_Id;
-	public int getPhenotypeId() {
-		return phenotype_Id;
-	}
-
-	public void setPhenotypeId(int phenotype_Id) {
-		this.phenotype_Id = phenotype_Id;
-	}
-
-	private int plant_Id;
-	private int image_Id;
+	@ManyToOne
+	@JoinColumn(name = "image_Id", nullable = false)
+	private Images images;
 	@Temporal(TemporalType.DATE)
 	private Date date;
 	private int view;
@@ -32,11 +32,23 @@ public class Phenotype implements Serializable {
 	private String areal_Density;
 	private String bounding_Box_Ht;
 	private String enclosing_Circle_Diameter;
-	private String aspect_Ratio;
-	private String plant_Name;
+	private String aspect_Ratio;	
 	
+	public Images getImages() {
+		return images;
+	}
+
+	public void setImages(Images images) {
+		this.images = images;
+	}
 	
-	
+	public int getPhenotypeId() {
+		return phenotype_Id;
+	}
+
+	public void setPhenotypeId(int phenotype_Id) {
+		this.phenotype_Id = phenotype_Id;
+	}
 
 	public int getPhenotype_Id() {
 		return phenotype_Id;
@@ -46,21 +58,6 @@ public class Phenotype implements Serializable {
 		this.phenotype_Id = phenotype_Id;
 	}
 
-	public int getPlant_Id() {
-		return plant_Id;
-	}
-
-	public void setPlant_Id(int plant_Id) {
-		this.plant_Id = plant_Id;
-	}
-
-	public int getImage_Id() {
-		return image_Id;
-	}
-
-	public void setImage_Id(int image_Id) {
-		this.image_Id = image_Id;
-	}
 
 	public Date getDate() {
 		return date;
@@ -125,35 +122,5 @@ public class Phenotype implements Serializable {
 	public void setAspect_Ratio(String aspect_Ratio) {
 		this.aspect_Ratio = aspect_Ratio;
 	}
-
-	
-
-	public String getPlant_Name() {
-		return plant_Name;
-	}
-
-	public void setPlant_Name(String plant_Name) {
-		this.plant_Name = plant_Name;
-	}
-
-	@Override
-    public boolean equals(Object o) {
-
-        if (o == this) return true;
-        if (!(o instanceof Phenotype)) {
-            return false;
-        }
-        Phenotype p = (Phenotype) o;
-        return p.plant_Id == this.plant_Id;
-    }
-
-    //Idea from effective Java : Item 9
-    @Override
-    public int hashCode() {
-        int result = 17;
-        result = 31 * result + plant_Name.hashCode();
-        return result;
-    }
-
 	
 }

@@ -50,9 +50,8 @@ public class ReadImages {
 									}
 									catch(Exception e)
 									{
+										e.printStackTrace();
 									}
-									I.setPlant_Name(plantNameVal);
-									I.setPlant_Id((Integer)plantMap.get(plantNameVal));
 									imageSet.add(I);
 									I=new Images();
 								}

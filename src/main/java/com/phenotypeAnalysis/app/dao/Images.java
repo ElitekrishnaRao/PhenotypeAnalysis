@@ -1,10 +1,13 @@
 package com.phenotypeAnalysis.app.dao;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -19,15 +22,22 @@ public class Images {
 	private int image_Id;
 	@Temporal(TemporalType.DATE)
 	private Date date;
-	private int plant_Id;
-	private String plant_Name;
 	private String image_Modality;
 	private int day_Sequence;
 	private int view;
 	private String file_Path;
 	@ManyToOne
+	@JoinColumn(name = "plant_Id", nullable = false)
     private Plant plant;
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY,mappedBy = "images")
+	Set<Phenotype> phenotypes;
 	
+	public Set<Phenotype> getPhenotypes() {
+		return phenotypes;
+	}
+	public void setPhenotypes(Set<Phenotype> phenotypes) {
+		this.phenotypes = phenotypes;
+	}
 	public int getImage_Id() {
 		return image_Id;
 	}
@@ -39,18 +49,6 @@ public class Images {
 	}
 	public void setDate(Date date) {
 		this.date = date;
-	}
-	public int getPlant_Id() {
-		return plant_Id;
-	}
-	public void setPlant_Id(int plant_Id) {
-		this.plant_Id = plant_Id;
-	}
-	public String getPlant_Name() {
-		return plant_Name;
-	}
-	public void setPlant_Name(String plant_Name) {
-		this.plant_Name = plant_Name;
 	}
 	public String getImage_Modality() {
 		return image_Modality;

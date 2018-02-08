@@ -61,13 +61,8 @@ public class PopulateServiceImpl implements PopulateService{
 	
 	@Override
 	public void populatePhenotypeData() {
-		// TODO Auto-generated method stub
-		try {
-			Set<Phenotype> phenotypeSet = ReadPhenotype.readPhenotypeData();
-			populateDaoService.populatePhenotypeData(phenotypeSet);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		//Set<Phenotype> phenotypeSet = ReadPhenotype.readPhenotypeData();
+		populateDaoService.populatePhenotypeData(null);
 	}
 	
 	@Override

@@ -10,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -21,9 +23,6 @@ public class Phenotype implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "phenotype_Id")
 	private int phenotype_Id;
-	@ManyToOne
-	@JoinColumn(name = "image_Id", nullable = false)
-	private Images images;
 	@Temporal(TemporalType.DATE)
 	private Date date;
 	private int view;
@@ -33,14 +32,6 @@ public class Phenotype implements Serializable {
 	private String bounding_Box_Ht;
 	private String enclosing_Circle_Diameter;
 	private String aspect_Ratio;	
-	
-	public Images getImages() {
-		return images;
-	}
-
-	public void setImages(Images images) {
-		this.images = images;
-	}
 	
 	public int getPhenotypeId() {
 		return phenotype_Id;

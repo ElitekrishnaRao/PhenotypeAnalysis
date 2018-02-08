@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -32,13 +33,13 @@ public class Images {
 	@ManyToOne
 	@JoinColumn(name = "plant_Id", nullable = false)
     private Plant plant;
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY,mappedBy = "images")
-	Set<Phenotype> phenotypes;
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	Phenotype phenotypes;
 	
-	public Set<Phenotype> getPhenotypes() {
+	public Phenotype getPhenotypes() {
 		return phenotypes;
 	}
-	public void setPhenotypes(Set<Phenotype> phenotypes) {
+	public void setPhenotypes(Phenotype phenotypes) {
 		this.phenotypes = phenotypes;
 	}
 	public int getImage_Id() {

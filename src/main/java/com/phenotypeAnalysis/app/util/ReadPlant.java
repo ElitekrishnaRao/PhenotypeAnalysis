@@ -31,7 +31,6 @@ public class ReadPlant {
 			XSSFRow row = (XSSFRow) rows.next();
 			noRows++;
 		}
-		System.out.println("Number of columns " + noRows);
 		Set<Plant> plantsSet = new HashSet<Plant>();
 		int count = 0;
 		for (int i = 1; i <= noRows; i++) {

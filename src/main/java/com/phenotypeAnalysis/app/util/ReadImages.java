@@ -8,6 +8,8 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.apache.poi.xssf.usermodel.XSSFRow;
+
 import com.phenotypeAnalysis.app.dao.Images;
 import com.phenotypeAnalysis.app.dao.Plant;
 
@@ -19,6 +21,7 @@ public class ReadImages {
 		File[] subFiles=imageDir.getAbsoluteFile().listFiles();
 		
 		DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+		DateFormat dfExcel = new SimpleDateFormat("dd-MM-yyyy");
 		System.out.println("Entered putImageDataByPlant");
 		Set<Images> imageSet = new HashSet<Images>();
 
@@ -37,22 +40,23 @@ public class ReadImages {
 						for(File folder1 : subsubFiles){
 							if(folder1.isDirectory()) {
 								String s2=String.valueOf(folder1.getAbsoluteFile());
-								
+								Date dateValue=null;
 								if (s2.contains("Vis")) {
 									if (s2.contains("SV_0")) {
 										System.out.println(s2);
 										I.setView(0);
 										I.setImage_Modality("RGB");
 										try {
-											Date dateValue=(Date)df.parse(dateVal);
+											dateValue=(Date)df.parse(dateVal);
 											I.setDate(dateValue);
 										}
 										catch(Exception e)
 										{
 											e.printStackTrace();
 										}
-										//I.setFile_Path(s2);
 										I.setPlant(p);
+										//Getphenomtype
+										I.setPhenotypes(ReadPhenotype.readPhenotypeData(p,dfExcel.format(dateValue)));
 										imageSet.add(I);
 										
 									}

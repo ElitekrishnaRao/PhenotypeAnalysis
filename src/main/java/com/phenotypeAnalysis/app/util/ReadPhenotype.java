@@ -3,6 +3,8 @@ package com.phenotypeAnalysis.app.util;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -28,7 +30,7 @@ import com.phenotypeAnalysis.app.dao.Plant;
 
 public class ReadPhenotype {
 
-	public static Set<Phenotype> readPhenotypeData() throws IOException {
+	public static Phenotype readPhenotypeData(Plant p, String date) throws IOException {
 
 		File src = new File("C:\\Users\\SIDDU\\Desktop\\LEMNATEC_RAE_WHEAT Phenotyping Results.xlsx");
 		HSSFWorkbook workbook = new HSSFWorkbook();
@@ -46,7 +48,7 @@ public class ReadPhenotype {
 			XSSFRow row = (XSSFRow) rows.next();
 			noRows++;
 		}
-		Set<Phenotype> phenotypeSet = new HashSet<Phenotype>();
+		
 		// columns names stored in Arraylist
 		ArrayList<String> columnsHeader = new ArrayList<String>();
 		for (int i = 0; i < length; i++) {
@@ -54,141 +56,102 @@ public class ReadPhenotype {
 			columnsHeader.add(cell.toString());
 			// System.out.println(columnsHeader.get(i));
 		}
+		DateFormat dfExcel = new SimpleDateFormat("dd-MM-yyyy");
+		Phenotype ph = new Phenotype();
+		
+		for (int i = 1; i <=1500; i++) {
+			Date dateVal = sheet1.getRow(i).getCell(1).getDateCellValue();
+			if(p.getPlant_Name().equals(sheet1.getRow(i).getCell(0).getStringCellValue()) && dateVal!=null && date.equals(dfExcel.format(dateVal))){
+				for (int j = 0; j < noColumns; j++) {
+					if (sheet1.getRow(i) != null) {
+						if (columnsHeader.get(j).contains("SV_0") && columnsHeader.get(j).contains("convex_hull_area")) {
+							ph.setView(0);
+							ph.setConvex_Hull_Area(sheet1.getRow(i).getCell(j).getRawValue());
+						}
+						if (columnsHeader.get(j).contains("SV_0") && columnsHeader.get(j).contains("plant_pixel_area"))
+							ph.setPlant_Pixel_Area(sheet1.getRow(i).getCell(j).getRawValue());
+						if (columnsHeader.get(j).contains("SV_0") && columnsHeader.get(j).contains("areal_density"))
+							ph.setAreal_Density(sheet1.getRow(i).getCell(j).getRawValue());
+						if (columnsHeader.get(j).contains("aspect_ratio"))
+							ph.setAspect_Ratio(sheet1.getRow(i).getCell(j).getRawValue());
+						if (columnsHeader.get(j).contains("SV_0") && columnsHeader.get(j).contains("bounding_box_height")) {
+							ph.setBounding_Box_Ht(sheet1.getRow(i).getCell(j).getRawValue());
+							String plantName = sheet1.getRow(i).getCell(0).getStringCellValue();
+							Date plantDate = sheet1.getRow(i).getCell(1).getDateCellValue();
+							ph.setDate(plantDate);
+							ph.setEnclosing_Circle_Diameter("null");
+						}
 
-		// Read plant_id and plant_name from plant table and write to an excel
-		// sheet
-		// this helps to map corresponding plant id to plant name in below
-		// phenotypes table
+						if (columnsHeader.get(j).contains("SV_72") && columnsHeader.get(j).contains("convex_hull_area")) {
+							ph.setView(72);
+							ph.setConvex_Hull_Area(sheet1.getRow(i).getCell(j).getRawValue());
+						}
+						if (columnsHeader.get(j).contains("SV_72") && columnsHeader.get(j).contains("plant_pixel_area"))
+							ph.setPlant_Pixel_Area(sheet1.getRow(i).getCell(j).getRawValue());
+						if (columnsHeader.get(j).contains("SV_72") && columnsHeader.get(j).contains("areal_density")) {
+							ph.setAreal_Density(sheet1.getRow(i).getCell(j).getRawValue());
+							String plantName = sheet1.getRow(i).getCell(0).getStringCellValue();
+							Date plantDate = sheet1.getRow(i).getCell(1).getDateCellValue();
+							ph.setDate(plantDate);
+							ph.setBounding_Box_Ht("null");
+							ph.setEnclosing_Circle_Diameter("null");
+							ph.setAspect_Ratio("null");
+						}
 
-		Map<Integer, List> phen = new HashMap<Integer, List>();
-		int count = 0;
-		for (int i = 1; i <= noRows; i++) {
-			count++;
-			Phenotype ph = new Phenotype();
-			// ArrayList<Phenotype> s = new ArrayList<Phenotype>();
+						if (columnsHeader.get(j).contains("SV_144") && columnsHeader.get(j).contains("convex_hull_area")) {
+							ph.setView(144);
+							ph.setConvex_Hull_Area(sheet1.getRow(i).getCell(j).getRawValue());
+						}
+						if (columnsHeader.get(j).contains("SV_144") && columnsHeader.get(j).contains("plant_pixel_area"))
+							ph.setPlant_Pixel_Area(sheet1.getRow(i).getCell(j).getRawValue());
+						if (columnsHeader.get(j).contains("SV_144") && columnsHeader.get(j).contains("areal_density")) {
+							ph.setAreal_Density(sheet1.getRow(i).getCell(j).getRawValue());
+							String plantName = sheet1.getRow(i).getCell(0).getStringCellValue();
+							Date plantDate = sheet1.getRow(i).getCell(1).getDateCellValue();
+							ph.setDate(plantDate);
+							ph.setBounding_Box_Ht("null");
+							ph.setEnclosing_Circle_Diameter("null");
+							ph.setAspect_Ratio("null");
+						}
 
-			for (int j = 0; j < noColumns; j++) {
-				if (sheet1.getRow(i) != null) {
-					if (columnsHeader.get(j).contains("SV_0") && columnsHeader.get(j).contains("convex_hull_area")) {
-						ph.setView(0);
-						ph.setConvex_Hull_Area(sheet1.getRow(i).getCell(j).getRawValue());
-					}
-					if (columnsHeader.get(j).contains("SV_0") && columnsHeader.get(j).contains("plant_pixel_area"))
-						ph.setPlant_Pixel_Area(sheet1.getRow(i).getCell(j).getRawValue());
-					if (columnsHeader.get(j).contains("SV_0") && columnsHeader.get(j).contains("areal_density"))
-						ph.setAreal_Density(sheet1.getRow(i).getCell(j).getRawValue());
-					if (columnsHeader.get(j).contains("aspect_ratio"))
-						ph.setAspect_Ratio(sheet1.getRow(i).getCell(j).getRawValue());
-					if (columnsHeader.get(j).contains("SV_0") && columnsHeader.get(j).contains("bounding_box_height")) {
-						ph.setBounding_Box_Ht(sheet1.getRow(i).getCell(j).getRawValue());
-						String plantName = sheet1.getRow(i).getCell(0).getStringCellValue();
-						Date plantDate = sheet1.getRow(i).getCell(1).getDateCellValue();
-						ph.setDate(plantDate);
-						ph.setEnclosing_Circle_Diameter("null");
-						phenotypeSet.add(ph);
-						ph = new Phenotype();
-					}
+						if (columnsHeader.get(j).contains("SV_216") && columnsHeader.get(j).contains("convex_hull_area")) {
+							ph.setView(216);
+							ph.setConvex_Hull_Area(sheet1.getRow(i).getCell(j).getRawValue());
+						}
+						if (columnsHeader.get(j).contains("SV_216") && columnsHeader.get(j).contains("plant_pixel_area"))
+							ph.setPlant_Pixel_Area(sheet1.getRow(i).getCell(j).getRawValue());
+						if (columnsHeader.get(j).contains("SV_216") && columnsHeader.get(j).contains("areal_density")) {
+							ph.setAreal_Density(sheet1.getRow(i).getCell(j).getRawValue());
+							String plantName = sheet1.getRow(i).getCell(0).getStringCellValue();
+							Date plantDate = sheet1.getRow(i).getCell(1).getDateCellValue();
+							ph.setDate(plantDate);
+							ph.setBounding_Box_Ht("null");
+							ph.setEnclosing_Circle_Diameter("null");
+							ph.setAspect_Ratio("null");
+						}
 
-					if (columnsHeader.get(j).contains("SV_72") && columnsHeader.get(j).contains("convex_hull_area")) {
-						ph.setView(72);
-						ph.setConvex_Hull_Area(sheet1.getRow(i).getCell(j).getRawValue());
-					}
-					if (columnsHeader.get(j).contains("SV_72") && columnsHeader.get(j).contains("plant_pixel_area"))
-						ph.setPlant_Pixel_Area(sheet1.getRow(i).getCell(j).getRawValue());
-					if (columnsHeader.get(j).contains("SV_72") && columnsHeader.get(j).contains("areal_density")) {
-						ph.setAreal_Density(sheet1.getRow(i).getCell(j).getRawValue());
-						String plantName = sheet1.getRow(i).getCell(0).getStringCellValue();
-						Date plantDate = sheet1.getRow(i).getCell(1).getDateCellValue();
-						ph.setDate(plantDate);
-						ph.setBounding_Box_Ht("null");
-						ph.setEnclosing_Circle_Diameter("null");
-						ph.setAspect_Ratio("null");
-						phenotypeSet.add(ph);
-						ph = new Phenotype();
-					}
-
-					if (columnsHeader.get(j).contains("SV_144") && columnsHeader.get(j).contains("convex_hull_area")) {
-						ph.setView(144);
-						ph.setConvex_Hull_Area(sheet1.getRow(i).getCell(j).getRawValue());
-					}
-					if (columnsHeader.get(j).contains("SV_144") && columnsHeader.get(j).contains("plant_pixel_area"))
-						ph.setPlant_Pixel_Area(sheet1.getRow(i).getCell(j).getRawValue());
-					if (columnsHeader.get(j).contains("SV_144") && columnsHeader.get(j).contains("areal_density")) {
-						ph.setAreal_Density(sheet1.getRow(i).getCell(j).getRawValue());
-						String plantName = sheet1.getRow(i).getCell(0).getStringCellValue();
-						Date plantDate = sheet1.getRow(i).getCell(1).getDateCellValue();
-						ph.setDate(plantDate);
-						ph.setBounding_Box_Ht("null");
-						ph.setEnclosing_Circle_Diameter("null");
-						ph.setAspect_Ratio("null");
-						phenotypeSet.add(ph);
-						ph = new Phenotype();
-					}
-
-					if (columnsHeader.get(j).contains("SV_216") && columnsHeader.get(j).contains("convex_hull_area")) {
-						ph.setView(216);
-						ph.setConvex_Hull_Area(sheet1.getRow(i).getCell(j).getRawValue());
-					}
-					if (columnsHeader.get(j).contains("SV_216") && columnsHeader.get(j).contains("plant_pixel_area"))
-						ph.setPlant_Pixel_Area(sheet1.getRow(i).getCell(j).getRawValue());
-					if (columnsHeader.get(j).contains("SV_216") && columnsHeader.get(j).contains("areal_density")) {
-						ph.setAreal_Density(sheet1.getRow(i).getCell(j).getRawValue());
-						String plantName = sheet1.getRow(i).getCell(0).getStringCellValue();
-						Date plantDate = sheet1.getRow(i).getCell(1).getDateCellValue();
-						ph.setDate(plantDate);
-						ph.setBounding_Box_Ht("null");
-						ph.setEnclosing_Circle_Diameter("null");
-						ph.setAspect_Ratio("null");
-						phenotypeSet.add(ph);
-						ph = new Phenotype();
-					}
-
-					if (columnsHeader.get(j).contains("SV_288") && columnsHeader.get(j).contains("convex_hull_area")) {
-						ph.setView(288);
-						ph.setConvex_Hull_Area(sheet1.getRow(i).getCell(j).getRawValue());
-					}
-					if (columnsHeader.get(j).contains("SV_288") && columnsHeader.get(j).contains("plant_pixel_area"))
-						ph.setPlant_Pixel_Area(sheet1.getRow(i).getCell(j).getRawValue());
-					if (columnsHeader.get(j).contains("SV_288") && columnsHeader.get(j).contains("areal_density")) {
-						ph.setAreal_Density(sheet1.getRow(i).getCell(j).getRawValue());
-						ph.setEnclosing_Circle_Diameter(sheet1.getRow(i).getCell(j).getRawValue());
-						String plantName = sheet1.getRow(i).getCell(0).getStringCellValue();
-						Date plantDate = sheet1.getRow(i).getCell(1).getDateCellValue();
-						ph.setDate(plantDate);
-						ph.setBounding_Box_Ht("null");
-						ph.setEnclosing_Circle_Diameter("null");
-						ph.setAspect_Ratio("null");
-						phenotypeSet.add(ph);
-						ph = new Phenotype();
+						if (columnsHeader.get(j).contains("SV_288") && columnsHeader.get(j).contains("convex_hull_area")) {
+							ph.setView(288);
+							ph.setConvex_Hull_Area(sheet1.getRow(i).getCell(j).getRawValue());
+						}
+						if (columnsHeader.get(j).contains("SV_288") && columnsHeader.get(j).contains("plant_pixel_area"))
+							ph.setPlant_Pixel_Area(sheet1.getRow(i).getCell(j).getRawValue());
+						if (columnsHeader.get(j).contains("SV_288") && columnsHeader.get(j).contains("areal_density")) {
+							ph.setAreal_Density(sheet1.getRow(i).getCell(j).getRawValue());
+							ph.setEnclosing_Circle_Diameter(sheet1.getRow(i).getCell(j).getRawValue());
+							String plantName = sheet1.getRow(i).getCell(0).getStringCellValue();
+							Date plantDate = sheet1.getRow(i).getCell(1).getDateCellValue();
+							ph.setDate(plantDate);
+							ph.setBounding_Box_Ht("null");
+							ph.setEnclosing_Circle_Diameter("null");
+							ph.setAspect_Ratio("null");
+						}
 					}
 				}
 			}
-			phen.put(count, (List) phenotypeSet);
 		}
 
-		Set s = phen.entrySet();
-		Iterator it = s.iterator();
-		int count1 = 0;
-		Configuration con = new Configuration().configure().addAnnotatedClass(Phenotype.class);
-		SessionFactory sf = con.buildSessionFactory();
-		Session s1 = sf.openSession();
-
-		Transaction tx = s1.beginTransaction();
-		while (it.hasNext()) {
-			Map.Entry e = (Map.Entry) it.next();
-			List plants = (ArrayList) e.getValue();
-
-			Iterator it1 = plants.iterator();
-			while (it1.hasNext()) {
-				count1++;
-				Phenotype phe = (Phenotype) it1.next();
-				phe.setPhenotypeId(count1);
-				s1.saveOrUpdate(phe);
-			}
-		}
-		tx.commit();
-
-		return phenotypeSet;
+		return ph;
 	}
 
 }

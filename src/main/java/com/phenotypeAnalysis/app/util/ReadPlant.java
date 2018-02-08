@@ -34,7 +34,7 @@ public class ReadPlant {
 		System.out.println("Number of columns " + noRows);
 		Set<Plant> plantsSet = new HashSet<Plant>();
 		int count = 0;
-		for (int i = 1; i <= 4; i++) {
+		for (int i = 1; i <= noRows; i++) {
 			count++;
 			if (sheet1.getRow(i) != null) {
 				String plantName = sheet1.getRow(i).getCell(0).getStringCellValue();
@@ -47,6 +47,25 @@ public class ReadPlant {
 				plant.setTreatment_Id(treatmentId);
 				plant.setGenotype_Id(genotypeId);
 				
+				//Setting images
+				Set<Images> imagesList = new HashSet<Images>();
+				Set<Images> imagesSet = new HashSet<Images>();
+				Images I=new Images();
+				imagesSet = ReadImages.putImageDataByPlant(plant);
+				//System.out.println(imagesSet.);
+				
+				
+				//imagesList.addAll(imagesSet);
+				
+				//Adding plant to list
+				plantsSet.add(plant);
+				System.out.println("plantName " + plantName); 
+				
+				
+				
+				
+				
+				/*
 				//Setting images
 				Set<Images> imagesList = new HashSet<Images>();
 				Images I=new Images();
@@ -74,6 +93,7 @@ public class ReadPlant {
 				//Adding plant to list
 				plantsSet.add(plant);
 				System.out.println("plantName " + plantName);
+				*/
 			}
 		}
 		return plantsSet;

@@ -48,52 +48,13 @@ public class ReadPlant {
 				plant.setGenotype_Id(genotypeId);
 				
 				//Setting images
-				Set<Images> imagesList = new HashSet<Images>();
-				Set<Images> imagesSet = new HashSet<Images>();
-				Images I=new Images();
-				imagesSet = ReadImages.putImageDataByPlant(plant);
-				//System.out.println(imagesSet.);
-				
-				
-				//imagesList.addAll(imagesSet);
-				
+				Set<Images> imagesSet = ReadImages.putImageDataByPlant(plant);
+				plant.setImagesList(imagesSet);
+							
 				//Adding plant to list
 				plantsSet.add(plant);
 				System.out.println("plantName " + plantName); 
 				
-				
-				
-				
-				
-				/*
-				//Setting images
-				Set<Images> imagesList = new HashSet<Images>();
-				Images I=new Images();
-				I.setView(0);
-				I.setImage_Modality("RGB");
-				I.setPlant(plant);
-				
-				//setting phenomtype
-				Set<Phenotype> phenotypesSet =  new HashSet<Phenotype>();
-				Phenotype ph=new Phenotype();
-				ph.setView(0);
-				ph.setEnclosing_Circle_Diameter("0.5");
-				ph.setBounding_Box_Ht("20");
-				ph.setAspect_Ratio("10");
-				ph.setImages(I);
-				phenotypesSet.add(ph);
-				
-				//Adding phenomtype to image
-				I.setPhenotypes(phenotypesSet);
-				imagesList.add(I);
-				
-				//Adding images to plan
-				plant.setImagesList(imagesList);
-				
-				//Adding plant to list
-				plantsSet.add(plant);
-				System.out.println("plantName " + plantName);
-				*/
 			}
 		}
 		return plantsSet;

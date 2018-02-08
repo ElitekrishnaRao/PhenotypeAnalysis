@@ -72,13 +72,8 @@ public class PopulateServiceImpl implements PopulateService{
 	
 	@Override
 	public void populateImageData() {
-		// TODO Auto-generated method stub
-		try {
-			Set<Images> imageSet = ReadImages.readImageData();
-			populateDaoService.populateImageData(imageSet);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		//Set<Images> imageSet = ReadImages.readImageData();
+		populateDaoService.populateImageData(null);
 	}
 	
 	@Override

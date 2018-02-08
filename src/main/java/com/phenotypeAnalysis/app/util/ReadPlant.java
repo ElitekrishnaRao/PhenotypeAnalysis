@@ -34,7 +34,7 @@ public class ReadPlant {
 		System.out.println("Number of columns " + noRows);
 		Set<Plant> plantsSet = new HashSet<Plant>();
 		int count = 0;
-		for (int i = 1; i <= noRows; i++) {
+		for (int i = 1; i <= 70; i++) {
 			count++;
 			if (sheet1.getRow(i) != null) {
 				String plantName = sheet1.getRow(i).getCell(0).getStringCellValue();

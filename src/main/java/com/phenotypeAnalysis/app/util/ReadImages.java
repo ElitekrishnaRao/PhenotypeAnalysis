@@ -17,7 +17,7 @@ public class ReadImages {
 		
 		File imageDir=new File("C:\\Users\\SIDDU\\Desktop\\Project\\Dataset\\SinglePlant");
 		File[] subFiles=imageDir.getAbsoluteFile().listFiles();
-		Images I=new Images();
+		
 		DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 		System.out.println("Entered putImageDataByPlant");
 		Set<Images> imageSet = new HashSet<Images>();
@@ -32,6 +32,7 @@ public class ReadImages {
 					
 					if(p.getPlant_Name().equals(plantNameVal))
 					{
+						Images I=new Images();
 						File[] subsubFiles=f.getAbsoluteFile().listFiles();
 						for(File folder1 : subsubFiles){
 							if(folder1.isDirectory()) {
@@ -53,7 +54,7 @@ public class ReadImages {
 										//I.setFile_Path(s2);
 										I.setPlant(p);
 										imageSet.add(I);
-										System.out.println(imageSet);
+										
 									}
 									if (s2.contains("SV_72")) {
 									}
@@ -71,6 +72,7 @@ public class ReadImages {
 					}
 				}
 			}		
+			System.out.println(imageSet.size());
 			return imageSet;
 	}
 	

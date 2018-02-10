@@ -1,36 +1,31 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
+
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Welcome Guest</title>
+<title>Plant based database Querying</title>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
 	integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
 	crossorigin="anonymous">
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"
-	integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
-	crossorigin="anonymous"></script>
-
-<script>
-	$(function() {
-		$('#myList a:last-child').tab('show')
-	})
-</script>
-<script>
-	$('a[data-toggle="list"]').on('shown.bs.tab', function(e) {
-		e.target // newly activated tab
-		e.relatedTarget // previous active tab
-	})
-</script>
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"
+		integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+		crossorigin="anonymous"></script>
+		
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+<style>
+		
+<script type="text/javascript" src="../js/jqueryscripts.js"></script>
+<link rel="stylesheet" src="../css/Custom.css">
+
 <style>
 /* Make the image fully responsive */
 .carousel-inner img {
@@ -39,29 +34,19 @@
 }
 </style>
 
-
 </head>
 <body>
 
-
 	<div class="container">
-
 		<div class="header">
 			<h3>Framework for Phenotypic Data Analysis</h3>
 			<br>
 		</div>
 		<nav class="nav nav-pills">
-			<a class="nav-link nav-item active" href="home">Home</a> <a
-				class="nav-link nav-item" href="query">Database Querying</a> <a
-				class="nav-link nav-item" href="stats">Descriptive Statistics &
-				Visualizations</a> <a class="nav-link nav-item" href="mine">Datamining
-				Tasks</a>
-			<!-- <div class="nav-item dropdown">
-		          <a class="nav-link dropdown-toggle" href="#" id="dropdown5" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-		          <div class="dropdown-menu" aria-labelledby="dropdown5">
-		            <a class="dropdown-item" data-toggle="tab" href="#fat5">@fat</a>
-		            <a class="dropdown-item" data-toggle="tab" href="#mdo5">@mdo</a>
-		          </div> -->
+			<a class="nav-link nav-item active" href="home">Home</a> 
+			<a class="nav-link nav-item" href="query">Database Querying</a> 
+			<a class="nav-link nav-item" href="stats">Descriptive Statistics & Visualizations</a> 
+			<a class="nav-link nav-item" href="mine">Data Mining Tasks</a>
 		</nav>
 		<br>
 		<p>Genotype and Phenotype are basic terms of biology that are
@@ -73,7 +58,7 @@
 		<br>
 
 		<div class="row">
-			<div class="col-6">
+			<div class="col-4">
 				<p>Below are the components for analysis on plant phenotype
 					data:
 				</li> <br>
@@ -85,7 +70,7 @@
 				</p>
 			</div>
 
-			<div class="col-6">
+			<div class="col-8">
 				<div id="demo" class="carousel slide" data-ride="carousel">
 
 					<!-- Indicators -->
@@ -120,22 +105,13 @@
 				</div>
 			</div>
 		</div>
-
 	</div>
-
-
-
-
-
-
-	<script src="https://code.jquery.com/jquery-2.2.4.min.js"
-		integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
-		crossorigin="anonymous"></script>
 	<script type="text/javascript" src="../js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="../js/dist/jquery-slim.min.js"></script>
+<!-- 	<script type="text/javascript" src="../js/dist/jquery-slim.min.js"></script>  -->
 	<script type="text/javascript" src="../js/dist/popper.min.js"></script>
 	<script type="text/javascript" src="../js/dist/util.js"></script>
 	<script type="text/javascript" src="../js/dist/tab.js"></script>
 	<script type="text/javascript" src="../js/dist/dropdown.js"></script>
+
 </body>
 </html>

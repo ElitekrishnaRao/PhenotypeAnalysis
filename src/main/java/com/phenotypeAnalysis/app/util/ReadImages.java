@@ -22,9 +22,9 @@ public class ReadImages {
 		
 		DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 		DateFormat dfExcel = new SimpleDateFormat("dd-MM-yyyy");
-		System.out.println("Entered putImageDataByPlant");
+		//System.out.println("Entered putImageDataByPlant");
 		Set<Images> imageSet = new HashSet<Images>();
-
+		
 			for(File f : subFiles) {
 				if (f.isDirectory()) {
 					String s1= String.valueOf(f.getAbsoluteFile());
@@ -35,15 +35,16 @@ public class ReadImages {
 					
 					if(p.getPlant_Name().equals(plantNameVal))
 					{
-						Images I=new Images();
+						//Images I=new Images();
 						File[] subsubFiles=f.getAbsoluteFile().listFiles();
 						for(File folder1 : subsubFiles){
 							if(folder1.isDirectory()) {
 								String s2=String.valueOf(folder1.getAbsoluteFile());
 								Date dateValue=null;
 								if (s2.contains("Vis")) {
+									Images I=new Images();
 									if (s2.contains("SV_0")) {
-										System.out.println(s2);
+										//System.out.println(s2);
 										I.setView(0);
 										I.setImage_Modality("RGB");
 										try {
@@ -54,22 +55,84 @@ public class ReadImages {
 										{
 											e.printStackTrace();
 										}
+										I.setFile_Path(s2);
 										I.setPlant(p);
-										//Getphenomtype
-										I.setPhenotypes(ReadPhenotype.readPhenotypeData(p,dfExcel.format(dateValue)));
+										//Getphenotype
+										I.setPhenotypes(ReadPhenotype.readPhenotypeData(p,dfExcel.format(dateValue),0));
 										imageSet.add(I);
 										
 									}
+									
 									if (s2.contains("SV_72")) {
+										I.setView(72);
+										I.setImage_Modality("RGB");
+										try {
+											dateValue=(Date)df.parse(dateVal);
+											I.setDate(dateValue);
+										}
+										catch(Exception e)
+										{
+											e.printStackTrace();
+										}
+										I.setFile_Path(s2);
+										I.setPlant(p);
+										//Getphenotype
+										I.setPhenotypes(ReadPhenotype.readPhenotypeData(p,dfExcel.format(dateValue),72));
+										imageSet.add(I);
 									}
+									
+									/*
 									if (s2.contains("SV_144")) {
+										I.setView(144);
+										I.setImage_Modality("RGB");
+										try {
+											dateValue=(Date)df.parse(dateVal);
+											I.setDate(dateValue);
+										}
+										catch(Exception e)
+										{
+											e.printStackTrace();
+										}
+										I.setPlant(p);
+										//Getphenotype
+										I.setPhenotypes(ReadPhenotype.readPhenotypeData(p,dfExcel.format(dateValue),144));
+										imageSet.add(I);
 									}
 									if (s2.contains("SV_216")) {
+										I.setView(216);
+										I.setImage_Modality("RGB");
+										try {
+											dateValue=(Date)df.parse(dateVal);
+											I.setDate(dateValue);
+										}
+										catch(Exception e)
+										{
+											e.printStackTrace();
+										}
+										I.setPlant(p);
+										//Getphenotype
+										I.setPhenotypes(ReadPhenotype.readPhenotypeData(p,dfExcel.format(dateValue),216));
+										imageSet.add(I);
 									}
 									if (s2.contains("SV_288")) {
+										I.setView(288);
+										I.setImage_Modality("RGB");
+										try {
+											dateValue=(Date)df.parse(dateVal);
+											I.setDate(dateValue);
+										}
+										catch(Exception e)
+										{
+											e.printStackTrace();
+										}
+										I.setPlant(p);
+										//Getphenotype
+										I.setPhenotypes(ReadPhenotype.readPhenotypeData(p,dfExcel.format(dateValue),288));
+										imageSet.add(I);
 									}
 									if (s2.contains("TV_90")) {
 									}
+									*/
 								}
 							}
 						}

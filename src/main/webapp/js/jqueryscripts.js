@@ -8,14 +8,11 @@ $(function() {
 			console.log("clicked");
 		window.location = $(this).attr('href');});
 		
-		document.getElementById("specieselected").onselect = function() {myFunction()};
+		//document.getElementById("specieselected").onselect = function() {myFunction()};
 
 		function myFunction() {
-			
 		    document.getElementById("demo").innerHTML = "You selected";
-		    
-		    $.ajax({
-		    	
+		    $.ajax({   	
 		    });
 		}
 	})

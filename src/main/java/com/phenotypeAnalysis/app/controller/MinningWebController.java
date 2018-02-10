@@ -64,29 +64,6 @@ public class MinningWebController {
 		return new ModelAndView("DespStatsVisuals");
 	}
 	
-	@RequestMapping("/plantQuery")
-	public ModelAndView plantQuery(ModelMap map) { 
-		List<Plant> plantData = databaseQueryingService.getPlantData();
-		map.put("plantData",plantData);
-		
-		List<Plant_Species> plantspeciesData = databaseQueryingService.getPlantSpeciesData();
-		map.put("plantspeciesData",plantspeciesData);
-		
-		List<Treatment> treatmentData = databaseQueryingService.getTreatmentData();
-		map.put("treatmentData",treatmentData);
-		
-		List<Phenotype> phenotypeData = databaseQueryingService.getPhenotypeData();
-		map.put("phenotypeData",phenotypeData);
-		
-		List<Images> imageData = databaseQueryingService.getImageData();
-		map.put("imageData",imageData);
-		
-		List<Genotype> genotypeData = databaseQueryingService.getGenotypeData();
-		map.put("genotypeData",genotypeData);
-		
-		return new ModelAndView("PlantBased");
-	}
-	
 	@RequestMapping("/imageQuery")
 	public ModelAndView imageQuery(ModelMap map) { 
 		return new ModelAndView("ImageBased");

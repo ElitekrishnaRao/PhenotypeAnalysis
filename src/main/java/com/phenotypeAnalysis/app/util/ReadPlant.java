@@ -25,6 +25,7 @@ public class ReadPlant {
 		XSSFWorkbook wb = new XSSFWorkbook(fis);
 		XSSFSheet sheet1 = wb.getSheetAt(0);
 		XSSFRow row1 = sheet1.getRow(3);
+		System.out.println(row1);
 		Iterator rows = sheet1.rowIterator();
 		int noRows = 0;
 		while (rows.hasNext()) {

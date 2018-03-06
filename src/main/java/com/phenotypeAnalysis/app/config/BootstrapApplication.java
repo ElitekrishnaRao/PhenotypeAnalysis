@@ -11,7 +11,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @EntityScan("com.phenotypeAnalysis.app")
 @EnableJpaRepositories("com.phenotypeAnalysis.app.repository") 
 public class BootstrapApplication {
-	public static void main(String[] args) {
+	public static void main(String[] args) { 
 		SpringApplication.run(BootstrapApplication.class, args);
 	}
 }

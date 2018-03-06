@@ -5,6 +5,7 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -16,39 +17,49 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 @Table(name="Phenotype")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Phenotype implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "phenotype_Id")
-	private int phenotype_Id;
+	@Column(name = "id")
+	private int id;
 	@Temporal(TemporalType.DATE)
 	private Date date;
 	private int view;
-	private String convex_Hull_Area;
-	private String plant_Pixel_Area;
-	private String areal_Density;
-	private String bounding_Box_Ht;
-	private String enclosing_Circle_Diameter;
-	private String aspect_Ratio;	
+	private double convexHullArea;
+	private double plantPixelArea;
+	private double arealDensity;
+	private double boundingBoxHt;
+	private double enclosingCircleDiameter;
+	private double aspectRatio;
 	
-	public int getPhenotypeId() {
-		return phenotype_Id;
+	@OneToOne(fetch = FetchType.LAZY)
+	//@JoinColumn(name = "id", nullable = false,insertable=false, updatable=false)
+	private Image image;
+	
+	public Image getImage() {
+		return image;
 	}
 
-	public void setPhenotypeId(int phenotype_Id) {
-		this.phenotype_Id = phenotype_Id;
+	public void setImage(Image image) {
+		this.image = image;
 	}
 
-	public int getPhenotype_Id() {
-		return phenotype_Id;
+	public int getId() {
+		return id;
 	}
 
-	public void setPhenotype_Id(int phenotype_Id) {
-		this.phenotype_Id = phenotype_Id;
+	public void setId(int id) {
+		this.id = id;
 	}
-
 
 	public Date getDate() {
 		return date;
@@ -66,52 +77,52 @@ public class Phenotype implements Serializable {
 		this.view = view;
 	}
 
-	public String getConvex_Hull_Area() {
-		return convex_Hull_Area;
+	public double getConvexHullArea() {
+		return convexHullArea;
 	}
 
-	public void setConvex_Hull_Area(String convex_Hull_Area) {
-		this.convex_Hull_Area = convex_Hull_Area;
+	public void setConvexHullArea(double d) {
+		this.convexHullArea = d;
 	}
 
-	public String getPlant_Pixel_Area() {
-		return plant_Pixel_Area;
+	public double getPlantPixelArea() {
+		return plantPixelArea;
 	}
 
-	public void setPlant_Pixel_Area(String plant_Pixel_Area) {
-		this.plant_Pixel_Area = plant_Pixel_Area;
+	public void setPlantPixelArea(double plantPixelArea) {
+		this.plantPixelArea = plantPixelArea;
 	}
 
-	public String getAreal_Density() {
-		return areal_Density;
+	public double getArealDensity() {
+		return arealDensity;
 	}
 
-	public void setAreal_Density(String areal_Density) {
-		this.areal_Density = areal_Density;
+	public void setArealDensity(double arealDensity) {
+		this.arealDensity = arealDensity;
 	}
 
-	public String getBounding_Box_Ht() {
-		return bounding_Box_Ht;
+	public double getBoundingBoxHt() {
+		return boundingBoxHt;
 	}
 
-	public void setBounding_Box_Ht(String bounding_Box_Ht) {
-		this.bounding_Box_Ht = bounding_Box_Ht;
+	public void setBoundingBoxHt(double boundingBoxHt) {
+		this.boundingBoxHt = boundingBoxHt;
 	}
 
-	public String getEnclosing_Circle_Diameter() {
-		return enclosing_Circle_Diameter;
+	public double getEnclosingCircleDiameter() {
+		return enclosingCircleDiameter;
 	}
 
-	public void setEnclosing_Circle_Diameter(String enclosing_Circle_Diameter) {
-		this.enclosing_Circle_Diameter = enclosing_Circle_Diameter;
+	public void setEnclosingCircleDiameter(double enclosingCircleDiameter) {
+		this.enclosingCircleDiameter = enclosingCircleDiameter;
 	}
 
-	public String getAspect_Ratio() {
-		return aspect_Ratio;
+	public double getAspectRatio() {
+		return aspectRatio;
 	}
 
-	public void setAspect_Ratio(String aspect_Ratio) {
-		this.aspect_Ratio = aspect_Ratio;
+	public void setAspectRatio(double aspectRatio) {
+		this.aspectRatio = aspectRatio;
 	}
 	
 }

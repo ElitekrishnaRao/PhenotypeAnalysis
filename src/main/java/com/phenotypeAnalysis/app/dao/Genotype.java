@@ -7,19 +7,19 @@ import javax.persistence.Table;
 @Table(name="Genotype")
 public class Genotype {
 	@Id
-	private int genotype_Id;
-	private String genotype;
-	public int getGenotype_Id() {
-		return genotype_Id;
+	private int id;
+	private String genotypeName;
+	public int getId() {
+		return id;
 	}
-	public void setGenotype_Id(int genotype_Id) {
-		this.genotype_Id = genotype_Id;
+	public void setId(int id) {
+		this.id = id;
 	}
-	public String getGenotype() {
-		return genotype;
+	public String getGenotypeName() {
+		return genotypeName;
 	}
-	public void setGenotype(String genotype) {
-		this.genotype = genotype;
+	public void setGenotypeName(String genotypeName) {
+		this.genotypeName = genotypeName;
 	}
 	}
 	

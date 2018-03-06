@@ -2,10 +2,11 @@ package com.phenotypeAnalysis.app.repository;
 
 import java.util.List;
 
-import com.phenotypeAnalysis.app.dao.Images;
+import com.phenotypeAnalysis.app.dao.Image;
+
 
 
 
 public interface ImageDaoService {
-	public List<Images> getImageData();
+	public List<Image> getImageData();
 }

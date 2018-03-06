@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.phenotypeAnalysis.app.dao.Genotype;
-import com.phenotypeAnalysis.app.dao.Images;
+import com.phenotypeAnalysis.app.dao.Image;
 import com.phenotypeAnalysis.app.dao.Phenotype;
 import com.phenotypeAnalysis.app.dao.Plant;
 import com.phenotypeAnalysis.app.dao.Plant_Species;
@@ -49,12 +49,31 @@ public class DatabaseQueryingServiceImpl implements DatabaseQueryingService {
 		return phenotypeDaoService.getPhenotypeData();
 	}
 	@Override
-	public List<Images> getImageData() {
+	public List<Image> getImageData() {
 		return imageDaoService.getImageData();
 	}
 	@Override
 	public List<Genotype> getGenotypeData() {
 		return genotypeDaoService.getGenotypeData();
 	}
-
+	@Override
+	public List<Plant> getPlantDataBySpecies(int speciesId) {
+		return plantDaoService.getPlantDataBySpecies(speciesId);
+	}
+	@Override
+	public List<Treatment> getTreatmentDataBySpecies(int speciesId) {
+		return treatmentDaoService.getTreatmentDataBySpecies(speciesId);
+	}
+	@Override
+	public List<Phenotype> getphenotypesListBySpPlntsIds(int id, List<Integer> plantIds) {
+		return phenotypeDaoService.getPhenotypeDataBySpPlnts(id,plantIds);
+	}
+	@Override
+	public List<Plant> getPlantDataBySpTrtmnts(int id, List<Integer> treatmentIds) {
+		return plantDaoService.getPlantDataBySpTrtmnts(id, treatmentIds);
+	}
+	@Override
+	public List<Phenotype> getphenMeansBySpPlntsId(int id, List<Integer> plantIds) {
+		return phenotypeDaoService.getphenMeansBySpPlntsId(id,plantIds);
+	}
 }

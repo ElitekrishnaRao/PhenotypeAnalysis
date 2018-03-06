@@ -6,11 +6,12 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
+
 @Table(name="Plant_Species")
 public class Plant_Species {
 	@Id
-	private int Species_Id;
-	private String species_Name;
+	private int id;
+	private String speciesName;
 	//private int Family_Id;
 	 
 	@Enumerated(EnumType.STRING)
@@ -18,11 +19,25 @@ public class Plant_Species {
 	
 	public enum Family { grasses, Unknown }
 	
-	public int getSpecies_Id() {
-		return Species_Id;
+	
+	
+	public int getId() {
+		return id;
 	}
-	public void setSpecies_Id(int species_Id) {
-		Species_Id = species_Id;
+	public void setId(int id) {
+		this.id = id;
+	}
+	public String getSpeciesName() {
+		return speciesName;
+	}
+	public void setSpeciesName(String speciesName) {
+		this.speciesName = speciesName;
+	}
+	public Family getFamily() {
+		return family;
+	}
+	public void setFamily(Family family) {
+		this.family = family;
 	}
 	
 	/*public int getFamily_Id() {
@@ -32,18 +47,8 @@ public class Plant_Species {
 		Family_Id = family_Id;
 	} */
 	
-	public String getSpecies_Name() {
-		return species_Name;
-	}
-	public void setSpecies_Name(String species_Name) {
-		this.species_Name = species_Name;
-	}
-	public Family getFamily() {
-		return family;
-	}
-	public void setFamily(Family family) {
-		this.family = family;
-	}
+	
+	
 	
 
 	

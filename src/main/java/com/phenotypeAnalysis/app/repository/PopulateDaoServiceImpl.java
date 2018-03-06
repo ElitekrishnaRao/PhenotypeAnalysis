@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import com.phenotypeAnalysis.app.dao.Plant;
 import com.phenotypeAnalysis.app.dao.Genotype;
-import com.phenotypeAnalysis.app.dao.Images;
+import com.phenotypeAnalysis.app.dao.Image;
 import com.phenotypeAnalysis.app.dao.Phenotype;
 import com.phenotypeAnalysis.app.dao.Plant_Species;
 import com.phenotypeAnalysis.app.dao.Treatment;
@@ -53,8 +53,8 @@ public class PopulateDaoServiceImpl implements PopulateDaoService {
 		}
 	}
 	@Override
-	public void populateImageData(Set<Images> imageSet) {
-		for (Images image : imageSet) {
+	public void populateImageData(Set<Image> imageSet) {
+		for (Image image : imageSet) {
 			populateDataImageRepository.save(image);
 		}
 	}

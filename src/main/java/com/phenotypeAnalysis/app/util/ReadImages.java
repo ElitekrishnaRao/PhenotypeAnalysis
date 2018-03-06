@@ -10,20 +10,21 @@ import java.util.Set;
 
 import org.apache.poi.xssf.usermodel.XSSFRow;
 
-import com.phenotypeAnalysis.app.dao.Images;
+import com.phenotypeAnalysis.app.dao.Image;
 import com.phenotypeAnalysis.app.dao.Plant;
 
 public class ReadImages {
 	
-	public static Set<Images> putImageDataByPlant(Plant p) throws IOException {
+	public static Set<Image> putImageDataByPlant(Plant p) throws IOException {
 		
-		File imageDir=new File("C:\\Users\\SIDDU\\Desktop\\Project\\Dataset\\SinglePlant");
+		File imageDir=new File("C:\\Users\\SIDDU\\git\\PhenotypeAnalysis\\src\\main\\webapp\\img\\plantimages");
+		File baseDir = new File("C:\\Users\\SIDDU\\git\\PhenotypeAnalysis\\src\\main\\webapp\\");
 		File[] subFiles=imageDir.getAbsoluteFile().listFiles();
 		
 		DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 		DateFormat dfExcel = new SimpleDateFormat("dd-MM-yyyy");
 		//System.out.println("Entered putImageDataByPlant");
-		Set<Images> imageSet = new HashSet<Images>();
+		Set<Image> imageSet = new HashSet<Image>();
 		
 			for(File f : subFiles) {
 				if (f.isDirectory()) {
@@ -33,20 +34,20 @@ public class ReadImages {
 					String dateVal = folderVal[folderVal.length - 3];
 					String plantNameVal = folderVal[folderVal.length - 4];
 					
-					if(p.getPlant_Name().equals(plantNameVal))
+					if(p.getName().equals(plantNameVal))
 					{
 						//Images I=new Images();
 						File[] subsubFiles=f.getAbsoluteFile().listFiles();
 						for(File folder1 : subsubFiles){
 							if(folder1.isDirectory()) {
-								String s2=String.valueOf(folder1.getAbsoluteFile());
+								String s2=String.valueOf(folder1.getAbsolutePath().substring(baseDir.getAbsolutePath().length()+1))+"\\0_0_0.png";
 								Date dateValue=null;
 								if (s2.contains("Vis")) {
-									Images I=new Images();
+									Image I=new Image();
 									if (s2.contains("SV_0")) {
 										//System.out.println(s2);
 										I.setView(0);
-										I.setImage_Modality("RGB");
+										I.setImageModality("RGB");
 										try {
 											dateValue=(Date)df.parse(dateVal);
 											I.setDate(dateValue);
@@ -55,17 +56,17 @@ public class ReadImages {
 										{
 											e.printStackTrace();
 										}
-										I.setFile_Path(s2);
+										I.setFilePath(s2);
 										I.setPlant(p);
 										//Getphenotype
-										I.setPhenotypes(ReadPhenotype.readPhenotypeData(p,dfExcel.format(dateValue),0));
+										I.setPhenotypes(ReadPhenotype.readPhenotypeData(I, p,dfExcel.format(dateValue),0));
 										imageSet.add(I);
 										
 									}
 									
 									if (s2.contains("SV_72")) {
 										I.setView(72);
-										I.setImage_Modality("RGB");
+										I.setImageModality("RGB");
 										try {
 											dateValue=(Date)df.parse(dateVal);
 											I.setDate(dateValue);
@@ -74,10 +75,10 @@ public class ReadImages {
 										{
 											e.printStackTrace();
 										}
-										I.setFile_Path(s2);
+										I.setFilePath(s2);
 										I.setPlant(p);
 										//Getphenotype
-										I.setPhenotypes(ReadPhenotype.readPhenotypeData(p,dfExcel.format(dateValue),72));
+										I.setPhenotypes(ReadPhenotype.readPhenotypeData(I, p,dfExcel.format(dateValue),72));
 										imageSet.add(I);
 									}
 									

@@ -1,12 +1,34 @@
-@charset "ISO-8859-1";
-<style>
 div#sidemabr1 button {
 	font-size: 16px;
 }
-</style>
-<style>
 .carousel-inner img {
 	width: 100%;
 	height: 100%;
 }
-</style>
+.right-button {
+	display: block;
+    width: 100%;
+    padding: 3px 1.5rem;
+    clear: both;
+    font-weight: 400;
+    color: #292b2c;
+    text-align: inherit;
+    white-space: nowrap;
+    background: 0 0;
+    border: 0;
+}
+.hidden{display:none;}
+.ScrollStyle
+{
+	
+    max-height: 750px;
+    overflow-x: scroll;
+    overflow-y: scroll;
+}
+
+.dataTables_paginate {
+    display: none;
+}
+#results-div{
+	background: white ;
+}

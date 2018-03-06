@@ -8,4 +8,6 @@ public interface TreatmentDaoService {
 	
 	public List<Treatment> getTreatmentData();
 
+	public List<Treatment> getTreatmentDataBySpecies(int speciesId);
+
 }

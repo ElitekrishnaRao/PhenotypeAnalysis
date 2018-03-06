@@ -35,19 +35,23 @@
 </style>
 
 </head>
-<body>
+<body background="../img/4.jpg">
 
-	<div class="container">
-		<div class="header">
-			<h3>Framework for Phenotypic Data Analysis</h3>
-			<br>
-		</div>
-		<nav class="nav nav-pills">
+
+			<h2 style="color:white; background-color: 	#282828; ">PDA Framework</h2>
+			
+		
+	<div class="container" style="color:black; background-color: #d1e0e0; ">
+	<nav class="nav nav-pills nav-fill">
 			<a class="nav-link nav-item active" href="home">Home</a> 
 			<a class="nav-link nav-item" href="query">Database Querying</a> 
 			<a class="nav-link nav-item" href="stats">Descriptive Statistics & Visualizations</a> 
-			<a class="nav-link nav-item" href="mine">Data Mining Tasks</a>
+			<a class="nav-link nav-item" href="mining">Data Mining Tasks</a>
 		</nav>
+	</div>	
+	<div class="container" style="color:black; background-color: white; ">
+		
+		
 		<br>
 		<p>Genotype and Phenotype are basic terms of biology that are
 			related to each other. Genotype is a gene or set of genes which are

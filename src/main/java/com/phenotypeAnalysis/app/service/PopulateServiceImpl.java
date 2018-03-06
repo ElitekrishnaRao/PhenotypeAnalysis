@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.phenotypeAnalysis.app.dao.Genotype;
-import com.phenotypeAnalysis.app.dao.Images;
+import com.phenotypeAnalysis.app.dao.Image;
 import com.phenotypeAnalysis.app.dao.Phenotype;
 import com.phenotypeAnalysis.app.dao.Plant;
 import com.phenotypeAnalysis.app.dao.Plant_Species;

@@ -1,5 +1,6 @@
 package com.phenotypeAnalysis.app.dao;
 
+import java.io.Serializable;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -9,74 +10,101 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Table(name = "Plant")
-public class Plant {
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+public class Plant implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "plant_Id")
-	private int plant_Id;
-	@Column(name = "plant_Name")
-	private String plant_Name;
-	@Column(name = "treatment_Id")
-	private int treatment_Id;
-	@Column(name = "species_Id")
-	private int species_Id;
-	@Column(name = "genotype_Id")
-	private int genotype_Id;
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY,mappedBy = "plant")
-	Set<Images> ImagesList;
+	@Column(name = "id")
+	private int id;
+	@Column(name = "name")
+	private String name;
+	@Column(name = "treatmentId")
+	private int treatmentId;
+	@Column(name = "speciesId")
+	private int speciesId;
+	@Column(name = "genotypeId")
+	private int genotypeId;
+	
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER,mappedBy = "plant")
+	Set<Image> ImagesList;
+	
+//	@ManyToOne
+//    private Treatment treatment;
+//	
+//	public Treatment getTreatment() {
+//		return treatment;
+//	}
+//
+//	public void setTreatment(Treatment treatment) {
+//		this.treatment = treatment;
+//	}
+	
+	
 
-	public Set<Images> getImagesList() {
+	public int getId() {
+		return id;
+	}
+	
+	public int getTreatmentId() {
+		return treatmentId;
+	}
+
+	public void setTreatmentId(int treatmentId) {
+		this.treatmentId = treatmentId;
+	}
+
+	@JsonIgnore
+	public Set<Image> getImagesList() {
 		return ImagesList;
 	}
 
-	public int getPlant_Id() {
-		return plant_Id;
-	}
-
-	public void setPlant_Id(int plant_Id) {
-		this.plant_Id = plant_Id;
-	}
-
-	public String getPlant_Name() {
-		return plant_Name;
-	}
-
-	public void setPlant_Name(String plant_Name) {
-		this.plant_Name = plant_Name;
-	}
-
-	public int getTreatment_Id() {
-		return treatment_Id;
-	}
-
-	public void setTreatment_Id(int treatment_Id) {
-		this.treatment_Id = treatment_Id;
-	}
-
-	public int getSpecies_Id() {
-		return species_Id;
-	}
-
-	public void setSpecies_Id(int species_Id) {
-		this.species_Id = species_Id;
-	}
-
-	public int getGenotype_Id() {
-		return genotype_Id;
-	}
-
-	public void setGenotype_Id(int genotype_Id) {
-		this.genotype_Id = genotype_Id;
-	}
-
-	public void setImagesList(Set<Images> imagesList) {
+	public void setImagesList(Set<Image> imagesList) {
 		ImagesList = imagesList;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	
+
+	public int getSpeciesId() {
+		return speciesId;
+	}
+
+	public void setSpeciesId(int speciesId) {
+		this.speciesId = speciesId;
+	}
+
+	public int getGenotypeId() {
+		return genotypeId;
+	}
+
+	public void setGenotypeId(int genotypeId) {
+		this.genotypeId = genotypeId;
 	}
 
 	@Override
@@ -87,14 +115,14 @@ public class Plant {
 			return false;
 		}
 		Plant p = (Plant) o;
-		return p.plant_Id == this.plant_Id;
+		return p.id == this.id;
 	}
 
 	// Idea from effective Java : Item 9
 	@Override
 	public int hashCode() {
 		int result = 17;
-		result = 31 * result + plant_Name.hashCode();
+		result = 31 * result + name.hashCode();
 		return result;
 	}
 }

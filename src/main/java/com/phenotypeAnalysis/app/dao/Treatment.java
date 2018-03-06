@@ -1,50 +1,69 @@
 package com.phenotypeAnalysis.app.dao;
 
+import java.io.Serializable;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 //assuming that watering and phosphorus are string types for now
 
 @Entity
 @Table(name="Treatment")
-public class Treatment {
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+public class Treatment implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
-	private int treatment_Id;
-	private String treatment_Type;
+	private int id;
+	private String environmentType;
 	//private float Watering;
 	//private float Phosphorus;
-	private String watering;
-	private String phosphorus;
+	private String experimentType;
+	private String treatment;
 	
-	
-	public int getTreatment_Id() {
-		return treatment_Id;
+//	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER,mappedBy = "treatment")
+//	Set<Plant> PlantsList;
+//	
+//	@JsonIgnore
+//	public Set<Plant> getPlantsList() {
+//		return PlantsList;
+//	}
+//	public void setPlantsList(Set<Plant> plantsList) {
+//		PlantsList = plantsList;
+//	}
+	public int getId() {
+		return id;
 	}
-	public void setTreatment_Id(int treatment_Id) {
-		this.treatment_Id = treatment_Id;
+	public void setId(int id) {
+		this.id = id;
 	}
-	public String getTreatment_Type() {
-		return treatment_Type;
+	public String getEnvironmentType() {
+		return environmentType;
 	}
-	public void setTreatment_Type(String treatment_Type) {
-		this.treatment_Type = treatment_Type;
+	public void setEnvironmentType(String environmentType) {
+		this.environmentType = environmentType;
 	}
-	public String getWatering() {
-		return watering;
+	public String getExperimentType() {
+		return experimentType;
 	}
-	public void setWatering(String watering) {
-		this.watering = watering;
+	public void setExperimentType(String experimentType) {
+		this.experimentType = experimentType;
 	}
-	public String getPhosphorus() {
-		return phosphorus;
+	public String getTreatment() {
+		return treatment;
 	}
-	public void setPhosphorus(String phosphorus) {
-		this.phosphorus = phosphorus;
+	public void setTreatment(String treatment) {
+		this.treatment = treatment;
 	}
-	
-	
-	
-	
 }

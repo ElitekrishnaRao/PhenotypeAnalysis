@@ -25,12 +25,13 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
+import com.phenotypeAnalysis.app.dao.Image;
 import com.phenotypeAnalysis.app.dao.Phenotype;
 import com.phenotypeAnalysis.app.dao.Plant;
 
 public class ReadPhenotype {
 
-	public static Phenotype readPhenotypeData(Plant p, String date, Integer view) throws IOException {
+	public static Phenotype readPhenotypeData(Image I, Plant p, String date, Integer view) throws IOException {
 
 		File src = new File("C:\\Users\\SIDDU\\Desktop\\LEMNATEC_RAE_WHEAT Phenotyping Results.xlsx");
 		HSSFWorkbook workbook = new HSSFWorkbook();
@@ -62,27 +63,28 @@ public class ReadPhenotype {
 		
 		for (int i = 1; i <=1500; i++) {
 			Date dateVal = sheet1.getRow(i).getCell(1).getDateCellValue();
-			if(p.getPlant_Name().equals(sheet1.getRow(i).getCell(0).getStringCellValue()) && dateVal!=null && date.equals(dfExcel.format(dateVal))){
+			if(p.getName().equals(sheet1.getRow(i).getCell(0).getStringCellValue()) && dateVal!=null && date.equals(dfExcel.format(dateVal))){
 				for (int j = 0; j < noColumns; j++) {
 					if (sheet1.getRow(i) != null) {
 						if(view==0)
 						{
 							if (columnsHeader.get(j).contains("SV_0") && columnsHeader.get(j).contains("convex_hull_area")) {
 								ph.setView(0);
-								ph.setConvex_Hull_Area(sheet1.getRow(i).getCell(j).getRawValue());
+								ph.setConvexHullArea(sheet1.getRow(i).getCell(j).getNumericCellValue());
 							}
 							if (columnsHeader.get(j).contains("SV_0") && columnsHeader.get(j).contains("plant_pixel_area"))
-								ph.setPlant_Pixel_Area(sheet1.getRow(i).getCell(j).getRawValue());
+								ph.setPlantPixelArea(sheet1.getRow(i).getCell(j).getNumericCellValue());
 							if (columnsHeader.get(j).contains("SV_0") && columnsHeader.get(j).contains("areal_density"))
-								ph.setAreal_Density(sheet1.getRow(i).getCell(j).getRawValue());
+								ph.setArealDensity(sheet1.getRow(i).getCell(j).getNumericCellValue());
 							if (columnsHeader.get(j).contains("aspect_ratio"))
-								ph.setAspect_Ratio(sheet1.getRow(i).getCell(j).getRawValue());
+								ph.setAspectRatio(sheet1.getRow(i).getCell(j).getNumericCellValue());
 							if (columnsHeader.get(j).contains("SV_0") && columnsHeader.get(j).contains("bounding_box_height")) {
-								ph.setBounding_Box_Ht(sheet1.getRow(i).getCell(j).getRawValue());
+								ph.setBoundingBoxHt(sheet1.getRow(i).getCell(j).getNumericCellValue());
 								String plantName = sheet1.getRow(i).getCell(0).getStringCellValue();
 								Date plantDate = sheet1.getRow(i).getCell(1).getDateCellValue();
 								ph.setDate(plantDate);
-								ph.setEnclosing_Circle_Diameter("null");
+								//ph.setEnclosingCircleDiameter("");
+								ph.setImage(I);
 							}
 							//return ph;
 						}
@@ -91,18 +93,19 @@ public class ReadPhenotype {
 						{
 							if (columnsHeader.get(j).contains("SV_72") && columnsHeader.get(j).contains("convex_hull_area")) {
 								ph.setView(72);
-								ph.setConvex_Hull_Area(sheet1.getRow(i).getCell(j).getRawValue());
+								ph.setConvexHullArea(sheet1.getRow(i).getCell(j).getNumericCellValue());
 							}
 							if (columnsHeader.get(j).contains("SV_72") && columnsHeader.get(j).contains("plant_pixel_area"))
-								ph.setPlant_Pixel_Area(sheet1.getRow(i).getCell(j).getRawValue());
+								ph.setPlantPixelArea(sheet1.getRow(i).getCell(j).getNumericCellValue());
 							if (columnsHeader.get(j).contains("SV_72") && columnsHeader.get(j).contains("areal_density")) {
-								ph.setAreal_Density(sheet1.getRow(i).getCell(j).getRawValue());
+								ph.setArealDensity(sheet1.getRow(i).getCell(j).getNumericCellValue());
 								String plantName = sheet1.getRow(i).getCell(0).getStringCellValue();
 								Date plantDate = sheet1.getRow(i).getCell(1).getDateCellValue();
 								ph.setDate(plantDate);
-								ph.setBounding_Box_Ht("null");
-								ph.setEnclosing_Circle_Diameter("null");
-								ph.setAspect_Ratio("null");
+								//ph.setBoundingBoxHt("null");
+								//ph.setEnclosingCircleDiameter("null");
+								//ph.setAspectRatio("null");
+								ph.setImage(I);
 							}
 						}
 						
@@ -112,18 +115,19 @@ public class ReadPhenotype {
 						{
 							if (columnsHeader.get(j).contains("SV_144") && columnsHeader.get(j).contains("convex_hull_area")) {
 								ph.setView(144);
-								ph.setConvex_Hull_Area(sheet1.getRow(i).getCell(j).getRawValue());
+								ph.setConvexHullArea(sheet1.getRow(i).getCell(j).getNumericCellValue());
 							}
 							if (columnsHeader.get(j).contains("SV_144") && columnsHeader.get(j).contains("plant_pixel_area"))
-								ph.setPlant_Pixel_Area(sheet1.getRow(i).getCell(j).getRawValue());
+								ph.setPlantPixelArea(sheet1.getRow(i).getCell(j).getNumericCellValue());
 							if (columnsHeader.get(j).contains("SV_144") && columnsHeader.get(j).contains("areal_density")) {
-								ph.setAreal_Density(sheet1.getRow(i).getCell(j).getRawValue());
+								ph.setArealDensity(sheet1.getRow(i).getCell(j).getNumericCellValue());
 								String plantName = sheet1.getRow(i).getCell(0).getStringCellValue();
 								Date plantDate = sheet1.getRow(i).getCell(1).getDateCellValue();
 								ph.setDate(plantDate);
-								ph.setBounding_Box_Ht("null");
-								ph.setEnclosing_Circle_Diameter("null");
-								ph.setAspect_Ratio("null");
+//								ph.setBoundingBoxHt("null");
+//								ph.setEnclosingCircleDiameter("null");
+//								ph.setAspectRatio("null");
+								ph.setImage(I);
 							}
 						}
 					
@@ -131,18 +135,19 @@ public class ReadPhenotype {
 						{
 							if (columnsHeader.get(j).contains("SV_216") && columnsHeader.get(j).contains("convex_hull_area")) {
 								ph.setView(216);
-								ph.setConvex_Hull_Area(sheet1.getRow(i).getCell(j).getRawValue());
+								ph.setConvexHullArea(sheet1.getRow(i).getCell(j).getNumericCellValue());
 							}
 							if (columnsHeader.get(j).contains("SV_216") && columnsHeader.get(j).contains("plant_pixel_area"))
-								ph.setPlant_Pixel_Area(sheet1.getRow(i).getCell(j).getRawValue());
+								ph.setPlantPixelArea(sheet1.getRow(i).getCell(j).getNumericCellValue());
 							if (columnsHeader.get(j).contains("SV_216") && columnsHeader.get(j).contains("areal_density")) {
-								ph.setAreal_Density(sheet1.getRow(i).getCell(j).getRawValue());
+								ph.setArealDensity(sheet1.getRow(i).getCell(j).getNumericCellValue());
 								String plantName = sheet1.getRow(i).getCell(0).getStringCellValue();
 								Date plantDate = sheet1.getRow(i).getCell(1).getDateCellValue();
 								ph.setDate(plantDate);
-								ph.setBounding_Box_Ht("null");
-								ph.setEnclosing_Circle_Diameter("null");
-								ph.setAspect_Ratio("null");
+								//ph.setBoundingBoxHt("null");
+								//ph.setEnclosingCircleDiameter("null");
+								//ph.setAspectRatio("null");
+								ph.setImage(I);
 							}
 						}
 						
@@ -150,19 +155,20 @@ public class ReadPhenotype {
 						{
 							if (columnsHeader.get(j).contains("SV_288") && columnsHeader.get(j).contains("convex_hull_area")) {
 								ph.setView(288);
-								ph.setConvex_Hull_Area(sheet1.getRow(i).getCell(j).getRawValue());
+								ph.setConvexHullArea(sheet1.getRow(i).getCell(j).getNumericCellValue());
 							}
 							if (columnsHeader.get(j).contains("SV_288") && columnsHeader.get(j).contains("plant_pixel_area"))
-								ph.setPlant_Pixel_Area(sheet1.getRow(i).getCell(j).getRawValue());
+								ph.setPlantPixelArea(sheet1.getRow(i).getCell(j).getNumericCellValue());
 							if (columnsHeader.get(j).contains("SV_288") && columnsHeader.get(j).contains("areal_density")) {
-								ph.setAreal_Density(sheet1.getRow(i).getCell(j).getRawValue());
-								ph.setEnclosing_Circle_Diameter(sheet1.getRow(i).getCell(j).getRawValue());
+								ph.setArealDensity(sheet1.getRow(i).getCell(j).getNumericCellValue());
+								ph.setEnclosingCircleDiameter(sheet1.getRow(i).getCell(j).getNumericCellValue());
 								String plantName = sheet1.getRow(i).getCell(0).getStringCellValue();
 								Date plantDate = sheet1.getRow(i).getCell(1).getDateCellValue();
 								ph.setDate(plantDate);
-								ph.setBounding_Box_Ht("null");
-								ph.setEnclosing_Circle_Diameter("null");
-								ph.setAspect_Ratio("null");	
+								//ph.setBoundingBoxHt("null");
+								//ph.setEnclosingCircleDiameter("null");
+								//ph.setAspectRatio("null");	
+								ph.setImage(I);
 							}
 						}
 						

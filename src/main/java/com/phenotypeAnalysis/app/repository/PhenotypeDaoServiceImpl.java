@@ -17,4 +17,16 @@ public class PhenotypeDaoServiceImpl implements PhenotypeDaoService{
 		// TODO Auto-generated method stub
 		return populateDataPhenotypeRepository.findAll();
 	}
+
+	@Override
+	public List<Phenotype> getPhenotypeDataBySpPlnts(int id, List<Integer> plantIds) {
+		// TODO Auto-generated method stub
+		return populateDataPhenotypeRepository.findBySpPlntsIds(id, plantIds);
+	}
+
+	@Override
+	public List<Phenotype> getphenMeansBySpPlntsId(int id, List<Integer> plantIds) {
+		// TODO Auto-generated method stub
+		return populateDataPhenotypeRepository.findphenMeansBySpPlntsId(id, plantIds);
+	}
 }

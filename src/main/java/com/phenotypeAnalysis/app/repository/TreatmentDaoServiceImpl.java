@@ -16,4 +16,10 @@ public class TreatmentDaoServiceImpl implements TreatmentDaoService {
 		// TODO Auto-generated method stub
 		return populateDataTreatmentRepository.findAll();
 	}
+
+	@Override
+	public List<Treatment> getTreatmentDataBySpecies(int speciesId) {
+		// TODO Auto-generated method stub
+		return populateDataTreatmentRepository.findById(speciesId);
+				}
 }

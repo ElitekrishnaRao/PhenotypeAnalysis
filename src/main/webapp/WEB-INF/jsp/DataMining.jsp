@@ -1,74 +1,37 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Database Querying</title>
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
-	integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
-	crossorigin="anonymous">
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"
-	integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
-	crossorigin="anonymous"></script>
+<%@include file="Header.jsp"%>
 
-<script>
-  $(function () {
-    $('#myList a:last-child').tab('show')
-  })
-</script>
-<script>
-$('a[data-toggle="list"]').on('shown.bs.tab', function (e) {
-  e.target // newly activated tab
-  e.relatedTarget // previous active tab
-})
-</script>
-
-</head>
-<body>
-
-
-
-	<div class="container">
-		<div class="header">
-			<h3>Framework for Phenotypic Data Analysis</h3>
+<h2 style="color:white; background-color: #39ac39; ">PDA Framework</h2>
 			<br>
-		</div>
-		<nav class="nav nav-pills">
-			<a class="nav-link nav-item" href="home">Home</a> <a
-				class="nav-link nav-item" href="query">Database Querying</a> <a
-				class="nav-link nav-item" href="stats">Descriptive Statistics &
-				Visualizations</a> <a class="nav-link nav-item active" href="mine">Datamining
-				Tasks</a>
-			<!-- <div class="nav-item dropdown">
-		          <a class="nav-link dropdown-toggle" href="#" id="dropdown5" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-		          <div class="dropdown-menu" aria-labelledby="dropdown5">
-		            <a class="dropdown-item" data-toggle="tab" href="#fat5">@fat</a>
-		            <a class="dropdown-item" data-toggle="tab" href="#mdo5">@mdo</a>
-		          </div> -->
-
+	
+<div class="container">
+	
+	<nav class="nav nav-pills nav-fill">
+			<a class="nav-link nav-item" href="home">Home</a>
+			<a class="nav-link nav-item " href="query">Database Querying</a>
+			<a class="nav-link nav-item active" href="stats">Descriptive Statistics
+				& Visualizations</a> <a class="nav-link nav-item" href="mine">Data
+				Mining Tasks</a>
 		</nav>
-	</div>
+</div>
+<br>
 
 
-	<br>
+	<div id="graphdiv"></div>
+<script type="text/javascript">
 
 
+  g = new Dygraph(
 
+    // containing div
+    document.getElementById("graphdiv"),
 
-	<script src="https://code.jquery.com/jquery-2.2.4.min.js"
-		integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
-		crossorigin="anonymous"></script>
-	<script type="text/javascript" src="../js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="../js/dist/jquery-slim.min.js"></script>
-	<script type="text/javascript" src="../js/dist/popper.min.js"></script>
-	<script type="text/javascript" src="../js/dist/util.js"></script>
-	<script type="text/javascript" src="../js/dist/tab.js"></script>
-	<script type="text/javascript" src="../js/dist/dropdown.js"></script>
+    // CSV or path to a CSV file.
+    "Date,Temperature\n" +
+    "2008-05-07,75\n" +
+    "2008-05-08,70\n" +
+    "2008-05-09,80\n"
 
+  );
+</script>
 
-</body>
-</html>
+<%@include file="Footer.jsp" %>

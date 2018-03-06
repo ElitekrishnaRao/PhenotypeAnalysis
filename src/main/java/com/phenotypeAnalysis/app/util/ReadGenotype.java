@@ -49,7 +49,7 @@ public class ReadGenotype {
 				if(sheet1.getRow(i)!=null){
 				String plantName=sheet1.getRow(i).getCell(0).getStringCellValue();
 				Genotype g = new Genotype();
-				g.setGenotype("A");
+				g.setGenotypeName("A");
 				genotypeSet.add(g);
 				}
 			//}

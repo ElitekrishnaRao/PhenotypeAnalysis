@@ -26,10 +26,13 @@ div#sidemabr1 button {
     overflow-y: scroll;
 }
 
-.dataTables_paginate {
-    display: none;
-}
+
 #results-div{
 	background: white ;
+}
+
+a.paginate_button {
+    padding: 0px 5px;
+    cursor: pointer;
 }
 

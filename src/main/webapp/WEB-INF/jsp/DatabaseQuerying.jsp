@@ -25,6 +25,7 @@
 			<label for="inputsm">Species</label> <select name="species"
 				class="form-control input-sm" id="speciesid"
 				onchange="speciesChange(this);">
+				<option > -- Select Species -- </option>
 				<c:forEach var="species" items="${plantspeciesData}"
 					varStatus="yourStatus">
 					<option id="${yourStatus.index}" value="${species.id}">${species.speciesName}</option>

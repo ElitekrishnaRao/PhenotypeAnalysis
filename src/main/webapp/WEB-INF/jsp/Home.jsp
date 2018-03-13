@@ -38,7 +38,8 @@
 <body background="../img/4.jpg">
 
 
-			<h2 style="color:white; background-color: 	#282828; ">PDA Framework</h2>
+			<h2 style="color:white; background-color:#000000; "><img src="../img/Logo3.png"></h2>
+			
 			
 		
 	<div class="container" style="color:black; background-color: #d1e0e0; ">
@@ -116,6 +117,13 @@
 	<script type="text/javascript" src="../js/dist/util.js"></script>
 	<script type="text/javascript" src="../js/dist/tab.js"></script>
 	<script type="text/javascript" src="../js/dist/dropdown.js"></script>
+
+
+
+
+<div id="footer" style= "color: white; background-color: #000000; position: absolute; bottom: 0; width: 100%;height: 30px;"> University Of Nebraska Lincoln
+</div>
+
 
 </body>
 </html>

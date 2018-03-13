@@ -9,6 +9,10 @@ $(function() {
 		window.location = $(this).attr('href');});
 	});
 
+function clearForm(){
+	$("#queryForm").get(0).reset();
+}
+
 //If a species Id is changed, then populate related plants and treatments in below drop downs
 function speciesChange(speciesId) {
 			var idx = speciesId.selectedIndex;
@@ -35,6 +39,7 @@ function speciesChange(speciesId) {
 // To get list of plants with selected species Id
 function plantslistbyspecies(event) {
 	var speciesId=sessionStorage.getItem("speciesId");
+	alert(speciesId);
 	$.get( "http://localhost:8080/PhenotypeAnalysis/web/plantsbyspecies/"+speciesId, function( data ) {
     	var opts = $.parseJSON(data);
     	$('#plantslisttable').dataTable({

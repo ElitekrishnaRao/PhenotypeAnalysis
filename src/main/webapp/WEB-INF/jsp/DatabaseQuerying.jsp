@@ -1,13 +1,16 @@
 <%@include file="Header.jsp"%>
 
-<h2 style="color: white; background-color: #282828;">PDA Framework</h2>
+<h2 style="color: white; background-color: #000000;">
+	<img src="../img/Logo3.png">
+</h2>
 
 <div class="container" style="color: black; background-color: #E8E8E8;">
 	<nav class="nav nav-pills nav-fill">
-		<a class="nav-link nav-item" href="home">Home</a> 
-		<a class="nav-link nav-item active" href="query" id="dbquery">Database Querying</a> 
-		<a class="nav-link nav-item" href="stats">Descriptive Statistics & Visualizations</a> 
-		<a class="nav-link nav-item" href="mining">Data Mining Tasks</a>
+		<a class="nav-link nav-item" href="home">Home</a> <a
+			class="nav-link nav-item active" href="query" id="dbquery">Database
+			Querying</a> <a class="nav-link nav-item" href="stats">Descriptive
+			Statistics & Visualizations</a> <a class="nav-link nav-item"
+			href="mining">Data Mining Tasks</a>
 	</nav>
 </div>
 <br>
@@ -15,10 +18,10 @@
 <div class="row">
 	<br>
 	<div class="container col-2"
-		style="color: black; background-color:#DCDCDC;">
+		style="color: black; background-color: #DCDCDC;">
 		<h6>Database Filters</h6>
-		<form class="px-2 py-2" id="queryForm">
-
+		<form class="px-2 py-2" id="queryForm" >
+			
 			<label for="inputsm">Species</label> <select name="species"
 				class="form-control input-sm" id="speciesid"
 				onchange="speciesChange(this);">
@@ -26,11 +29,18 @@
 					varStatus="yourStatus">
 					<option id="${yourStatus.index}" value="${species.id}">${species.speciesName}</option>
 				</c:forEach>
-			</select> <label>Plants</label> <select multiple name="plants" id="plant-data"
+			</select> 
+			
+			
+			<label>Plants</label> <select multiple name="plants" id="plant-data"
 				class="form-control">
-			</select> <label>Treatments</label> <select multiple name="treatments"
+			</select> 
+			
+			<label>Treatments</label> <select multiple name="treatments"
 				id="treatment-data" class="form-control">
-			</select> <label>Phenotypes</label> <select multiple name="phenotypes"
+			</select> 
+			
+			<label>Phenotypes</label> <select multiple name="phenotypes"
 				class="form-control">
 				<option value="all">All</option>
 				<option value="cha">Convex Hull Area</option>
@@ -51,63 +61,60 @@
 				<option value="144">144</option>
 				<option value="216">216</option>
 				<option value="288">288</option>
-			</select>
-			<br>
-<input type="button" onclick="clearForm()" class="btn btn-secondary"
-				value="Clear Search" />
+			</select> <br> 
+			<input type="button" onclick="clearForm()"
+				class="btn btn-secondary" value="Clear Search" />
 		</form>
 	</div>
 
-	<div class="container col-2"
-		>
+	<div class="container col-2">
 		<h6>Database Querying Actions</h6>
 		<br>
-		
+
 
 		<h6>Select..</h6>
 		<div id="sidemabr1">
 
-			<div class="btn-group dropright span9 btn-block no-padding">
-				<button type="button"
-					class="btn btn-success btn-block dropdown-toggle"
-					data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-					Species</button>
-				<div class="dropdown-menu">
-					<button class="btn btn-secondary right-button" type="button"
-						onclick="plantslistbyspecies()">View plants list</button>
-					<button class="btn btn-secondary right-button" type="button"
-						onclick="treatmentslistbyspecies()">View treatments given</button>
-				</div>
-			</div>
 
-			<div class="btn-group dropright span9 btn-block no-padding">
-				<button type="button"
-					class="btn btn-success btn-block dropdown-toggle"
-					data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-					Species & Plants</button>
-				<div class="dropdown-menu">
-					<button class="btn btn-secondary right-button" type="button"
-						id="phenotype-data" onclick="phenotypesbyspplnts()">View
-						phenotypic data</button>
-					<button class="btn btn-secondary right-button" type="button"
-						onclick="genotypesbyspplnts()">View genotypic data</button>
-					<button class="btn btn-secondary right-button" type="button"
-						onclick="imagesequence()">View image sequence</button>
-				</div>
-			</div>
+			<button type="button"
+				class="btn btn-success btn-block dropdown-toggle"
+				aria-haspopup="true" aria-expanded="false">Species</button>
 
-			<div class="btn-group dropright span9 btn-block no-padding">
-				<button type="button"
-					class="btn btn-success btn-block dropdown-toggle"
-					data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-					Species & Treatment</button>
-				<div class="dropdown-menu">
-					<button class="btn btn-secondary right-button" type="button"
-						onclick="plantsbysptrtmnts()">View plants list</button>
-				</div>
-			</div>
+			<button class="btn btn-secondary span9 btn-block no-padding"
+				type="button" onclick="plantslistbyspecies()">View plants
+				list</button>
+			<button class="btn btn-secondary span9 btn-block no-padding"
+				type="button" onclick="treatmentslistbyspecies()">View
+				treatments given</button>
 
-			<div class="btn-group dropright span9 btn-block no-padding">
+
+
+			<button type="button"
+				class="btn btn-success btn-block dropdown-toggle"
+				aria-haspopup="true" aria-expanded="false">Species & Plants</button>
+			<button class="btn btn-secondary span9 btn-block no-padding"
+				type="button" id="phenotype-data" onclick="phenotypesbyspplnts()">View
+				phenotypic data</button>
+			<button class="btn btn-secondary span9 btn-block no-padding"
+				type="button" onclick="genotypesbyspplnts()">View genotypic
+				data</button>
+			<button class="btn btn-secondary span9 btn-block no-padding"
+				type="button" onclick="imagesequence()">View image sequence</button>
+
+
+
+			<button type="button"
+				class="btn btn-success btn-block dropdown-toggle"
+				aria-haspopup="true" aria-expanded="false">Species &
+				Treatment</button>
+
+			<button class="btn btn-secondary span9 btn-block no-padding"
+				type="button" onclick="plantsbysptrtmnts()">View plants
+				list</button>
+
+
+
+			<!--   <div class="btn-group dropright span9 btn-block no-padding">
 				<button type="button"
 					class="btn btn-success btn-block dropdown-toggle"
 					data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -116,7 +123,7 @@
 					<button class="btn btn-secondary right-button" type="button">View
 						phenotypes list</button>
 				</div>
-			</div>
+			</div> -->
 		</div>
 	</div>
 
@@ -146,6 +153,7 @@
 
 	</div>
 </div>
+
 
 
 <%@include file="Footer.jsp"%>

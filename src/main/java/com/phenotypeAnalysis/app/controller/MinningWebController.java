@@ -152,6 +152,18 @@ public class MinningWebController {
 	
 	@RequestMapping("/mining")
 	public ModelAndView  dBQueryResults(ModelMap map) { 
+		List<Plant_Species> plantspeciesData = databaseQueryingService.getPlantSpeciesData();
+		map.put("plantspeciesData",plantspeciesData);
+		List<Plant> plantData = databaseQueryingService.getPlantData();
+		map.put("plantData",plantData);
+		List<Treatment> treatmentData = databaseQueryingService.getTreatmentData();
+		map.put("treatmentData",treatmentData);
+		List<Phenotype> phenotypeData = databaseQueryingService.getPhenotypeData();
+		map.put("phenotypeData",phenotypeData);
+		List<Image> imageData = databaseQueryingService.getImageData();
+		map.put("imageData",imageData);
+		List<Genotype> genotypeData = databaseQueryingService.getGenotypeData();
+		map.put("genotypeData",genotypeData);
 		return new ModelAndView("DataMining");
 	}
 	

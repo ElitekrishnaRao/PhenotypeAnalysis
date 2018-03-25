@@ -9,7 +9,7 @@ import com.phenotypeAnalysis.app.dao.Genotype;
 import com.phenotypeAnalysis.app.dao.Image;
 import com.phenotypeAnalysis.app.dao.Phenotype;
 import com.phenotypeAnalysis.app.dao.Plant;
-import com.phenotypeAnalysis.app.dao.Plant_Species;
+import com.phenotypeAnalysis.app.dao.Species;
 import com.phenotypeAnalysis.app.dao.Treatment;
 import com.phenotypeAnalysis.app.repository.GenotypeDaoService;
 import com.phenotypeAnalysis.app.repository.ImageDaoService;
@@ -37,7 +37,7 @@ public class DatabaseQueryingServiceImpl implements DatabaseQueryingService {
 		return plantDaoService.getPlantData();
 	}
 	@Override
-	public List<Plant_Species> getPlantSpeciesData() {
+	public List<Species> getPlantSpeciesData() {
 		return plantspeciesDaoService.getPlantSpeciesData();
 	}
 	@Override

@@ -69,7 +69,7 @@ public class ReadPhenotype {
 						if(view==0)
 						{
 							if (columnsHeader.get(j).contains("SV_0") && columnsHeader.get(j).contains("convex_hull_area")) {
-								ph.setView(0);
+								//ph.setView(0);
 								ph.setConvexHullArea(sheet1.getRow(i).getCell(j).getNumericCellValue());
 							}
 							if (columnsHeader.get(j).contains("SV_0") && columnsHeader.get(j).contains("plant_pixel_area"))
@@ -82,7 +82,7 @@ public class ReadPhenotype {
 								ph.setBoundingBoxHt(sheet1.getRow(i).getCell(j).getNumericCellValue());
 								String plantName = sheet1.getRow(i).getCell(0).getStringCellValue();
 								Date plantDate = sheet1.getRow(i).getCell(1).getDateCellValue();
-								ph.setDate(plantDate);
+								//ph.setDate(plantDate);
 								//ph.setEnclosingCircleDiameter("");
 								ph.setImage(I);
 							}
@@ -92,7 +92,7 @@ public class ReadPhenotype {
 						else if (view==72)
 						{
 							if (columnsHeader.get(j).contains("SV_72") && columnsHeader.get(j).contains("convex_hull_area")) {
-								ph.setView(72);
+								//ph.setView(72);
 								ph.setConvexHullArea(sheet1.getRow(i).getCell(j).getNumericCellValue());
 							}
 							if (columnsHeader.get(j).contains("SV_72") && columnsHeader.get(j).contains("plant_pixel_area"))
@@ -101,7 +101,7 @@ public class ReadPhenotype {
 								ph.setArealDensity(sheet1.getRow(i).getCell(j).getNumericCellValue());
 								String plantName = sheet1.getRow(i).getCell(0).getStringCellValue();
 								Date plantDate = sheet1.getRow(i).getCell(1).getDateCellValue();
-								ph.setDate(plantDate);
+								//ph.setDate(plantDate);
 								//ph.setBoundingBoxHt("null");
 								//ph.setEnclosingCircleDiameter("null");
 								//ph.setAspectRatio("null");
@@ -114,7 +114,7 @@ public class ReadPhenotype {
 						else if(view==144)
 						{
 							if (columnsHeader.get(j).contains("SV_144") && columnsHeader.get(j).contains("convex_hull_area")) {
-								ph.setView(144);
+								//ph.setView(144);
 								ph.setConvexHullArea(sheet1.getRow(i).getCell(j).getNumericCellValue());
 							}
 							if (columnsHeader.get(j).contains("SV_144") && columnsHeader.get(j).contains("plant_pixel_area"))
@@ -123,7 +123,7 @@ public class ReadPhenotype {
 								ph.setArealDensity(sheet1.getRow(i).getCell(j).getNumericCellValue());
 								String plantName = sheet1.getRow(i).getCell(0).getStringCellValue();
 								Date plantDate = sheet1.getRow(i).getCell(1).getDateCellValue();
-								ph.setDate(plantDate);
+								//ph.setDate(plantDate);
 //								ph.setBoundingBoxHt("null");
 //								ph.setEnclosingCircleDiameter("null");
 //								ph.setAspectRatio("null");
@@ -134,7 +134,7 @@ public class ReadPhenotype {
 						else if(view==216)
 						{
 							if (columnsHeader.get(j).contains("SV_216") && columnsHeader.get(j).contains("convex_hull_area")) {
-								ph.setView(216);
+								//ph.setView(216);
 								ph.setConvexHullArea(sheet1.getRow(i).getCell(j).getNumericCellValue());
 							}
 							if (columnsHeader.get(j).contains("SV_216") && columnsHeader.get(j).contains("plant_pixel_area"))
@@ -143,7 +143,7 @@ public class ReadPhenotype {
 								ph.setArealDensity(sheet1.getRow(i).getCell(j).getNumericCellValue());
 								String plantName = sheet1.getRow(i).getCell(0).getStringCellValue();
 								Date plantDate = sheet1.getRow(i).getCell(1).getDateCellValue();
-								ph.setDate(plantDate);
+								//ph.setDate(plantDate);
 								//ph.setBoundingBoxHt("null");
 								//ph.setEnclosingCircleDiameter("null");
 								//ph.setAspectRatio("null");
@@ -154,7 +154,7 @@ public class ReadPhenotype {
 						else if(view==288)
 						{
 							if (columnsHeader.get(j).contains("SV_288") && columnsHeader.get(j).contains("convex_hull_area")) {
-								ph.setView(288);
+								//ph.setView(288);
 								ph.setConvexHullArea(sheet1.getRow(i).getCell(j).getNumericCellValue());
 							}
 							if (columnsHeader.get(j).contains("SV_288") && columnsHeader.get(j).contains("plant_pixel_area"))
@@ -164,7 +164,7 @@ public class ReadPhenotype {
 								ph.setEnclosingCircleDiameter(sheet1.getRow(i).getCell(j).getNumericCellValue());
 								String plantName = sheet1.getRow(i).getCell(0).getStringCellValue();
 								Date plantDate = sheet1.getRow(i).getCell(1).getDateCellValue();
-								ph.setDate(plantDate);
+								//ph.setDate(plantDate);
 								//ph.setBoundingBoxHt("null");
 								//ph.setEnclosingCircleDiameter("null");
 								//ph.setAspectRatio("null");	

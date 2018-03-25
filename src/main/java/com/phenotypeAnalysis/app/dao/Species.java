@@ -7,8 +7,8 @@ import javax.persistence.Table;
 
 @Entity
 
-@Table(name="Plant_Species")
-public class Plant_Species {
+@Table(name="Species")
+public class Species {
 	@Id
 	private int id;
 	private String speciesName;

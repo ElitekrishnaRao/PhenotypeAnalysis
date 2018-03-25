@@ -25,6 +25,7 @@
 			<label for="inputsm">Species</label> <select name="species"
 				class="form-control input-sm" id="speciesid"
 				onchange="speciesChange(this);">
+				<option > -- Select Species -- </option>
 				<c:forEach var="species" items="${plantspeciesData}"
 					varStatus="yourStatus">
 					<option id="${yourStatus.index}" value="${species.id}">${species.speciesName}</option>
@@ -48,7 +49,7 @@
 					<option value="${genotype.id}">${genotype.id}-
 						${genotype.genotypeName}</option>
 				</c:forEach>
-			</select> <label>Views</label> <select name="views" class="form-control"
+			</select> <label>Viewing Angle</label> <select name="views" class="form-control"
 				id="viewSelected">
 				<option value="0">0</option>
 				<option value="72">72</option>
@@ -154,12 +155,12 @@
 				//alert(dateArrayLength);
 				var r = "Date,View 0,View 72\n";
 				for (var i = 0; i < dataArray.length; i++) {
-					if (dataArray[i].view == 0) {
-						r += dataArray[i].date;
+					if (dataArray[i].image.view == 0) {
+						r += dataArray[i].image.date;
 						r += "," + dataArray[i].convexHullArea;
 						for (var j = 0; j < dataArray.length; j++) {
-							if ((dataArray[j].date == dataArray[i].date)
-									&& (dataArray[j].view == 72)) {
+							if ((dataArray[j].image.date == dataArray[i].image.date)
+									&& (dataArray[j].image.view == 72)) {
 								//alert(dataArray[i].date + " -- "
 								//		+ dataArray[j].date + "--"
 								//		+ dataArray[j].view)
@@ -177,12 +178,12 @@
 			function getDateVsPpaChart(dataArray) {
 				var r = "Date,View 0,View 72\n";
 				for (var i = 0; i < dataArray.length; i++) {
-					if (dataArray[i].view == 0) {
-						r += dataArray[i].date;
+					if (dataArray[i].image.view == 0) {
+						r += dataArray[i].image.date;
 						r += "," + dataArray[i].plantPixelArea;
 						for (var j = 0; j < dataArray.length; j++) {
-							if ((dataArray[j].date == dataArray[i].date)
-									&& (dataArray[j].view == 72)) {
+							if ((dataArray[j].image.date == dataArray[i].image.date)
+									&& (dataArray[j].image.view == 72)) {
 								r += "," + dataArray[j].plantPixelArea;
 							}
 						}
@@ -196,12 +197,12 @@
 			function getDateVsAdChart(dataArray) {
 				var r = "Date,View 0,View 72\n";
 				for (var i = 0; i < dataArray.length; i++) {
-					if (dataArray[i].view == 0) {
-						r += dataArray[i].date;
+					if (dataArray[i].image.view == 0) {
+						r += dataArray[i].image.date;
 						r += "," + dataArray[i].arealDensity;
 						for (var j = 0; j < dataArray.length; j++) {
-							if ((dataArray[j].date == dataArray[i].date)
-									&& (dataArray[j].view == 72)) {
+							if ((dataArray[j].image.date == dataArray[i].image.date)
+									&& (dataArray[j].image.view == 72)) {
 								r += "," + dataArray[j].arealDensity;
 							}
 						}
@@ -215,12 +216,12 @@
 			function getDateVsBbhChart(dataArray) {
 				var r = "Date,View 0,View 72\n";
 				for (var i = 0; i < dataArray.length; i++) {
-					if (dataArray[i].view == 0) {
-						r += dataArray[i].date;
+					if (dataArray[i].image.view == 0) {
+						r += dataArray[i].image.date;
 						r += "," + dataArray[i].boundingBoxHt;
 						for (var j = 0; j < dataArray.length; j++) {
-							if ((dataArray[j].date == dataArray[i].date)
-									&& (dataArray[j].view == 72)) {
+							if ((dataArray[j].image.date == dataArray[i].image.date)
+									&& (dataArray[j].image.view == 72)) {
 								r += "," + dataArray[j].boundingBoxHt;
 							}
 						}
@@ -234,12 +235,12 @@
 			function getDateVsEcdChart(dataArray) {
 				var r = "Date,View 0,View 72\n";
 				for (var i = 0; i < dataArray.length; i++) {
-					if (dataArray[i].view == 0) {
-						r += dataArray[i].date;
+					if (dataArray[i].image.view == 0) {
+						r += dataArray[i].image.date;
 						r += "," + dataArray[i].enclosingCircleDiameter;
 						for (var j = 0; j < dataArray.length; j++) {
-							if ((dataArray[j].date == dataArray[i].date)
-									&& (dataArray[j].view == 72)) {
+							if ((dataArray[j].image.date == dataArray[i].image.date)
+									&& (dataArray[j].image.view == 72)) {
 								r += "," + dataArray[j].enclosingCircleDiameter;
 							}
 						}
@@ -253,12 +254,12 @@
 			function getDateVsArChart(dataArray) {
 				var r = "Date,View 0,View 72\n";
 				for (var i = 0; i < dataArray.length; i++) {
-					if (dataArray[i].view == 0) {
-						r += dataArray[i].date;
+					if (dataArray[i].image.view == 0) {
+						r += dataArray[i].image.date;
 						r += "," + dataArray[i].aspectRatio;
 						for (var j = 0; j < dataArray.length; j++) {
-							if ((dataArray[j].date == dataArray[i].date)
-									&& (dataArray[j].view == 72)) {
+							if ((dataArray[j].image.date == dataArray[i].image.date)
+									&& (dataArray[j].image.view == 72)) {
 								r += "," + dataArray[j].aspectRatio;
 							}
 						}
@@ -279,35 +280,28 @@
 				}
 				r += "\n";
 				alert(r);
-				for (var i = 0; i < plantIds.length; i++) {
+				alert(viewVal);
+				//for (var i = 0; i < plantIds.length; i++) {
 					for (var j = 0; j < dataArray.length; j++) {
-						if ((dataArray[j].view == viewVal)
-								&& plantIds[i] == dataArray[j].image.plant.id) {
-							r += dataArray[j].date;
-							r += "," + dataArray[j].convexHullArea;
-						}
+						if (dataArray[j].image.view == viewVal) {
+							r += dataArray[j].image.date;
+							for (var i = 0; i < plantIds.length; i++) {
+								if(plantIds[i] == dataArray[j].image.plant.id)
+									{
+									r += "," + dataArray[j].convexHullArea;
+									}	
+							}			
+							}
 						r += "\n";
-						//alert(r);
-					}
-				}
-
+						alert(r);
+							
+							
+							//r += "," + dataArray[j].convexHullArea;
+						}
+						
+					//}
 				console.log(r);
 				return r;
-				//var r = "Date,View 0,View 72\n";
-				//for (var i = 0; i < dataArray.length; i++) {
-				//	if (dataArray[i].view == 0) {
-				//		r += dataArray[i].date;
-				//		r += "," + dataArray[i].convexHullArea;
-				//		for (var j = 0; j < dataArray.length; j++) {
-				//				if((dataArray[j].date == dataArray[i].date) && (dataArray[j].view == 72)) {
-				//					r += "," + dataArray[j].aspectRatio;	
-				//				}
-				//		}
-				//		r += "\n";
-				//	}
-				//}
-				//console.log(r);
-				//return r;
 			}
 
 			function singleViewMultiplePlants(event) {

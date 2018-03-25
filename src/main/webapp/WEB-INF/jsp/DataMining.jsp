@@ -71,7 +71,11 @@
 	<div class="container col-2">
 		<h6>Database Querying Actions</h6>
 		<br>
-
+		
+         <input type = "file" id="file" size = "50" />
+         <br />
+         <button id="fileUpload">File Upload</button>
+      
 
 		<h6>Select..</h6>
 		<div id="sidemabr1">
@@ -79,39 +83,27 @@
 
 			<button type="button"
 				class="btn btn-success btn-block dropdown-toggle"
-				aria-haspopup="true" aria-expanded="false">Species</button>
+				aria-haspopup="true" aria-expanded="false">Classification</button>
 
 			<button class="btn btn-secondary span9 btn-block no-padding"
-				type="button" onclick="plantslistbyspecies()">View plants
-				list</button>
+				type="button" onclick="j48Classification">J48</button>
 			<button class="btn btn-secondary span9 btn-block no-padding"
-				type="button" onclick="treatmentslistbyspecies()">View
-				treatments given</button>
-
-
+				type="button" onclick="naivebayesClassification()">Naive Bayes</button>
+			<button class="btn btn-secondary span9 btn-block no-padding"
+				type="button" onclick="naivebayesClassification()">Support Vector Machine</button>	
 
 			<button type="button"
 				class="btn btn-success btn-block dropdown-toggle"
-				aria-haspopup="true" aria-expanded="false">Species & Plants</button>
+				aria-haspopup="true" aria-expanded="false">Clustering</button>
 			<button class="btn btn-secondary span9 btn-block no-padding"
-				type="button" id="phenotype-data" onclick="phenotypesbyspplnts()">View
-				phenotypic data</button>
-			<button class="btn btn-secondary span9 btn-block no-padding"
-				type="button" onclick="genotypesbyspplnts()">View genotypic
-				data</button>
-			<button class="btn btn-secondary span9 btn-block no-padding"
-				type="button" onclick="imagesequence()">View image sequence</button>
-
-
+				type="button" id="phenotype-data" onclick="kmeansClustering()">K means</button>
 
 			<button type="button"
 				class="btn btn-success btn-block dropdown-toggle"
-				aria-haspopup="true" aria-expanded="false">Species &
-				Treatment</button>
+				aria-haspopup="true" aria-expanded="false">Association</button>
 
 			<button class="btn btn-secondary span9 btn-block no-padding"
-				type="button" onclick="plantsbysptrtmnts()">View plants
-				list</button>
+				type="button" onclick="aprioriAssociation()">Apriori</button>
 
 
 
@@ -154,6 +146,8 @@
 
 	</div>
 </div>
+
+
 
 
 

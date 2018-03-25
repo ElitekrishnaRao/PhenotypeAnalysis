@@ -31,9 +31,9 @@ public class Phenotype implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private int id;
-	@Temporal(TemporalType.DATE)
-	private Date date;
-	private int view;
+	//@Temporal(TemporalType.DATE)
+	//private Date date;
+	//private int view;
 	private double convexHullArea;
 	private double plantPixelArea;
 	private double arealDensity;
@@ -59,22 +59,6 @@ public class Phenotype implements Serializable {
 
 	public void setId(int id) {
 		this.id = id;
-	}
-
-	public Date getDate() {
-		return date;
-	}
-
-	public void setDate(Date date) {
-		this.date = date;
-	}
-
-	public int getView() {
-		return view;
-	}
-
-	public void setView(int view) {
-		this.view = view;
 	}
 
 	public double getConvexHullArea() {

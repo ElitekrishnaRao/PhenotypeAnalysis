@@ -22,10 +22,6 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 @Table(name = "Plant")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Plant implements Serializable{
-
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,26 +34,15 @@ public class Plant implements Serializable{
 	@Column(name = "speciesId")
 	private int speciesId;
 	@Column(name = "genotypeId")
-	private int genotypeId;
-	
+	private int genotypeId;	
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER,mappedBy = "plant")
 	Set<Image> ImagesList;
-	
-//	@ManyToOne
-//    private Treatment treatment;
-//	
-//	public Treatment getTreatment() {
-//		return treatment;
-//	}
-//
-//	public void setTreatment(Treatment treatment) {
-//		this.treatment = treatment;
-//	}
-	
-	
 
 	public int getId() {
 		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
 	}
 	
 	public int getTreatmentId() {
@@ -77,9 +62,7 @@ public class Plant implements Serializable{
 		ImagesList = imagesList;
 	}
 
-	public void setId(int id) {
-		this.id = id;
-	}
+	
 
 	public String getName() {
 		return name;

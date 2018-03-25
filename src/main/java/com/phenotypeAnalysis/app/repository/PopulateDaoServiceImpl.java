@@ -9,7 +9,7 @@ import com.phenotypeAnalysis.app.dao.Plant;
 import com.phenotypeAnalysis.app.dao.Genotype;
 import com.phenotypeAnalysis.app.dao.Image;
 import com.phenotypeAnalysis.app.dao.Phenotype;
-import com.phenotypeAnalysis.app.dao.Plant_Species;
+import com.phenotypeAnalysis.app.dao.Species;
 import com.phenotypeAnalysis.app.dao.Treatment;
 
 @Repository
@@ -35,8 +35,8 @@ public class PopulateDaoServiceImpl implements PopulateDaoService {
 		}
 	}
 	@Override
-	public void populatePlantSpeciesData(Set<Plant_Species> plantspeciesSet) {
-		for (Plant_Species plantspecies : plantspeciesSet) {
+	public void populatePlantSpeciesData(Set<Species> plantspeciesSet) {
+		for (Species plantspecies : plantspeciesSet) {
 			populateDataPlantSpeciesRepository.save(plantspecies);
 		}
 	}

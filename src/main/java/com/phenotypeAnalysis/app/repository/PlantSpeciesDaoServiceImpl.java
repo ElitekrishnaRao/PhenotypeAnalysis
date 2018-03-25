@@ -4,8 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
-import com.phenotypeAnalysis.app.dao.Plant_Species;
+import com.phenotypeAnalysis.app.dao.Species;
 
 @Repository
 public class PlantSpeciesDaoServiceImpl implements PlantSpeciesDaoService{
@@ -13,7 +12,7 @@ public class PlantSpeciesDaoServiceImpl implements PlantSpeciesDaoService{
 	PlantSpeciesRepository populateDataPlantSpeciesRepository;
 
 	@Override
-	public List<Plant_Species> getPlantSpeciesData() {
+	public List<Species> getPlantSpeciesData() {
 		// TODO Auto-generated method stub
 		return populateDataPlantSpeciesRepository.findAll();
 	}

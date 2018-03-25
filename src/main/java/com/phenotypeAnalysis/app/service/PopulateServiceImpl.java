@@ -10,7 +10,7 @@ import com.phenotypeAnalysis.app.dao.Genotype;
 import com.phenotypeAnalysis.app.dao.Image;
 import com.phenotypeAnalysis.app.dao.Phenotype;
 import com.phenotypeAnalysis.app.dao.Plant;
-import com.phenotypeAnalysis.app.dao.Plant_Species;
+import com.phenotypeAnalysis.app.dao.Species;
 import com.phenotypeAnalysis.app.dao.Treatment;
 import com.phenotypeAnalysis.app.repository.PopulateDaoService;
 import com.phenotypeAnalysis.app.util.ReadPhenotype;
@@ -41,7 +41,7 @@ public class PopulateServiceImpl implements PopulateService{
 	public void populatePlantSpeciesData() {
 		// TODO Auto-generated method stub
 		try {
-			Set<Plant_Species> plantspeciesSet = ReadPlantSpecies.readPlantSpeciesData();
+			Set<Species> plantspeciesSet = ReadPlantSpecies.readPlantSpeciesData();
 			populateDaoService.populatePlantSpeciesData(plantspeciesSet);
 		} catch (IOException e) {
 			e.printStackTrace();

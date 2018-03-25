@@ -25,7 +25,7 @@ import com.phenotypeAnalysis.app.dao.Genotype;
 import com.phenotypeAnalysis.app.dao.Image;
 import com.phenotypeAnalysis.app.dao.Phenotype;
 import com.phenotypeAnalysis.app.dao.Plant;
-import com.phenotypeAnalysis.app.dao.Plant_Species;
+import com.phenotypeAnalysis.app.dao.Species;
 import com.phenotypeAnalysis.app.dao.Treatment;
 import com.phenotypeAnalysis.app.service.DatabaseQueryingService;
 import com.phenotypeAnalysis.app.service.PopulateService;
@@ -47,16 +47,16 @@ public class MinningWebController {
 	
 	@RequestMapping("/query")
 	public ModelAndView  databaseQuerying(ModelMap map) { 
-		List<Plant_Species> plantspeciesData = databaseQueryingService.getPlantSpeciesData();
+		List<Species> plantspeciesData = databaseQueryingService.getPlantSpeciesData();
 		map.put("plantspeciesData",plantspeciesData);
-		List<Plant> plantData = databaseQueryingService.getPlantData();
-		map.put("plantData",plantData);
-		List<Treatment> treatmentData = databaseQueryingService.getTreatmentData();
-		map.put("treatmentData",treatmentData);
-		List<Phenotype> phenotypeData = databaseQueryingService.getPhenotypeData();
-		map.put("phenotypeData",phenotypeData);
-		List<Image> imageData = databaseQueryingService.getImageData();
-		map.put("imageData",imageData);
+		//List<Plant> plantData = databaseQueryingService.getPlantData();
+		//map.put("plantData",plantData);
+		//List<Treatment> treatmentData = databaseQueryingService.getTreatmentData();
+		//map.put("treatmentData",treatmentData);
+		//List<Phenotype> phenotypeData = databaseQueryingService.getPhenotypeData();
+		//map.put("phenotypeData",phenotypeData);
+		//List<Image> imageData = databaseQueryingService.getImageData();
+		//map.put("imageData",imageData);
 		List<Genotype> genotypeData = databaseQueryingService.getGenotypeData();
 		map.put("genotypeData",genotypeData);
 		return new ModelAndView("DatabaseQuerying");
@@ -133,16 +133,16 @@ public class MinningWebController {
 	
 	@RequestMapping("/stats")
 	public ModelAndView despStatsVisuals(ModelMap map) { 
-		List<Plant_Species> plantspeciesData = databaseQueryingService.getPlantSpeciesData();
+		List<Species> plantspeciesData = databaseQueryingService.getPlantSpeciesData();
 		map.put("plantspeciesData",plantspeciesData);
-		List<Plant> plantData = databaseQueryingService.getPlantData();
-		map.put("plantData",plantData);
-		List<Treatment> treatmentData = databaseQueryingService.getTreatmentData();
-		map.put("treatmentData",treatmentData);
-		List<Phenotype> phenotypeData = databaseQueryingService.getPhenotypeData();
-		map.put("phenotypeData",phenotypeData);
-		List<Image> imageData = databaseQueryingService.getImageData();
-		map.put("imageData",imageData);
+//		List<Plant> plantData = databaseQueryingService.getPlantData();
+//		map.put("plantData",plantData);
+//		List<Treatment> treatmentData = databaseQueryingService.getTreatmentData();
+//		map.put("treatmentData",treatmentData);
+//		List<Phenotype> phenotypeData = databaseQueryingService.getPhenotypeData();
+//		map.put("phenotypeData",phenotypeData);
+//		List<Image> imageData = databaseQueryingService.getImageData();
+//		map.put("imageData",imageData);
 		List<Genotype> genotypeData = databaseQueryingService.getGenotypeData();
 		map.put("genotypeData",genotypeData);
 		return new ModelAndView("DespStatsVisuals");
@@ -152,16 +152,16 @@ public class MinningWebController {
 	
 	@RequestMapping("/mining")
 	public ModelAndView  dBQueryResults(ModelMap map) { 
-		List<Plant_Species> plantspeciesData = databaseQueryingService.getPlantSpeciesData();
+		List<Species> plantspeciesData = databaseQueryingService.getPlantSpeciesData();
 		map.put("plantspeciesData",plantspeciesData);
-		List<Plant> plantData = databaseQueryingService.getPlantData();
-		map.put("plantData",plantData);
-		List<Treatment> treatmentData = databaseQueryingService.getTreatmentData();
-		map.put("treatmentData",treatmentData);
-		List<Phenotype> phenotypeData = databaseQueryingService.getPhenotypeData();
-		map.put("phenotypeData",phenotypeData);
-		List<Image> imageData = databaseQueryingService.getImageData();
-		map.put("imageData",imageData);
+//		List<Plant> plantData = databaseQueryingService.getPlantData();
+//		map.put("plantData",plantData);
+//		List<Treatment> treatmentData = databaseQueryingService.getTreatmentData();
+//		map.put("treatmentData",treatmentData);
+//		List<Phenotype> phenotypeData = databaseQueryingService.getPhenotypeData();
+//		map.put("phenotypeData",phenotypeData);
+//		List<Image> imageData = databaseQueryingService.getImageData();
+//		map.put("imageData",imageData);
 		List<Genotype> genotypeData = databaseQueryingService.getGenotypeData();
 		map.put("genotypeData",genotypeData);
 		return new ModelAndView("DataMining");

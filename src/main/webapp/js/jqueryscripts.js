@@ -5,9 +5,17 @@ $(function() {
 			e.relatedTarget // previous active tab
 		})
 		$('.dropdown-item').click(function () {
-			console.log("clicked");
+		//	console.log("clicked");
 		window.location = $(this).attr('href');});
 	});
+$(document).ready(function() {
+    $('#example').DataTable( {
+        dom: 'Bfrtip',
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ]
+    } );
+} );
 
 function clearForm(){
 	$("#queryForm").get(0).reset();
@@ -39,13 +47,17 @@ function speciesChange(speciesId) {
 // To get list of plants with selected species Id
 function plantslistbyspecies(event) {
 	var speciesId=sessionStorage.getItem("speciesId");
-	alert(speciesId);
+	//alert(speciesId);
 	$.get( "http://localhost:8080/PhenotypeAnalysis/web/plantsbyspecies/"+speciesId, function( data ) {
     	var opts = $.parseJSON(data);
     	$('#plantslisttable').dataTable({
     		data: opts,
     		//$('#results-div div').empty();
     		destroy: true,
+    		dom: 'Bfrtip',
+            buttons: [
+                'copy', 'csv', 'excel', 'pdf', 'print'
+            ],
     		"columns": [
                 { "data": "id",
                    title: "Plant ID"},
@@ -73,6 +85,10 @@ function plantsbysptrtmnts(event) {
 		$('#plantsbysptreatments').dataTable({
     		data: opts,
     		destroy: true,
+    		dom: 'Bfrtip',
+            buttons: [
+                'copy', 'csv', 'excel', 'pdf', 'print'
+            ],
     		"columns": [
                 { "data": "id",
                    title: "Plant ID"},
@@ -94,6 +110,10 @@ function treatmentslistbyspecies(event) {
     	$('#treatmentdatatable').dataTable({
     		data: opts,
     		destroy: true,
+    		dom: 'Bfrtip',
+            buttons: [
+                'copy', 'csv', 'excel', 'pdf', 'print'
+            ],
     		"columns": [
                 { "data": "id",
                    title: "Treatment ID"},
@@ -125,6 +145,10 @@ function phenotypesbyspplnts(event) {
 		$('#phenotypedatatable').dataTable({
 			data: opts,
     		destroy: true,
+    		dom: 'Bfrtip',
+            buttons: [
+                'copy', 'csv', 'excel', 'pdf', 'print'
+            ],
 			"columns": [
                 { "data": "image.plant.id",
                    title: "Plant ID"},
@@ -133,11 +157,19 @@ function phenotypesbyspplnts(event) {
                 { "data": "image.date",
                    title: "Date"},
                 { "data": "convexHullArea",
-                   title: "Convex Hull Area"},  
+                   title: "Convex Hull Area",
+                   "render": function(data, type, row){ 
+                	   return Math.round(data*100)/100;
+                   }
+                },  
                 { "data": "plantPixelArea",
                    title: "Plant Pixel Area"},
                 { "data": "arealDensity",
-                   title: "Areal Density"},
+                   title: "Areal Density",
+                   "render": function(data, type, row){ 
+                	   return Math.round(data*100)/100;
+                   }
+                },
                 { "data": "boundingBoxHt",
                    title: "Bounding Box Height"},
                 { "data": "enclosingCircleDiameter",
@@ -149,6 +181,108 @@ function phenotypesbyspplnts(event) {
 		
 	});
 	sessionStorage.setItem("plantIds", plantIds);
+}
+
+function phenotypesbyspplntstrmnts(event) {
+	var speciesId=sessionStorage.getItem("speciesId");
+	
+	//Specifying which select in JSP page selects multiple plants
+	var el = document.getElementsByTagName('select')[1];
+	var plantIds =[];
+	//Getting plants Id's of selected plants
+	plantIds=getSelectValues(el);
+	//alert(plantIds);
+	
+//	var elt = document.getElementsByTagName('select')[2];
+//	var treatmentIds =[];
+//	treatmentIds=getSelectValues(elt);
+//	alert(treatmentIds);
+	
+	var selectedPhen = document.getElementById("phenotype-selected");
+	var phenChosen = selectedPhen.options[selectedPhen.selectedIndex].value;
+	var phenotype =[];
+	//alert(phenChosen);
+	
+	$.get( "http://localhost:8080/PhenotypeAnalysis/web/phenotypesbyspplnts/"+speciesId+"/"+plantIds, function(data ) {
+		var opts = $.parseJSON(data);
+		//console.log(opts);
+		
+		if (phenChosen=="cha" ) {
+			phenotype="convexHullArea";
+			alert(phenotype);
+		} 
+		else if (phenChosen=="ppa") {
+			phenotype="plantPixelArea";
+		} 
+		else if (phenChosen=="ad") {
+			phenotype="arealDensity";
+		}
+		else if (phenChosen=="bbh") {
+			phenotype="boundingBoxHt";
+		} 
+		else if (phenChosen=="ecd") {
+			phenotype="enclosingCircleDiameter";
+		} 
+		else if (phenChosen=="ar") {
+			phenotype="aspectRatio";
+		} 
+		else{
+			alert("Phenotype not specified");
+		}
+		
+		$('#phenotypedatatable').dataTable({
+			data: opts,
+    		destroy: true,
+    		dom: 'Bfrtip',
+            buttons: [
+                'copy', 'csv', 'excel', 'pdf', 'print'
+            ],
+			"columns": [
+                { "data": "image.plant.id",
+                   title: "Plant ID"},
+                { "data": "image.view",
+                   title: "View"},
+                { "data": "image.date",
+                   title: "Date"},
+                { "data": phenotype,
+                   title: phenotype},
+                { "data": "image.plant.treatmentId",
+                   title: "Treatment Id"} 
+            ]  		 			
+		 });
+		
+		//$('#results-div div').empty();
+//		$('#phenotypedatatable').dataTable({
+//			data: opts,
+//    		destroy: true,
+//    		dom: 'Bfrtip',
+//            buttons: [
+//                'copy', 'csv', 'excel', 'pdf', 'print'
+//            ],
+//			"columns": [
+//                { "data": "image.plant.id",
+//                   title: "Plant ID"},
+//                { "data": "image.view",
+//                   title: "View"},
+//                { "data": "image.date",
+//                   title: "Date"},
+//                { "data": "convexHullArea",
+//                   title: "Convex Hull Area"},  
+//                { "data": "plantPixelArea",
+//                   title: "Plant Pixel Area"},
+//                { "data": "arealDensity",
+//                   title: "Areal Density"},
+//                { "data": "boundingBoxHt",
+//                   title: "Bounding Box Height"},
+//                { "data": "enclosingCircleDiameter",
+//                   title: "Enclosing Circle Diameter"},
+//                { "data": "aspectRatio",
+//                   title: "Aspect Ratio"}  
+//            ]  		 			
+//		 });
+		
+	});
+	//sessionStorage.setItem("plantIds", plantIds);
 }
 
 
@@ -171,15 +305,21 @@ function getSelectValues(select) {
 
 //Image sequence for selected list of plants
 function imagesequence(event) {
-	var plantsIds=sessionStorage.getItem("plantIds");
-	var speciesId=sessionStorage.getItem("speciesId");
+	//var plantsIds=sessionStorage.getItem("plantIds");
+	var el = document.getElementsByTagName('select')[1];
+	var plantsIds =[];
+	//Getting plants Id's of selected plants
+	plantsIds=getSelectValues(el);
 	//alert(plantsIds);
+	var speciesId=sessionStorage.getItem("speciesId");
+	alert(plantsIds);
 	 $.get( "http://localhost:8080/PhenotypeAnalysis/web/phenotypesbyspplnts/"+speciesId+"/"+plantsIds, function(data ) {
 			var opts = $.parseJSON(data);
 			//console.log(opts);
 			$('#phenotypedatatable').dataTable({
 				data: opts,
 	    		destroy: true,
+	    		
 				"columns": [
 	                { "data": "image.plant.id",
 	                   title: "Plant ID"},
@@ -199,4 +339,6 @@ function imagesequence(event) {
 		});
 	
 }
+
+
 

@@ -42,8 +42,8 @@
 			</select> 
 			
 			<label>Phenotypes</label> <select multiple name="phenotypes"
-				class="form-control">
-				<option value="all">All</option>
+				class="form-control" id="phenotype-selected">
+				<!--  <option value="all">All</option> -->
 				<option value="cha">Convex Hull Area</option>
 				<option value="ppa">Plant Pixel Area</option>
 				<option value="ad">Areal Density</option>
@@ -56,7 +56,7 @@
 					<option value="${genotype.id}">${genotype.id}-
 						${genotype.genotypeName}</option>
 				</c:forEach>
-			</select> <label>Views</label> <select name="views" class="form-control">
+			</select> <label>Viewing Angle</label> <select name="views" class="form-control">
 				<option value="0">0</option>
 				<option value="72">72</option>
 				<option value="144">144</option>
@@ -112,6 +112,9 @@
 			<button class="btn btn-secondary span9 btn-block no-padding"
 				type="button" onclick="plantsbysptrtmnts()">View plants
 				list</button>
+			<button class="btn btn-secondary span9 btn-block no-padding"
+				type="button" id="plant-phen-treat-data" onclick="phenotypesbyspplntstrmnts()">View
+				phenotypic data</button>	
 
 
 

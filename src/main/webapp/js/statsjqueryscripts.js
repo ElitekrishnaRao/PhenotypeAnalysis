@@ -5,7 +5,7 @@ $(function() {
 			e.relatedTarget // previous active tab
 		})
 		$('.dropdown-item').click(function () {
-			console.log("clicked");
+			//console.log("clicked");
 		window.location = $(this).attr('href');});
 	});
 
@@ -61,11 +61,15 @@ function calphenomean(event) {
 	var speciesId=sessionStorage.getItem("speciesId");
 	 $.get( "http://localhost:8080/PhenotypeAnalysis/web/phenmeansbyspplnts/"+speciesId+"/"+plantIds, function(data) {
 			var opts = $.parseJSON(data);
-			console.log(opts);
+			//console.log(opts);
 			
 			$('#phenmeantable').dataTable({
 				"data": opts,
-				destroy: true
+				destroy: true,
+				dom: 'Bfrtip',
+	            buttons: [
+	                'copy', 'csv', 'excel', 'pdf', 'print'
+	            ]
 			 });
 			$('#phenmeantable').removeClass("hidden");
 	});

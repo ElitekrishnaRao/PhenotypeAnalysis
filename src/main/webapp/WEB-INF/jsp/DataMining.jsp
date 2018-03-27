@@ -1,7 +1,7 @@
 <%@include file="Header.jsp"%>
 
 <h2 style="color: white; background-color: #000000;">
-	<img src="../img/Logo3.png">
+	<img src="../img/Logo4.PNG">
 </h2>
 
 <div class="container" style="color: black; background-color: #E8E8E8;">
@@ -9,7 +9,7 @@
 		<a class="nav-link nav-item" href="home">Home</a> <a
 			class="nav-link nav-item " href="query" id="dbquery">Database
 			Querying</a> <a class="nav-link nav-item" href="stats">Descriptive
-			Statistics & Visualizations</a> <a class="nav-link nav-item active" 
+			Statistics & Visualizations</a> <a class="nav-link nav-item active"
 			href="mining">Data Mining Tasks</a>
 	</nav>
 </div>
@@ -20,30 +20,25 @@
 	<div class="container col-2"
 		style="color: black; background-color: #DCDCDC;">
 		<h6>Database Filters</h6>
-		<form class="px-2 py-2" id="queryForm" >
-			
+		<form class="px-2 py-2" id="queryForm">
+
 			<label for="inputsm">Species</label> <select name="species"
 				class="form-control input-sm" id="speciesid"
 				onchange="speciesChange(this);">
-				<option > -- Select Species -- </option>
+				<option>-- Select Species --</option>
 				<c:forEach var="species" items="${plantspeciesData}"
 					varStatus="yourStatus">
 					<option id="${yourStatus.index}" value="${species.id}">${species.speciesName}</option>
 				</c:forEach>
-			</select> 
-			
-			
-			<label>Plants</label> <select multiple name="plants" id="plant-data"
+			</select> <label>Plants</label> <select multiple name="plants" id="plant-data"
 				class="form-control">
-			</select> 
-			
-			<label>Treatments</label> <select multiple name="treatments"
+				<option>-- Plants --</option>
+			</select> <label>Treatments</label> <select multiple name="treatments"
 				id="treatment-data" class="form-control">
-			</select> 
-			
-			<label>Phenotypes</label> <select multiple name="phenotypes"
+				<option>-- Treatments --</option>
+			</select> <label>Phenotypes</label> <select multiple name="phenotypes"
 				class="form-control">
-				<option value="all">All</option>
+				<!-- <option value="all">All</option> -->
 				<option value="cha">Convex Hull Area</option>
 				<option value="ppa">Plant Pixel Area</option>
 				<option value="ad">Areal Density</option>
@@ -62,22 +57,18 @@
 				<option value="144">144</option>
 				<option value="216">216</option>
 				<option value="288">288</option>
-			</select> <br> 
-			<input type="button" onclick="clearForm()"
+			</select> <br> <input type="button" onclick="clearForm()"
 				class="btn btn-secondary" value="Clear Search" />
 		</form>
 	</div>
 
 	<div class="container col-2">
-		<h6>Database Querying Actions</h6>
+		<h6>Upload Input Data File</h6>
+		<br> <input type="file" id="file" size="50" /> <br>
+		<button id="fileUpload">File Upload</button>
+		<br> <br>
+		<h6>Data Mining Actions</h6>
 		<br>
-		
-         <input type = "file" id="file" size = "50" />
-         <br />
-         <button id="fileUpload">File Upload</button>
-      
-
-		<h6>Select..</h6>
 		<div id="sidemabr1">
 
 
@@ -88,15 +79,18 @@
 			<button class="btn btn-secondary span9 btn-block no-padding"
 				type="button" onclick="j48Classification">J48</button>
 			<button class="btn btn-secondary span9 btn-block no-padding"
-				type="button" onclick="naivebayesClassification()">Naive Bayes</button>
+				type="button" onclick="naivebayesClassification()">Naive
+				Bayes</button>
 			<button class="btn btn-secondary span9 btn-block no-padding"
-				type="button" onclick="naivebayesClassification()">Support Vector Machine</button>	
+				type="button" onclick="naivebayesClassification()">Support
+				Vector Machine</button>
 
 			<button type="button"
 				class="btn btn-success btn-block dropdown-toggle"
 				aria-haspopup="true" aria-expanded="false">Clustering</button>
 			<button class="btn btn-secondary span9 btn-block no-padding"
-				type="button" id="phenotype-data" onclick="kmeansClustering()">K means</button>
+				type="button" id="phenotype-data" onclick="kmeansClustering()">K
+				means</button>
 
 			<button type="button"
 				class="btn btn-success btn-block dropdown-toggle"
@@ -121,8 +115,7 @@
 	</div>
 
 	<div class="container col-8 ScrollStyle" id="results-div">
-		<p>Here you can perform database querying based on plants and
-			obtain associated phenotypic, genotypic, treatments data.</p>
+		<p>Data Mining Results</p>
 		<!-- <p id="demo"></p>   -->
 
 		<table id="plantslisttable" class="table table-striped table-bordered"

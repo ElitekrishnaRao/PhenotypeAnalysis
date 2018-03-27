@@ -1,7 +1,7 @@
 <%@include file="Header.jsp"%>
 
 <h2 style="color: white; background-color: #000000;">
-	<img src="../img/Logo3.png">
+	<img src="../img/Logo4.PNG">
 </h2>
 
 
@@ -25,18 +25,20 @@
 			<label for="inputsm">Species</label> <select name="species"
 				class="form-control input-sm" id="speciesid"
 				onchange="speciesChange(this);">
-				<option > -- Select Species -- </option>
+				<option>-- Select Species --</option>
 				<c:forEach var="species" items="${plantspeciesData}"
 					varStatus="yourStatus">
 					<option id="${yourStatus.index}" value="${species.id}">${species.speciesName}</option>
 				</c:forEach>
 			</select> <label>Plants</label> <select multiple name="plants" id="plant-data"
 				class="form-control">
+				<option>-- Plants --</option>
 			</select> <label>Treatments</label> <select multiple name="treatments"
 				id="treatment-data" class="form-control">
+				<option>-- Treatments --</option>
 			</select> <label>Phenotypes</label> <select multiple name="phenotypes"
 				class="form-control">
-				<option value="all">All</option>
+				<!-- <option value="all">All</option> -->
 				<option value="cha">Convex Hull Area</option>
 				<option value="ppa">Plant Pixel Area</option>
 				<option value="ad">Areal Density</option>
@@ -49,8 +51,8 @@
 					<option value="${genotype.id}">${genotype.id}-
 						${genotype.genotypeName}</option>
 				</c:forEach>
-			</select> <label>Viewing Angle</label> <select name="views" class="form-control"
-				id="viewSelected">
+			</select> <label>Viewing Angle</label> <select name="views"
+				class="form-control" id="viewSelected">
 				<option value="0">0</option>
 				<option value="72">72</option>
 				<option value="144">144</option>
@@ -67,10 +69,14 @@
 
 		<div id="sidemabr1">
 			<h6>Descriptive Statistics</h6>
+			<br>
+
+
+			<h6>Select..</h6>
 			<button type="button"
 				class="btn btn-success btn-block dropdown-toggle"
 				data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Species,
-				Plants, Phenotypes</button>
+				Plants & Phenotypes</button>
 
 			<button class="btn btn-secondary span9 btn-block no-padding"
 				type="button" onclick="calphenomean()">View mean values</button>
@@ -81,16 +87,19 @@
 				deviation values</button>
 			<p></p>
 			<h6>Visualizations</h6>
+			<br>
+			<h6>Select..</h6>
 			<button type="button"
 				class="btn btn-success btn-block dropdown-toggle"
-				aria-haspopup="true" aria-expanded="false">Visualizations</button>
+				aria-haspopup="true" aria-expanded="false">Plants & Viewing
+				angles</button>
 
 			<button class="btn btn-secondary span9 btn-block no-padding"
 				type="button" onclick="singlePlantMultipleViews()">Single
-				Plant, Multiple Views</button>
+				Plant, Multiple View Angles</button>
 			<button class="btn btn-secondary span9 btn-block no-padding"
 				type="button" onclick="singleViewMultiplePlants()">Multiple
-				Plants, Single View</button>
+				Plants, Single View Angle</button>
 
 
 			<!-- 	<div class="btn-group dropright span9 btn-block no-padding">
@@ -116,7 +125,7 @@
 	</div>
 
 	<div class="container col-8 ScrollStyle" id="results-div">
-		<p>Descriptive stats and visualizations</p>
+		<p>Descriptive statistics/visualizations Results</p>
 		<p id="demo"></p>
 
 		<table id="phenmeantable"
@@ -125,7 +134,7 @@
 			<thead>
 				<tr>
 					<th>Plant ID</th>
-					<th>View</th>
+					<th>View Angle</th>
 					<th>CHA Mean</th>
 					<th>PPA Mean</th>
 					<th>AD Mean</th>
@@ -153,7 +162,7 @@
 			function getDateVsChaChart(dataArray) {
 				//alert('hello');
 				//alert(dateArrayLength);
-				var r = "Date,View 0,View 72\n";
+				var r = "Date,View Angle 0,View Angle 72\n";
 				for (var i = 0; i < dataArray.length; i++) {
 					if (dataArray[i].image.view == 0) {
 						r += dataArray[i].image.date;
@@ -176,7 +185,7 @@
 			}
 			// for a single/multiple plants - PPA in different views (clear if we use it for single plant - shown in multiple views)
 			function getDateVsPpaChart(dataArray) {
-				var r = "Date,View 0,View 72\n";
+				var r = "Date,View Angle 0,View Angle 72\n";
 				for (var i = 0; i < dataArray.length; i++) {
 					if (dataArray[i].image.view == 0) {
 						r += dataArray[i].image.date;
@@ -195,7 +204,7 @@
 			}
 			// for a single/multiple plants - Ad in different views (clear if we use it for single plant - shown in multiple views)
 			function getDateVsAdChart(dataArray) {
-				var r = "Date,View 0,View 72\n";
+				var r = "Date,View Angle 0,View Angle 72\n";
 				for (var i = 0; i < dataArray.length; i++) {
 					if (dataArray[i].image.view == 0) {
 						r += dataArray[i].image.date;
@@ -214,7 +223,7 @@
 			}
 			// for a single/multiple plants - Bbh in different views (clear if we use it for single plant - shown in multiple views)
 			function getDateVsBbhChart(dataArray) {
-				var r = "Date,View 0,View 72\n";
+				var r = "Date,View Angle 0,View Angle 72\n";
 				for (var i = 0; i < dataArray.length; i++) {
 					if (dataArray[i].image.view == 0) {
 						r += dataArray[i].image.date;
@@ -233,7 +242,7 @@
 			}
 			// for a single/multiple plants - Ad in different views (clear if we use it for single plant - shown in multiple views)
 			function getDateVsEcdChart(dataArray) {
-				var r = "Date,View 0,View 72\n";
+				var r = "Date,View Angle 0,View Angle 72\n";
 				for (var i = 0; i < dataArray.length; i++) {
 					if (dataArray[i].image.view == 0) {
 						r += dataArray[i].image.date;
@@ -252,7 +261,7 @@
 			}
 			// for a single/multiple plants - Ar in different views (clear if we use it for single plant - shown in multiple views)
 			function getDateVsArChart(dataArray) {
-				var r = "Date,View 0,View 72\n";
+				var r = "Date,View Angle 0,View Angle 72\n";
 				for (var i = 0; i < dataArray.length; i++) {
 					if (dataArray[i].image.view == 0) {
 						r += dataArray[i].image.date;
@@ -282,24 +291,22 @@
 				alert(r);
 				alert(viewVal);
 				//for (var i = 0; i < plantIds.length; i++) {
-					for (var j = 0; j < dataArray.length; j++) {
-						if (dataArray[j].image.view == viewVal) {
-							r += dataArray[j].image.date;
-							for (var i = 0; i < plantIds.length; i++) {
-								if(plantIds[i] == dataArray[j].image.plant.id)
-									{
-									r += "," + dataArray[j].convexHullArea;
-									}	
-							}			
+				for (var j = 0; j < dataArray.length; j++) {
+					if (dataArray[j].image.view == viewVal) {
+						r += dataArray[j].image.date;
+						for (var i = 0; i < plantIds.length; i++) {
+							if (plantIds[i] == dataArray[j].image.plant.id) {
+								r += "," + dataArray[j].convexHullArea;
 							}
-						r += "\n";
-						alert(r);
-							
-							
-							//r += "," + dataArray[j].convexHullArea;
 						}
-						
-					//}
+					}
+					r += "\n";
+					alert(r);
+
+					//r += "," + dataArray[j].convexHullArea;
+				}
+
+				//}
 				console.log(r);
 				return r;
 			}

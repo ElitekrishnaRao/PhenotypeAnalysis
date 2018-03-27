@@ -12,9 +12,9 @@
 	integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
 	crossorigin="anonymous">
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"
-		integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
-		crossorigin="anonymous"></script>
-		
+	integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+	crossorigin="anonymous"></script>
+
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script
@@ -22,13 +22,10 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
 <style>
-		
-<script type="text/javascript" src="../js/jqueryscripts.js"></script>
-<link rel="stylesheet" src="../css/Custom.css">
-
-<style>
-/* Make the image fully responsive */
-.carousel-inner img {
+<
+script type ="text/javascript" src ="../js/jqueryscripts.js "> </script>
+	<link rel ="stylesheet" src ="../css/Custom.css "> <style>
+	/* Make the image fully responsive */ .carousel-inner img {
 	width: 100%;
 	height: 100%;
 }
@@ -38,32 +35,56 @@
 <body background="../img/4.jpg">
 
 
-			<h2 style="color:white; background-color:#000000; "><img src="../img/Logo3.png"></h2>
-			
-			
-		
-	<div class="container" style="color:black; background-color: #d1e0e0; ">
-	<nav class="nav nav-pills nav-fill">
-			<a class="nav-link nav-item active" href="home">Home</a> 
-			<a class="nav-link nav-item" href="query">Database Querying</a> 
-			<a class="nav-link nav-item" href="stats">Descriptive Statistics & Visualizations</a> 
-			<a class="nav-link nav-item" href="mining">Data Mining Tasks</a>
+	<h2 style="color: white; background-color: #000000;">
+		<img src="../img/Logo4.PNG">
+	</h2>
+
+
+
+	<div class="container" style="color: black; background-color: #d1e0e0;">
+		<nav class="nav nav-pills nav-fill">
+			<a class="nav-link nav-item active" href="home">Home</a> <a
+				class="nav-link nav-item" href="query">Database Querying</a> <a
+				class="nav-link nav-item" href="stats">Descriptive Statistics &
+				Visualizations</a> <a class="nav-link nav-item" href="mining">Data
+				Mining Tasks</a>
 		</nav>
-	</div>	
-	<div class="container" style="color:black; background-color: white; ">
-		
-		
+	</div>
+	<div class="container" style="color: black; background-color: white;">
+
+
 		<br>
-		<p>Genotype and Phenotype are basic terms of biology that are
-			related to each other. Genotype is a gene or set of genes which are
-			responsible for genetic characteristics of organisms, usually
-			inherited from parents. Phenotypes are observable characteristics of
-			organisms such as physical or behavioural characteristics which
-			results from interaction between genotypes and environment.</p>
+		<p> The plants' phenotypic knowledge discovery is
+			necessary for plant scientists, researchers and practitioners to make
+			better decisions based on one's research requirements such as
+			improving crop yields, deciding whether the treatment provided to the
+			plant species is efficient or not, etc. With the rise of greenhouse
+			facilities, numerous plant species are being grown year-round with
+			varied environmental conditions. The images of these plants are
+			captured for a sequence of days, in multiple views and angles using
+			diverse imaging modalities. These images are used to compute various
+			component based or holistic phenotypes using 2D or 3D image
+			processing techniques. This project is motivated by the need to
+			organize such high dimensional phenome data and explore various
+			strategies to analyze, visualize and mine. In this project, we
+			developed a data model by identifying principal entities related to
+			the plants and implemented a prototype of integrated framework
+			PhenomeD<sup>2</sup>. </p>
+			
+			<p> PhenomeD<sup>2</sup> is the integration of database querying,
+			descriptive statistics, visualizations and data mining components. In
+			this prototype, a few use cases are implemented in each of these
+			components and other actions are listed that can be implemented in
+			future. Our implementation integrates Weka, a data mining open source
+			tool and Dygraphs, a Java script charting library for visualizing
+			time series data that provides scope to include complex
+			functionalities to the framework in future. We analysed the scope for
+			expanding data model and include genome sequences for implementing
+			QTL/GWAS mappings to relate the genotypes and phenotypes in future.</p>
 		<br>
 
 		<div class="row">
-			<div class="col-4">
+			<div class="col-6">
 				<p>Below are the components for analysis on plant phenotype
 					data:
 				</li> <br>
@@ -75,7 +96,7 @@
 				</p>
 			</div>
 
-			<div class="col-8">
+			<div class="col-6">
 				<div id="demo" class="carousel slide" data-ride="carousel">
 
 					<!-- Indicators -->
@@ -88,16 +109,16 @@
 					<!-- The slideshow -->
 					<div class="carousel-inner">
 						<div class="carousel-item active">
-							<img src="../img/PlantImage5.jpg" alt="Plant1" width="1100"
-								height="500">
+							<img src="../img/PlantImage5.jpg" alt="Plant1" width="700"
+								height="300">
 						</div>
 						<div class="carousel-item">
-							<img src="../img/PlantImage3.jpg" alt="Plant2" width="1100"
-								height="500">
+							<img src="../img/PlantImage3.jpg" alt="Plant2" width="700"
+								height="300">
 						</div>
 						<div class="carousel-item">
-							<img src="../img/PlantImage4.jpg" alt="Plant3" width="1100"
-								height="500">
+							<img src="../img/PlantImage4.jpg" alt="Plant3" width="700"
+								height="300">
 						</div>
 					</div>
 
@@ -112,7 +133,7 @@
 		</div>
 	</div>
 	<script type="text/javascript" src="../js/bootstrap.min.js"></script>
-<!-- 	<script type="text/javascript" src="../js/dist/jquery-slim.min.js"></script>  -->
+	<!-- 	<script type="text/javascript" src="../js/dist/jquery-slim.min.js"></script>  -->
 	<script type="text/javascript" src="../js/dist/popper.min.js"></script>
 	<script type="text/javascript" src="../js/dist/util.js"></script>
 	<script type="text/javascript" src="../js/dist/tab.js"></script>
@@ -121,8 +142,9 @@
 
 
 
-<div id="footer" style= "color: white; background-color: #000000; position: absolute; bottom: 0; width: 100%;height: 30px;"> University Of Nebraska Lincoln
-</div>
+	<div id="footer"
+		style="color: white; background-color: #000000;  bottom: 0; width: 100%; height: 30px;">
+		 University Of Nebraska Lincoln - Plant Vision Initiative</div>
 
 
 </body>

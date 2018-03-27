@@ -153,7 +153,7 @@ function phenotypesbyspplnts(event) {
                 { "data": "image.plant.id",
                    title: "Plant ID"},
                 { "data": "image.view",
-                   title: "View"},
+                   title: "View Angle"},
                 { "data": "image.date",
                    title: "Date"},
                 { "data": "convexHullArea",
@@ -163,7 +163,10 @@ function phenotypesbyspplnts(event) {
                    }
                 },  
                 { "data": "plantPixelArea",
-                   title: "Plant Pixel Area"},
+                   title: "Plant Pixel Area",
+                   "render": function(data, type, row){ 
+                	   return Math.round(data*100)/100;
+                   }},
                 { "data": "arealDensity",
                    title: "Areal Density",
                    "render": function(data, type, row){ 
@@ -171,11 +174,20 @@ function phenotypesbyspplnts(event) {
                    }
                 },
                 { "data": "boundingBoxHt",
-                   title: "Bounding Box Height"},
+                   title: "Bounding Box Height",
+                   "render": function(data, type, row){ 
+                	   return Math.round(data*100)/100;
+                   }},
                 { "data": "enclosingCircleDiameter",
-                   title: "Enclosing Circle Diameter"},
+                   title: "Enclosing Circle Diameter",
+                   "render": function(data, type, row){ 
+                	   return Math.round(data*100)/100;
+                   }},
                 { "data": "aspectRatio",
-                   title: "Aspect Ratio"}  
+                   title: "Aspect Ratio",
+                   "render": function(data, type, row){ 
+                	   return Math.round(data*100)/100;
+                   }}  
             ]  		 			
 		 });
 		
@@ -241,11 +253,14 @@ function phenotypesbyspplntstrmnts(event) {
                 { "data": "image.plant.id",
                    title: "Plant ID"},
                 { "data": "image.view",
-                   title: "View"},
+                   title: "View Angle"},
                 { "data": "image.date",
                    title: "Date"},
                 { "data": phenotype,
-                   title: phenotype},
+                   title: phenotype,
+                   "render": function(data, type, row){ 
+                	   return Math.round(data*100)/100;
+                   }},
                 { "data": "image.plant.treatmentId",
                    title: "Treatment Id"} 
             ]  		 			
@@ -324,7 +339,7 @@ function imagesequence(event) {
 	                { "data": "image.plant.id",
 	                   title: "Plant ID"},
 	                { "data": "image.view",
-	                   title: "View"},
+	                   title: "View Angle"},
 	                { "data": "image.date",
 	                   title: "Date"},
 	                { "data": "image.filePath",

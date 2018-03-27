@@ -1,7 +1,7 @@
 <%@include file="Header.jsp"%>
 
 <h2 style="color: white; background-color: #000000;">
-	<img src="../img/Logo3.png">
+	<img src="../img/Logo4.PNG">
 </h2>
 
 <div class="container" style="color: black; background-color: #E8E8E8;">
@@ -35,10 +35,12 @@
 			
 			<label>Plants</label> <select multiple name="plants" id="plant-data"
 				class="form-control">
+				<option > -- Plants -- </option>
 			</select> 
 			
 			<label>Treatments</label> <select multiple name="treatments"
 				id="treatment-data" class="form-control">
+				<option > -- Treatments -- </option>
 			</select> 
 			
 			<label>Phenotypes</label> <select multiple name="phenotypes"
@@ -95,9 +97,9 @@
 				aria-haspopup="true" aria-expanded="false">Species & Plants</button>
 			<button class="btn btn-secondary span9 btn-block no-padding"
 				type="button" id="phenotype-data" onclick="phenotypesbyspplnts()">View
-				phenotypic data</button>
+				phenotypes data</button>
 			<button class="btn btn-secondary span9 btn-block no-padding"
-				type="button" onclick="genotypesbyspplnts()">View genotypic
+				type="button" onclick="genotypesbyspplnts()">View genotypes
 				data</button>
 			<button class="btn btn-secondary span9 btn-block no-padding"
 				type="button" onclick="imagesequence()">View image sequence</button>
@@ -114,7 +116,7 @@
 				list</button>
 			<button class="btn btn-secondary span9 btn-block no-padding"
 				type="button" id="plant-phen-treat-data" onclick="phenotypesbyspplntstrmnts()">View
-				phenotypic data</button>	
+				phenotype, treatment data</button>	
 
 
 
@@ -132,8 +134,7 @@
 	</div>
 
 	<div class="container col-8 ScrollStyle" id="results-div">
-		<p>Here you can perform database querying based on plants and
-			obtain associated phenotypic, genotypic, treatments data.</p>
+		<p>Database Querying Results</p>
 		<!-- <p id="demo"></p>   -->
 
 		<table id="plantslisttable" class="table table-striped table-bordered"

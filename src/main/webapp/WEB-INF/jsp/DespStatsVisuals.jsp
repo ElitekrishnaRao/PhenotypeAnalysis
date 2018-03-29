@@ -347,7 +347,7 @@
 				var plantIds = [];
 				//Getting plants Id's of selected plants
 				plantIds = getSelectValues(el);
-				//alert(speciesId);
+				
 				$.get(
 						"http://localhost:8080/PhenotypeAnalysis/web/phenotypesbyspplnts/"
 								+ speciesId + "/" + plantIds, function(data) {
@@ -363,7 +363,7 @@
 								legend : 'always',
 								showRangeSelector : true
 							});
-							//alert('hi');
+							
 						});
 				$.get(
 						"http://localhost:8080/PhenotypeAnalysis/web/phenotypesbyspplnts/"

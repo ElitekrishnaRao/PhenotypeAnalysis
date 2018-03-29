@@ -9,49 +9,6 @@ $(function() {
 		window.location = $(this).attr('href');});
 	});
 
-//If a species Id is changed, then populate related plants and treatments in below drop downs
-//function speciesChange(speciesId) {
-//			var idx = speciesId.selectedIndex;
-//			var which = speciesId.options[idx].value; 
-//		    //document.getElementById("demo").innerHTML = "You selected" + which;
-//		    $.get( "http://localhost:8080/PhenotypeAnalysis/web/plantsbyspecies/"+which, function( data ) {
-//		    	var opts = $.parseJSON(data);
-//                $('#plant-data').html('');
-//                $.each(opts, function(i, d) {
-//                    $('#plant-data').append('<option value="' + d.id + '">' + d.name + '</option>');
-//                });
-//                //Setting species Id in session
-//                sessionStorage.setItem("speciesId", which);
-//	    	});
-//		    $.get( "http://localhost:8080/PhenotypeAnalysis/web/treatmentsbyspecies/"+which, function( data ) {
-//		    	var opts = $.parseJSON(data);
-//		    	$('#treatment-data').html('');
-//		    	
-//		        $.each(opts, function(i, d) {
-//		        	 $('#treatment-data').append('<option value="' + d.id 
-//								+ '">' + d.experimentType 
-//								+ '-' + d.treatment 
-//								+ '</option>');
-//		        });
-//			});
-//		}
-
-//function getSelectValues(select) {
-//	  var result = [];
-//	  var options = select && select.options;
-//	  var opt;
-//
-//	  for (var i=0, iLen=options.length; i<iLen; i++) {
-//	    opt = options[i];
-//
-//	    if (opt.selected) {
-//	      //alert(opt);
-//	      result.push(opt.value || opt.text);
-//	    }
-//	  }
-//	  return result;
-//	}
-
 //Stats Functions
 //Mean for phenotypes
 function calphenomean(event) {
@@ -59,6 +16,11 @@ function calphenomean(event) {
 	var plantIds =[];
 	plantIds=getSelectValues(el);
 	var speciesId=sessionStorage.getItem("speciesId");
+	if(!isValid(speciesId,plantIds)){
+		alert("Both Species and plants should be selected in filter menu to generate data");
+		return;
+	}
+	showOnlyActiveTable("phenmeantable");
 	 $.get( "http://localhost:8080/PhenotypeAnalysis/web/phenmeansbyspplnts/"+speciesId+"/"+plantIds, function(data) {
 			var opts = $.parseJSON(data);
 			//console.log(opts);

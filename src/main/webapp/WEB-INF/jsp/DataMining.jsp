@@ -77,19 +77,19 @@
 				aria-haspopup="true" aria-expanded="false">Classification</button>
 
 			<button class="btn btn-secondary span9 btn-block no-padding"
-				type="button" onclick="j48Classification">J48</button>
+				type="button" onclick="invokeClassification('J48')">J48</button>
 			<button class="btn btn-secondary span9 btn-block no-padding"
-				type="button" onclick="naivebayesClassification()">Naive
+				type="button" onclick="invokeClassification('NaiveBayes')">Naive
 				Bayes</button>
 			<button class="btn btn-secondary span9 btn-block no-padding"
-				type="button" onclick="naivebayesClassification()">Support
+				type="button" onclick="invokeClassification('SVM')">Support
 				Vector Machine</button>
 
 			<button type="button"
 				class="btn btn-success btn-block dropdown-toggle"
 				aria-haspopup="true" aria-expanded="false">Clustering</button>
 			<button class="btn btn-secondary span9 btn-block no-padding"
-				type="button" id="phenotype-data" onclick="kmeansClustering()">K
+				type="button" id="phenotype-data" onclick="invokeClassification('cluster')">K
 				means</button>
 
 			<button type="button"
@@ -97,7 +97,7 @@
 				aria-haspopup="true" aria-expanded="false">Association</button>
 
 			<button class="btn btn-secondary span9 btn-block no-padding"
-				type="button" onclick="aprioriAssociation()">Apriori</button>
+				type="button" onclick="invokeClassification('Apriori')">Apriori</button>
 
 
 

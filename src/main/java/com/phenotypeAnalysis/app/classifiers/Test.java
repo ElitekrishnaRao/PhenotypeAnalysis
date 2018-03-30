@@ -23,7 +23,7 @@ public class Test {
         this.testSet = testSet;
     }
 
-    public void testModel(Classifier model) {
+    public Evaluation testModel(Classifier model) {
         Evaluation eTest = null;
         try {
             eTest = new Evaluation(trainSet); // training set
@@ -46,6 +46,7 @@ public class Test {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return eTest;
     }
     
     public void testModelTrain(Classifier model) {
@@ -71,6 +72,7 @@ public class Test {
             e.printStackTrace();
         }
     }
+    
     
 //    public void testClusterModel(Classifier model) {
 //        Evaluation eTest = null;

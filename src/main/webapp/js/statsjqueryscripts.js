@@ -37,6 +37,12 @@ function calphenomean(event) {
 	});
 }
 
+function invokeClassification(classifierName){
+	 $.get( "http://localhost:8080/PhenotypeAnalysis/weka/wekaTest/"+classifierName, function(response) {
+		 $('#results-div').html(response);
+	});
+}
+
 //function phenotypesforgraphs(event) {
 //	var speciesId=sessionStorage.getItem("speciesId");
 //	//Specifying which select in JSP page selects multiple plants

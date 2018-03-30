@@ -6,11 +6,14 @@ import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import com.phenotypeAnalysis.app.classifiers.Test;
 import com.phenotypeAnalysis.app.classifiers.Train;
 import weka.classifiers.Classifier;
+import weka.classifiers.Evaluation;
 import weka.classifiers.bayes.NaiveBayes;
 import weka.classifiers.functions.SMO;
 import weka.classifiers.meta.FilteredClassifier;
@@ -24,52 +27,64 @@ import weka.clusterers.FilteredClusterer;
 @Controller
 @RequestMapping("/weka")
 public class WekaRestController {
-	@RequestMapping(value = "/wekaTest", method = RequestMethod.GET)
-	public ResponseEntity<List<String>> predictions() throws IOException {
+	private static final String CLASSIFIERS_RESULT = "ClassifiersResult";
+
+	@RequestMapping(value = "/wekaTest/{classifierName}", method = RequestMethod.GET)
+	public String predictions(ModelMap map,@PathVariable String classifierName) throws IOException {
 		List<String> acc = null;
 		// calculate prediction for rules...
 		// add result to list acc
 		Instances trainSet = null;
 		Instances testSet = null;
+		Evaluation eTest = null;
 
 		CSVLoader loader = new CSVLoader();
-
-		// loader.setSource(new
-		// File("C:\\Users\\SIDDU\\Desktop\\ClassifierTrainData.csv"));
-		// System.out.println(loader.getDataSet());
-		// trainSet = loader.getDataSet();
-		//
-		// loader.setSource(new
-		// File("C:\\Users\\SIDDU\\Desktop\\ClassifierTestData.csv"));
-		// System.out.println(loader.getDataSet());
-		// testSet = loader.getDataSet();
+		// J48, Naive Bayes with trainset (70%) and testset(30%) separately split 
+		loader.setSource(new
+				File("src/main/webapp/input files/CHA1.csv"));
+		System.out.println(loader.getDataSet());
+		Instances instances = loader.getDataSet();
+		int split = (int) (instances.size() * 0.7);
+		trainSet = new Instances(instances, 0, split);
+		testSet = new Instances(instances, split, instances.size() - split);
 		
-
-		 // J48, Naive Bayes with trainset (70%) and testset(30%) separately split 
-		 loader.setSource(new
-		 File("src/main/webapp/input files/CHA1.csv"));
-		 System.out.println(loader.getDataSet());
-		 Instances instances = loader.getDataSet();
-		 int split = (int) (instances.size() * 0.7);
-		 trainSet = new Instances(instances, 0, split);
-		 testSet = new Instances(instances, split, instances.size() - split);
-		 runJ48ClassifierTrainTest(trainSet, testSet);
-		 runClassifierNaiveBayesTrainTest(trainSet,testSet);
-		 runClassifierSVM(trainSet,testSet);
-		 
+		//Based on path param invoke respective classifier
+		switch(classifierName){
+		case "J48" :
+			eTest = runJ48ClassifierTrainTest(trainSet, testSet);
+			break;
+		case "NaiveBayes" :
+			eTest = runClassifierNaiveBayesTrainTest(trainSet, testSet);
+			break;
+		case "SVM" :
+			eTest = runClassifierSVM(trainSet, testSet);
+			break;
+		case "cluster":
+			runCluster(trainSet);
+			break;
+		default :		    	
+		}
 		
-		// J48, Naive Bayes with cross validation and filter
-		 loader.setSource(new
-		 File("src/main/webapp/input files/CHA1.csv"));
-		 trainSet= loader.getDataSet();
-		 runJ48ClassifierCV(trainSet);
-		 runClassifierNaiveBayesCV(trainSet);
+		//Send data to UI
+		map.put("eTestSummary", eTest.toSummaryString().replaceAll("\n", "<br>"));
+		try {
+			map.put("eTestMatrix", eTest.toMatrixString().replaceAll("\n", "<br>"));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
-		runCluster(trainSet);
-		return new ResponseEntity<List<String>>(acc, HttpStatus.OK);
+
+		// TODO not considered cross validations
+		loader.setSource(new
+				File("src/main/webapp/input files/CHA1.csv"));
+		trainSet= loader.getDataSet();
+		runJ48ClassifierCV(trainSet);
+		runClassifierNaiveBayesCV(trainSet);
+
+		return CLASSIFIERS_RESULT;
 	}
 
-	public void runJ48ClassifierTrainTest(Instances trainSet, Instances testSet) {
+	public Evaluation runJ48ClassifierTrainTest(Instances trainSet, Instances testSet) {
 		System.out.println("#####################  J48 With Trainset and Testset #####################");
 		System.out.println("HI:" + trainSet.numAttributes());
 		trainSet.setClassIndex(trainSet.numAttributes() - 1);
@@ -88,10 +103,10 @@ public class WekaRestController {
 		 * TEST
 		 */
 		Test test = new Test(trainSet, testSet);
-		test.testModel(model);
+		Evaluation eTest = test.testModel(model);
 		System.out.println("#####################  END OF J48  #####################");
 		System.out.print("\n\n\n");
-
+		return eTest;
 	}
 
 	public void runJ48ClassifierTrain(Instances trainSet) {
@@ -118,8 +133,8 @@ public class WekaRestController {
 		System.out.println("#####################  END OF J48  #####################");
 		System.out.print("\n\n\n");
 	}
-	
-	public void runClassifierSVM(Instances trainSet, Instances testSet) {
+
+	public Evaluation runClassifierSVM(Instances trainSet, Instances testSet) {
 		System.out.println("#####################  SVM Classifier #####################");
 		System.out.println("HI:" + trainSet.numAttributes());
 		Classifier model = new SMO();
@@ -143,12 +158,13 @@ public class WekaRestController {
 		 * TEST
 		 */
 		Test test = new Test(trainSet, testSet);
-		test.testModel(model);
+		Evaluation eTest =test.testModel(model);
 		//System.out.println(model);
 		System.out.println("#####################  END OF SVM  #####################");
 		System.out.print("\n\n\n");
+		return eTest;
 	}
-	
+
 	public void runJ48ClassifierCV(Instances trainSet) {
 		System.out.println("#####################  J48 With Trainset & Cross Validation & Filter #####################");
 		System.out.println("HI:" + trainSet.numAttributes());
@@ -165,9 +181,9 @@ public class WekaRestController {
 		System.out.println("#####################  END OF J48  #####################");
 		System.out.print("\n\n\n");
 	}
-	
 
-	public void runClassifierNaiveBayesTrainTest(Instances trainSet, Instances testSet) {
+
+	public Evaluation runClassifierNaiveBayesTrainTest(Instances trainSet, Instances testSet) {
 		System.out.println("#####################  Naive Bayes With Trainset and Testset #####################");
 		System.out.println("HI:" + trainSet.numAttributes());
 		trainSet.setClassIndex(trainSet.numAttributes() - 1);
@@ -186,11 +202,12 @@ public class WekaRestController {
 		 * TEST
 		 */
 		Test test = new Test(trainSet, testSet);
-		test.testModel(model);
+		Evaluation eTest = test.testModel(model);
 		System.out.println("#####################  END OF Naive Bayes  #####################");
 		System.out.print("\n\n\n");
+		return eTest;
 	}
-	
+
 	public void runClassifierNaiveBayesTrain(Instances trainSet) {
 		System.out.println("#####################  Naive Bayes With Trainset & Filter #####################");
 		System.out.println("HI:" + trainSet.numAttributes());
@@ -231,7 +248,7 @@ public class WekaRestController {
 		System.out.println("#####################  END OF Naive Bayes  #####################");
 		System.out.print("\n\n\n");
 	}
-	
+
 	public void runCluster(Instances trainSet) {
 		System.out.println("#####################  Cluster #####################");
 		EM model = new EM();

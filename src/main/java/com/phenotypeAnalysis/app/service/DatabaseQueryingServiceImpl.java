@@ -38,6 +38,7 @@ public class DatabaseQueryingServiceImpl implements DatabaseQueryingService {
 	}
 	@Override
 	public List<Species> getPlantSpeciesData() {
+		System.out.println("OK0");
 		return plantspeciesDaoService.getPlantSpeciesData();
 	}
 	@Override

@@ -21,6 +21,7 @@ public class PlantDaoServiceImpl implements PlantDaoService {
 	
 	@Override
 	public List<Plant> getPlantDataBySpecies(int speciesId) {
+		System.out.println("OK1");
 		return populateDataPlantRepository.findById(speciesId);
 	}
 

@@ -23,8 +23,8 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
 <style>
 <
-script type ="text/javascript" src ="../js/jqueryscripts.js "> </script>
-	<link rel ="stylesheet" src ="../css/Custom.css "> <style>
+script type ="text /javascript" src ="../js /jqueryscripts.js "> </script>
+	<link rel ="stylesheet " src ="../css /Custom.css "> <style>
 	/* Make the image fully responsive */ .carousel-inner img {
 	width: 100%;
 	height: 100%;
@@ -54,33 +54,38 @@ script type ="text/javascript" src ="../js/jqueryscripts.js "> </script>
 
 
 		<br>
-		<p> The plants' phenotypic knowledge discovery is
-			necessary for plant scientists, researchers and practitioners to make
-			better decisions based on one's research requirements such as
-			improving crop yields, deciding whether the treatment provided to the
-			plant species is efficient or not, etc. With the rise of greenhouse
-			facilities, numerous plant species are being grown year-round with
-			varied environmental conditions. The images of these plants are
-			captured for a sequence of days, in multiple views and angles using
-			diverse imaging modalities. These images are used to compute various
-			component based or holistic phenotypes using 2D or 3D image
-			processing techniques. This project is motivated by the need to
-			organize such high dimensional phenome data and explore various
-			strategies to analyze, visualize and mine. In this project, we
-			developed a data model by identifying principal entities related to
-			the plants and implemented a prototype of integrated framework
-			PhenomeD<sup>2</sup>. </p>
+		<p> Knowledge discovery from plant phenotype information along
+			with the genotype data is important for plant scientists, researchers
+			and practitioners. It can lead to better understanding of
+			physiological processes in plants at different stages of growth,
+			under different treatments of nutrients and stress. In the long run,
+			it can lead to development of crops that are tailored to different
+			environments in order to maximize the yield. With the advent of
+			high-throughput phenotyping systems, many experiments with diverse
+			plant species under different growth conditions are being conducted
+			to study phenotypes. These plants are imaged at multiple time points
+			from multiple viewpoints and in different modalities. Researchers are
+			computing a variety of phenotypes (holistic, component; static,
+			dynamic; 2D, 3D) from these images. Currently, there is no mechanism
+			to discover interesting patterns from diverse experiments since there
+			is no unified framework to store the information from them. This
+			project is motivated by the need to organize such high dimensional
+			phenomic data and explore various strategies to analyze, visualize
+			and mining the data. </p>
 			
-			<p> PhenomeD<sup>2</sup> is the integration of database querying,
-			descriptive statistics, visualizations and data mining components. In
-			this prototype, a few use cases are implemented in each of these
-			components and other actions are listed that can be implemented in
-			future. Our implementation integrates Weka, a data mining open source
-			tool and Dygraphs, a Java script charting library for visualizing
-			time series data that provides scope to include complex
-			functionalities to the framework in future. We analysed the scope for
-			expanding data model and include genome sequences for implementing
-			QTL/GWAS mappings to relate the genotypes and phenotypes in future.</p>
+			<p>In this project, we have proposed an integrated framework called Data model and Data analytics on Phenomic
+			data and developed a prototype, PhenomeD². The framework includes a
+			data model that is used to store all the phenomic (and related)
+			information in a relational database. The frontend of PhenomeD²
+			supports: (a) database querying (b) computation of descriptive
+			statistics and visualizations and (c) data mining. These modules
+			provide mechanisms to explore and analyze patterns in the phenomic
+			data. PhenomeD² integrates Weka, a widely used software for data
+			mining. To support visualization of temporal patterns in phenomic
+			data, PhenomeD² uses Dygraphs, a JavaScript-based charting library.
+			The framework supports inclusion of genome sequences and integrating
+			tools to enable QTL/GWAS mappings.
+		</p>
 		<br>
 
 		<div class="row">
@@ -143,8 +148,8 @@ script type ="text/javascript" src ="../js/jqueryscripts.js "> </script>
 
 
 	<div id="footer"
-		style="color: white; background-color: #000000;  bottom: 0; width: 100%; height: 30px;">
-		 University Of Nebraska Lincoln - Plant Vision Initiative</div>
+		style="color: white; background-color: #000000; bottom: 0; width: 100%; height: 30px;">
+		University Of Nebraska Lincoln - Plant Vision Initiative</div>
 
 
 </body>

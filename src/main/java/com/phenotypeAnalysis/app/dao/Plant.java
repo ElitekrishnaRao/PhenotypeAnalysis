@@ -35,7 +35,7 @@ public class Plant implements Serializable{
 	private int speciesId;
 	@Column(name = "genotypeId")
 	private int genotypeId;	
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER,mappedBy = "plant")
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY,mappedBy = "plant")
 	Set<Image> ImagesList;
 
 	public int getId() {

@@ -70,11 +70,13 @@ public class MinningWebController {
     	//Set pretty printing of json
     	objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
     	
+    
 		List<Plant> plantData = databaseQueryingService.getPlantDataBySpecies(id);
 		/* for(Plant p : plantData) {
 			System.out.println(p.getPlant_Id());
 		}*/
 		String arrayToJson = objectMapper.writeValueAsString(plantData);
+		
 		return arrayToJson.toString();
 	}
 	

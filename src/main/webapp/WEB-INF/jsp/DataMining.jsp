@@ -89,9 +89,9 @@
 				class="btn btn-success btn-block dropdown-toggle"
 				aria-haspopup="true" aria-expanded="false">Clustering</button>
 			<button class="btn btn-secondary span9 btn-block no-padding"
-				type="button" id="phenotype-data" onclick="invokeClassification('cluster')">K
-				means</button>
-
+				type="button" id="phenotype-data" onclick="invokeClassification('cluster')">K-means</button>
+			<button class="btn btn-secondary span9 btn-block no-padding"
+				type="button" id="phenotype-data" onclick="">K-medoids</button>
 			<button type="button"
 				class="btn btn-success btn-block dropdown-toggle"
 				aria-haspopup="true" aria-expanded="false">Association</button>

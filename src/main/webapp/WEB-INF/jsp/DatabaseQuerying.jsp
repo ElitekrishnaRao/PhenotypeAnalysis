@@ -150,6 +150,11 @@
 			class="table table-striped table-bordered" width="100%"
 			cellspacing="0">
 		</table>
+		
+		<table id="imageseqtable"
+			class="table table-striped table-bordered" width="100%"
+			cellspacing="0">
+		</table>
 
 		<table id="treatmentdatatable"
 			class="table table-striped table-bordered" width="100%"

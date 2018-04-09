@@ -9,7 +9,13 @@ $(function() {
 		window.location = $(this).attr('href');
 	});
 });
+
+//let appData = {
+//		speciesData: {}
+//}
+
 $(document).ready(function() {
+	sessionStorage.clear();
 	$('#example').DataTable({
 		dom : 'Bfrtip',
 		buttons : [ 'copy', 'csv', 'excel', 'pdf', 'print' ]
@@ -18,10 +24,18 @@ $(document).ready(function() {
 
 function clearForm() {
 	$("#queryForm").get(0).reset();
+//	console.log($("queryForm"));
+//	$("#queryForm").get(1).reset();
+//	$("#queryForm").get(2).reset();
+	
+	//$('#speciesid').reset();
+	$('#plant-data').empty();
+	$('#treatment-data').empty();
 }
+
 function showOnlyActiveTable(activeTable) {
 	let tables = [ "plantslisttable", "plantsbysptreatments",
-			"phenotypedatatable", "treatmentdatatable" ];
+			"phenotypedatatable", "treatmentdatatable", "imageseqtable" ];
 
 	for (let i = 0; i < tables.length; i++) {
 		if (!(tables[i] == activeTable)) {
@@ -388,12 +402,12 @@ function imagesequence(event) {
 	plantsIds = getSelectValues(el);
 	//alert(plantsIds);
 	var speciesId = sessionStorage.getItem("speciesId");
-	alert(plantsIds);
+	//alert(plantsIds);
 	if(!isValid(speciesId,plantsIds)){
 		alert("Both species and plants should be selected in filter menu to generate data");
 		return;
 	}
-	showOnlyActiveTable("phenotypedatatable");
+	showOnlyActiveTable("imageseqtable");
 	$
 			.get(
 					"http://localhost:8080/PhenotypeAnalysis/web/phenotypesbyspplnts/"
@@ -401,7 +415,7 @@ function imagesequence(event) {
 					function(data) {
 						var opts = $.parseJSON(data);
 						//console.log(opts);
-						$('#phenotypedatatable')
+						$('#imageseqtable')
 								.dataTable(
 										{
 											data : opts,
